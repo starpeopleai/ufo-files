@@ -366,7 +366,7 @@ const DEFAULT_VIEW_TYPE = "timeline";
 const VIEW_DEFAULTS = {
   scatter: { y: "epistemicAdjustedMentions" },
   network: { nodeRole: "entity", size: "independentDocumentCount", color: "category" },
-  map: { categories: ["location"], size: "epistemicAdjustedMentions", color: "intensity", labels: "top", limit: 50, moonTransitSeconds: 5 },
+  map: { categories: ["location"], size: "epistemicAdjustedMentions", color: "intensity", labels: "none", limit: 50, moonTransitSeconds: 5 },
   solar: { solarScale: "local", solarCase: "hill_fish", labels: "all" },
   book: { size: "epistemicAdjustedMentions", color: "intensity", labels: "all", limit: 20 },
   document: { size: "words", color: "source", labels: "top", documentSearch: "" },
@@ -442,6 +442,7 @@ function loadConfig() {
       const saved = JSON.parse(decodeURIComponent(escape(atob(param))));
       if (saved.allSources === undefined) saved.allSources = !saved.sources?.length;
       const config = { ...DEFAULT, ...saved };
+      if (saved.type === "map") config.labels = saved.labels ?? VIEW_DEFAULTS.map.labels;
       if (config.type === "blood" && config.bloodType === "Unspecified") config.bloodType = "all";
       if (saved.type === "solar" && !Object.hasOwn(saved, "solarScale")) config.solarScale = "local";
       if (!["none", "hill_fish"].includes(config.solarCase)) config.solarCase = DEFAULT.solarCase;
@@ -495,6 +496,7 @@ function loadConfig() {
 function persistHash() {
   const saved = Object.fromEntries(Object.entries(state.config).filter(([key, value]) => {
     if (key === "configVersion") return true;
+    if (key === "labels" && state.config.type === "map") return true;
     if (key === "solarScale" && state.config.type === "solar") return true;
     if (key === "solarCase" && state.config.type === "solar") return true;
     if (key === "claimPolicyVersion" && state.config.type === "claims") return true;
