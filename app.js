@@ -300,7 +300,7 @@ const TYPES = [
   { id: "technologies", label: "Technologies", scope: "Systems in corpus", icon: "<circle cx='16' cy='10' r='8'/><path d='M16 10l7-6M16 2v3m-8 5h3m5 8v-3m8-5h-3'/><circle cx='16' cy='10' r='2'/>" },
   { id: "clock", label: "Clock", scope: "Times in documents", icon: "<circle cx='16' cy='10' r='9'/><path d='M16 4v6l4 3'/>" },
   { id: "blood", label: "Blood types", scope: "ABO + Rh mentions", icon: "<path d='M16 2C13 7 8 11 8 15a8 8 0 0 0 16 0c0-4-5-8-8-13Z'/>" },
-  { id: "signals", label: "Signals", scope: "Frequencies in corpus", icon: "<path d='M2 17h27M4 17V13l2-1 2 5 2-9 2 9 3-3 2 3 2-13 2 13 2-6 2 6h3'/><path d='M4 3v3m23-3v3'/>" },
+  { id: "signals", label: "Signals", scope: "Frequency observations", icon: "<path d='M2 17h27M4 17V13l2-1 2 5 2-9 2 9 3-3 2 3 2-13 2 13 2-6 2 6h3'/><path d='M4 3v3m23-3v3'/>" },
   { id: "scatter", label: "Scatter", scope: "All", icon: "<path d='M3 2v16h25'/><circle cx='9' cy='13' r='2'/><circle cx='15' cy='9' r='2'/><circle cx='22' cy='5' r='2'/>" },
   { id: "bars", label: "Bars", scope: "All collections", icon: "<path d='M3 2v16h26M7 15h4V8H7zm8 0h4V4h-4zm8 0h4v-9h-4z'/>" },
   { id: "timeline", label: "Timeline", scope: "Documents + events", icon: "<path d='M3 10h25M8 5v10m7-7v7m8-12v12'/><circle cx='8' cy='10' r='2'/><circle cx='15' cy='10' r='2'/><circle cx='23' cy='10' r='2'/>" },
@@ -596,7 +596,7 @@ function dataAwareTitle(config) {
   } else if (config.type === "species") {
     title = "ET Species in the Corpus";
   } else if (config.type === "signals") {
-    title = "Radio Frequencies in the Corpus";
+    title = "Radio Frequencies";
   } else if (["drugs", "technologies"].includes(config.type)) {
     title = config.type === "drugs" ? "Drugs in the Corpus" : "Technologies in the Corpus";
   } else if (config.type === "clock") {
@@ -1382,7 +1382,7 @@ function renderControls() {
         { value: "documentCount", label: "Independent documents" }, { value: "observationCount", label: "Name observations" }, { value: "sourceCount", label: "Collections" }
       ]) + `<div class="control method-note"><div class="control-title">Mention graph</div><p>Size and shade encode prominence. Line patterns identify the reviewed reference grouping; links represent shared corpus documents.</p></div>` + labelSizeControl;
   } else if (state.config.type === "signals") {
-    $("#encodeControls").innerHTML = `<div class="control"><div class="control-title">Peak height</div><select disabled><option>Corpus frequency mentions</option></select></div><div class="control method-note"><div class="control-title">Spectrum semantics</div><p>Peaks are normalized numeric frequency references in corpus text. Unit-elided values require explicit microwave-band context. They are not RF logger measurements and do not establish that a transmission occurred.</p></div>` + labelSizeControl;
+    $("#encodeControls").innerHTML = `<div class="control"><div class="control-title">Peak height</div><select disabled><option>Frequency observations</option></select></div><div class="control method-note"><div class="control-title">Spectrum semantics</div><p>Each document mention counts once. Each recording counts once per peak frequency. A receiver peak is a local maximum at least 6 dB above the median of up to four neighboring bins on either side in its average spectrum.</p></div>` + labelSizeControl;
   } else if (["clock", "drugs", "technologies"].includes(state.config.type)) {
     $("#encodeControls").innerHTML = labelSizeControl;
   } else if (state.config.type === "blood") {
@@ -4946,51 +4946,68 @@ function loadFieldRFProfiles() {
     });
 }
 
-function fieldSignalTraces(recordings) {
-  const traces = new Map();
+const receiverPeakCache = new WeakMap();
+function receiverPeakBins(profile) {
+  if (receiverPeakCache.has(profile)) return receiverPeakCache.get(profile);
+  const {db, range} = profile, peaks = [];
+  for (let i = 1; i < db.length - 1; i++) {
+    const value = db[i];
+    if (![db[i-1], value, db[i+1]].every(Number.isFinite) || value <= db[i-1] || value < db[i+1]) continue;
+    const neighbors = db.slice(Math.max(0, i-4), i).concat(db.slice(i+1,i+5)).filter(Number.isFinite).sort((a,b) => a-b);
+    if (neighbors.length < 4) continue;
+    const median = (neighbors[Math.floor((neighbors.length-1)/2)] + neighbors[Math.floor(neighbors.length/2)]) / 2;
+    if (value - median >= 6) peaks.push(Math.round(range[0] + (i + .5) * (range[1] - range[0]) / db.length));
+  }
+  receiverPeakCache.set(profile, peaks);
+  return peaks;
+}
+
+function combineSignalEvidence(documents, recordings, profiles) {
+  const byHz = new Map(documents.map(item => [item.frequencyHz, {...item}]));
   for (const recording of recordings) {
-    const hashes = new Set([...recording.bundles.values()].flatMap(bundle =>
-      bundle.assets.filter(asset => asset.name === "rf.jsonl").map(asset => asset.sha256)));
-    for (const hash of hashes) for (const {range, db} of fieldRFProfiles?.[hash] || []) {
-      const key = range.join("/") + "/" + db.length;
-      if (!traces.has(key)) traces.set(key, {range, sum: new Float64Array(db.length), counts: new Uint32Array(db.length), records: new Set()});
-      const trace = traces.get(key);
-      trace.records.add(recording);
-      db.forEach((value, index) => {
-        if (Number.isFinite(value)) { trace.sum[index] += value; trace.counts[index]++; }
-      });
+    const frequencies = new Set();
+    for (const bundle of recording.bundles.values()) for (const asset of bundle.assets) {
+      if (asset.name !== "rf.jsonl") continue;
+      for (const profile of profiles?.[asset.sha256] || []) {
+        for (const hz of receiverPeakBins(profile)) frequencies.add(hz);
+      }
+    }
+    for (const hz of frequencies) {
+      if (!byHz.has(hz)) byHz.set(hz, {id: "signal-frequency-" + hz, frequencyHz: hz, frequencyLabel: signalFrequencyLabel(hz),
+        mentionCount: 0, observations: [], documentCount: 0, documentIds: [], sources: [], entityIds: [], eventIds: []});
+      const item = byHz.get(hz);
+      (item.recordings ||= []).push(recording);
     }
   }
-  return [...traces.values()].map(({range, sum, counts, records}) => ({
-    range, records, values: Array.from(sum, (value, i) => counts[i] ? value / counts[i] : null)
-  }));
+  return [...byHz.values()].map(item => ({...item, count: item.mentionCount + (item.recordings?.length || 0)}))
+    .sort((a,b) => a.frequencyHz-b.frequencyHz);
 }
 
 function renderSignals() {
   clearChart();
-  const items = state.config.fieldEvidence === "field" ? [] : filteredSignalFrequencies();
+  const documents = state.config.fieldEvidence === "field" ? [] : filteredSignalFrequencies();
   const recordings = state.catalog.fieldObservations ? fieldRecordings() : [];
   if (recordings.length && !fieldRFProfiles && !fieldRFError) loadFieldRFProfiles();
-  const traces = fieldSignalTraces(recordings);
-  if (!items.length && !traces.length) {
+  const items = combineSignalEvidence(documents, recordings, fieldRFProfiles);
+  if (!items.length) {
     showEmpty();
-    if (recordings.length) $("#emptyState").textContent = fieldRFError ? "Recorded RF could not load." : fieldRFProfiles ? "No measured RF spectra in these recordings." : "Loading recorded RF…";
+    if (recordings.length) $("#emptyState").textContent = fieldRFError ? "Recorded RF could not load." : fieldRFProfiles ? "No qualifying frequency peaks in these recordings." : "Loading recorded RF…";
     if (fieldRFError && recordings.length) {
       const retry = document.createElement("button"); retry.textContent = "Retry"; retry.onclick = loadFieldRFProfiles; $("#emptyState").append(retry);
     }
     return;
   }
   const svg = $("#chart"), { width, height } = dimensions();
-  const margin = { top: 42, right: traces.length ? 65 : 28, bottom: 66, left: 56 };
+  const margin = { top: 42, right: 28, bottom: 66, left: 56 };
   const baseline = height - margin.bottom;
-  const frequencies = [...items.map(item => item.frequencyHz), ...traces.flatMap(trace => trace.range)];
+  const frequencies = items.map(item => item.frequencyHz);
   const extent = [Math.max(1, Math.min(...frequencies)), Math.max(...frequencies)];
   if (extent[0] === extent[1]) { extent[0] /= 1.5; extent[1] *= 1.5; }
   const logExtent = extent.map(Math.log10);
   const x = value => scale(Math.log10(value), logExtent, [margin.left, width - margin.right]);
-  const maximum = Math.max(...items.map(item => item.mentionCount), 1);
+  const maximum = Math.max(...items.map(item => item.count), 1);
   const y = value => baseline - value / maximum * (baseline - margin.top - 22);
-  const mentionExtent = valueExtent(items, "mentionCount");
+  const mentionExtent = valueExtent(items, "count");
   const bands = el("g", { class: "signal-bands" });
   signalBandDefinitions().forEach(([start, end, name], index) => {
     const visibleStart = Math.max(start, extent[0]), visibleEnd = Math.min(end, extent[1]);
@@ -5001,7 +5018,7 @@ function renderSignals() {
   });
   svg.append(bands);
   const grid = el("g", { class: "signal-grid" });
-  if (items.length) [0, .25, .5, .75, 1].forEach(fraction => {
+  [0, .25, .5, .75, 1].forEach(fraction => {
     const value = Math.round(maximum * fraction), py = y(value);
     grid.append(el("line", { x1: margin.left, y1: py, x2: width - margin.right, y2: py, class: "signal-grid-line" }));
     grid.append(el("text", { x: margin.left - 9, y: py + 4, "text-anchor": "end", class: "axis-label" }, formatNumber(value)));
@@ -5027,39 +5044,12 @@ function renderSignals() {
     grid.append(el("text", { x: px, y: baseline + 22, "text-anchor": "middle", class: "axis-label" }, signalFrequencyLabel(value)));
   });
   grid.append(el("line", { x1: margin.left, y1: baseline, x2: width - margin.right, y2: baseline, class: "signal-baseline" }));
-  if (items.length) grid.append(el("text", { x: 14, y: (margin.top + baseline) / 2, transform: `rotate(-90 14 ${(margin.top + baseline) / 2})`, "text-anchor": "middle", class: "axis-label" }, "MENTIONS"));
+  grid.append(el("text", { x: 14, y: (margin.top + baseline) / 2, transform: `rotate(-90 14 ${(margin.top + baseline) / 2})`, "text-anchor": "middle", class: "axis-label" }, "OBSERVATIONS"));
   grid.append(el("text", { x: (margin.left + width - margin.right) / 2, y: height - 15, "text-anchor": "middle", class: "axis-label" }, "RADIO FREQUENCY · LOG SCALE"));
   svg.append(grid);
 
-  if (traces.length) {
-    const levels = traces.flatMap(trace => trace.values.filter(Number.isFinite));
-    const low = Math.floor(Math.min(...levels)), high = Math.max(low + 1, Math.ceil(Math.max(...levels)));
-    const levelY = db => baseline - (db - low) / (high - low) * (baseline - margin.top - 22);
-    const axisX = items.length ? width - margin.right + 6 : margin.left - 7;
-    for (let tick = 0; tick <= 4; tick++) {
-      const db = low + (high - low) * tick / 4;
-      grid.append(el("text", {x: axisX, y: levelY(db) + 4, "text-anchor": items.length ? "start" : "end", class: "axis-label"}, db.toFixed(0) + " dB"));
-    }
-    for (const trace of traces) {
-      let d = "", connected = false;
-      trace.values.forEach((value, i) => {
-        if (!Number.isFinite(value)) { connected = false; return; }
-        const hz = trace.range[0] + (i + .5) * (trace.range[1] - trace.range[0]) / trace.values.length;
-        d += (connected ? "L" : "M") + x(hz).toFixed(2) + "," + levelY(value).toFixed(2);
-        connected = true;
-      });
-      const title = signalFrequencyLabel(trace.range[0]) + "–" + signalFrequencyLabel(trace.range[1]) + " · " + trace.records.size + " recordings";
-      const group = el("g", {class: "field-rf-trace", role: "button", tabindex: "0", "aria-label": title});
-      group.append(el("path", {d, fill:"none", stroke:"currentColor", "stroke-width":1.5}), el("path", {d, fill:"none", stroke:"transparent", "stroke-width":10}));
-      addTitle(group, title);
-      const inspect = () => inspectFieldRecordings([...trace.records], title, "Mean of the archived receiver spectra in each frequency bin, in uncalibrated dB.");
-      group.addEventListener("click", inspect);
-      group.addEventListener("keydown", e => { if (["Enter", " "].includes(e.key)) { e.preventDefault(); inspect(); } });
-      svg.append(group);
-    }
-  }
   const peakLayer = el("g", { class: "signal-peaks" });
-  const rankedLabels = [...items].sort((a, b) => b.mentionCount - a.mentionCount || b.documentCount - a.documentCount);
+  const rankedLabels = [...items].sort((a, b) => b.count - a.count || b.documentCount - a.documentCount);
   const strongest1600 = items.find(item => item.frequencyHz === 1_600_000_000);
   if (strongest1600) {
     rankedLabels.splice(rankedLabels.indexOf(strongest1600), 1);
@@ -5075,16 +5065,16 @@ function renderSignals() {
     labelPlacements.set(item.id, tier);
   });
   items.forEach(item => {
-    const px = x(item.frequencyHz), py = y(item.mentionCount);
-    const group = el("g", { class: "signal-peak", tabindex: "0", role: "button", "aria-label": `${item.frequencyLabel}: ${item.mentionCount} mentions across ${item.documentCount} documents` });
+    const px = x(item.frequencyHz), py = y(item.count);
+    const group = el("g", { class: "signal-peak", tabindex: "0", role: "button", "aria-label": `${item.frequencyLabel}: ${item.count} observations` });
     group.append(el("path", { d: `M${Math.max(margin.left, px - 5)} ${baseline} L${px} ${py} L${Math.min(width - margin.right, px + 5)} ${baseline} Z`, class: "signal-peak-fill" }));
     group.append(el("line", { x1: px, y1: baseline, x2: px, y2: py, class: "signal-peak-line" }));
     group.append(el("circle", {
-      cx: px, cy: py, r: Math.max(4, Math.min(10, 3 + Math.sqrt(item.mentionCount))),
-      fill: "#111", "fill-opacity": scale(item.mentionCount, mentionExtent, [.18, .96]),
-      "data-mentions": item.mentionCount, class: "signal-peak-node"
+      cx: px, cy: py, r: Math.max(4, Math.min(10, 3 + Math.sqrt(item.count))),
+      fill: "#111", "fill-opacity": scale(item.count, mentionExtent, [.18, .96]),
+      "data-mentions": item.mentionCount, "data-recordings": item.recordings?.length || 0, class: "signal-peak-node"
     }));
-    addTitle(group, `${item.frequencyLabel} · ${item.mentionCount} mentions · ${item.documentCount} documents · ${item.sourceCount} collections`);
+    addTitle(group, `${item.frequencyLabel} · ${item.count} observations · ${item.mentionCount} mentions · ${item.recordings?.length || 0} recordings`);
     if (labelPlacements.has(item.id)) {
       const tier = labelPlacements.get(item.id);
       group.append(el("line", { x1: px, y1: py - 6, x2: px, y2: py - 18 - tier * 13, class: "signal-label-leader" }));
@@ -5095,12 +5085,9 @@ function renderSignals() {
     peakLayer.append(group);
   });
   svg.append(peakLayer);
-  $("#legend").innerHTML = `<span class="legend-item"><i class="signal-mention-key"></i>Node size + shade: mentions</span><span class="legend-item"><i class="signal-peak-key"></i>Peak height: mentions</span><span class="legend-item"><i class="signal-band-key"></i>Radio band</span>`;
-  if (!items.length) $("#legend").innerHTML = "";
-  if (traces.length) $("#legend").innerHTML += '<span class="legend-item">Field Station · mean receiver level (dB, uncalibrated)</span>';
-  const rfCount = new Set(traces.flatMap(trace => [...trace.records])).size;
-  const rfSummary = rfCount ? rfCount + " RF recordings" : "";
-  setSummary([items.length ? `${items.length} normalized frequencies · ${items.reduce((sum, item) => sum + item.mentionCount, 0)} mentions · ${new Set(items.flatMap(item => item.documentIds)).size} documents` : "", rfSummary].filter(Boolean).join(" · "), "signals");
+  $("#legend").innerHTML = `<span class="legend-item"><i class="signal-mention-key"></i>Node size + shade: observations</span><span class="legend-item"><i class="signal-peak-key"></i>Peak height: observations</span><span class="legend-item"><i class="signal-band-key"></i>Radio band</span>`;
+  const rfCount = new Set(items.flatMap(item => item.recordings || [])).size;
+  setSummary([`${items.length} normalized frequencies`, `${documents.reduce((sum,item) => sum + item.mentionCount,0)} mentions`, `${new Set(documents.flatMap(item => item.documentIds)).size} documents`, rfCount ? rfCount + " RF recordings" : ""].filter(Boolean).join(" · "), "signals");
 }
 
 function renderSpeciesLineup() {
@@ -6000,7 +5987,7 @@ function setSummary(text, type) {
     : ["clock", "drugs", "technologies"].includes(type) ? ""
     : type === "blood" ? ""
     : type === "bars" && state.config.aggregation === "source" ? "Records count transcript files for documentary collections and published observations for Field Station. These are different evidence types, not equally weighted corroboration. N/A means the measure does not apply."
-    : type === "signals" ? "Document peaks count frequency mentions. Field Station traces show archived receiver levels in dB."
+    : type === "signals" ? "Frequency observations from documents and recorded RF spectra."
     : type === "coverage" ? "Corpus gaps are not evidence that real-world events did not occur · unknown metadata remains explicit"
     : type === "timeline" ? "Correlative dates are human-curated context · Codex suggested The X-Files premiere"
     : type === "programs" ? "Every displayed interval is source-reviewed and shows its timeframe · every corpus program candidate has an included, merged, or excluded review decision · dashed marks identify congressional-record claims that are not agency confirmation"
@@ -6346,6 +6333,10 @@ function inspectAstronomyCandidates() {
 }
 
 function inspectSignalFrequency(item) {
+  if (item.recordings?.length && !item.observations.length) {
+    inspectFieldRecordings(item.recordings, item.frequencyLabel, "Recordings with a measured spectral peak at this frequency.");
+    return;
+  }
   state.selected = item;
   const inspector = $("#inspector");
   $("#builderView").classList.remove("inspector-collapsed");
@@ -6358,10 +6349,24 @@ function inspectSignalFrequency(item) {
     const provenance = observation.unitProvenance === "contextual-microwave-band" ? "GHz from microwave-band context" : "literal unit";
     return `<div class="signal-observation"><small>${escapeHTML(observation.source)} · ${provenance}</small><strong>${escapeHTML(observation.originalPhrase)}</strong><p>“${escapeHTML(observation.excerpt)}”</p>${source ? `<a href="${escapeHTML(source)}" target="_blank" rel="noopener noreferrer">${escapeHTML(document.path)} ↗</a>` : ""}</div>`;
   }).join("");
-  $("#inspectorContent").innerHTML = `<p class="inspect-category">Corpus frequency mention</p><h3>${escapeHTML(item.frequencyLabel)}</h3><p>This peak aggregates numeric frequency language in source transcripts. Values without a literal unit are included only when the same passage explicitly establishes microwave-band frequency context. It does not establish that a signal was detected, transmitted, anomalous, or associated with any specific cause.</p>
+  $("#inspectorContent").innerHTML = `<p class="inspect-category">Frequency evidence</p><h3>${escapeHTML(item.frequencyLabel)}</h3><p>This peak aggregates numeric frequency language in source transcripts. Values without a literal unit are included only when the same passage explicitly establishes microwave-band frequency context. It does not establish that a signal was detected, transmitted, anomalous, or associated with any specific cause.</p>
     <div class="metric-row"><div class="metric"><strong>${item.mentionCount}</strong><small>mentions</small></div><div class="metric"><strong>${item.documentCount}</strong><small>documents</small></div><div class="metric"><strong>${item.sourceCount}</strong><small>collections</small></div><div class="metric"><strong>${formatNumber(item.frequencyHz)}</strong><small>hertz</small></div></div>
     <div class="evidence-list"><h4>Associated records</h4><p>${events.length ? `${events.length} same-segment events` : "No same-segment published event"} · ${entities.length ? `${entities.length} same-segment entities: ${escapeHTML(entities.slice(0, 12).map(entity => entity.name).join(", "))}` : "no same-segment published entities"}</p></div>
     <div class="evidence-list"><h4>Source excerpts · showing ${Math.min(100, item.observations.length)} of ${item.observations.length}</h4>${rows}</div>`;
+  if (item.recordings?.length) {
+    const list = document.createElement("div");
+    list.className = "evidence-list";
+    const heading = document.createElement("h4");
+    heading.textContent = "Field Station recordings · " + item.recordings.length;
+    list.append(heading);
+    for (const recording of item.recordings) {
+      const button = document.createElement("button");
+      button.className = "field-recording"; button.textContent = fieldTime(recording);
+      button.onclick = () => inspectFieldRecording(recording);
+      list.append(button);
+    }
+    $("#inspectorContent").append(list);
+  }
   refreshGraphAfterInspectorResize();
 }
 
