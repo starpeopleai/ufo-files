@@ -5295,3 +5295,17 @@ test("Field Station clock records share documentary groups and markers", () => {
   assert.doesNotMatch(source, /field-clock-point|renderFieldPanel/);
   assert.doesNotMatch(fs.readFileSync("index.html", "utf8"), /fieldObservationsPanel/);
 });
+
+test("Published RF profiles cover the indexed Archive measurements and retain their frequency bins", () => {
+  const section = JSON.parse(fs.readFileSync("data/catalog.json")).fieldObservations;
+  const profiles = JSON.parse(fs.readFileSync("assets/field-rf-profiles.json"));
+  const hashes = new Set(section.observations.flatMap(row => row.evidence.flatMap(bundle =>
+    bundle.assets.filter(asset => asset.name === "rf.jsonl").map(asset => asset.sha256))));
+  for (const hash of hashes) {
+    assert.ok(Array.isArray(profiles[hash]), hash);
+    for (const {range, db} of profiles[hash]) {
+      assert.ok(range[1] > range[0] && db.length > 1);
+      assert.ok(db.some(Number.isFinite));
+    }
+  }
+});
