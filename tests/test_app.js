@@ -5246,14 +5246,15 @@ test("Field Station source bars count observations without inventing transcript 
     Object.assign(state.config,{type:"bars",aggregation:"source",y:"records",allSources:true,limit:50});
     renderBars();
   `,context);
+  assert.deepEqual(Array.from(vm.runInContext('currentSourceNames(["Field Station","Archive","starpeople.ai Field Station"])',context)),["starpeople.ai Field Station","Archive"]);
   const rows=JSON.parse(vm.runInContext("JSON.stringify(aggregateDocuments())",context));
   assert.equal(rows.find(r=>r.name==="Archive").records,1);
-  const field=rows.find(r=>r.name==="Field Station");
+  const field=rows.find(r=>r.name==="starpeople.ai Field Station");
   assert.equal(field.records,2);
   assert.equal(field.documents,null);assert.equal(field.words,null);assert.equal(field.bytes,null);
   const marks=elements.chart.children.filter(n=>n.attributes.class==="mark");
   assert.equal(marks.length,2);
-  assert.equal(marks[0].attributes["aria-label"],"Field Station · 2 Records");
+  assert.equal(marks[0].attributes["aria-label"],"starpeople.ai Field Station · 2 Records");
   assert.equal(typeof marks[0].listeners.keydown,"function");
   elements.chart.children=[];
   vm.runInContext('state.config.y="words";renderBars()',context);
@@ -5261,7 +5262,7 @@ test("Field Station source bars count observations without inventing transcript 
   assert.ok(labels.includes("N/A · 2 records"));
   vm.runInContext('state.config.allSources=false;state.config.sources=["Archive"]',context);
   assert.equal(vm.runInContext('aggregateDocuments().length',context),1);
-  vm.runInContext('state.config.sources=["Field Station"];state.config.aggregation="format"',context);
+  vm.runInContext('state.config.sources=["starpeople.ai Field Station"];state.config.aggregation="format"',context);
   assert.equal(vm.runInContext('aggregateDocuments().length',context),0);
   vm.runInContext('state.config.aggregation="source";state.catalog.fieldObservations.observations=[]',context);
   assert.equal(vm.runInContext('aggregateDocuments().length',context),0);
@@ -5276,7 +5277,7 @@ test("Field Station clock records share documentary groups and markers", () => {
     clearChart: () => ({ svg, width: 800, height: 600 }),
     filteredClockMentions: () => [{ minuteOfDial: 61, period: "am", documentId: "doc", source: "A" }],
     fieldRecordings: () => [recording],
-    FieldEvidence: { clock: () => [{ minuteOfDial: 65, period: "am", documentId: recording.id, source: "Field Station", recording }] },
+    FieldEvidence: { clock: () => [{ minuteOfDial: 65, period: "am", documentId: recording.id, source: "starpeople.ai Field Station", recording }] },
     el: (tag, attrs) => { const e = new FakeElement(); e.tagName = tag; for (const [k,v] of Object.entries(attrs)) e.setAttribute(k,v); return e; },
     valueExtent: () => [2,2],
     scatterPointMark: () => new FakeElement(),

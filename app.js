@@ -440,6 +440,7 @@ function loadConfig() {
     const param = new URLSearchParams(location.hash.slice(1)).get("config");
     if (param) {
       const saved = JSON.parse(decodeURIComponent(escape(atob(param))));
+      if (Array.isArray(saved.sources)) saved.sources = currentSourceNames(saved.sources);
       if (saved.allSources === undefined) saved.allSources = !saved.sources?.length;
       const config = { ...DEFAULT, ...saved };
       if (saved.type === "map") config.labels = saved.labels ?? VIEW_DEFAULTS.map.labels;
@@ -644,6 +645,10 @@ function escapeHTML(value = "") {
   return String(value).replace(/[&<>'"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[char]);
 }
 
+function currentSourceNames(sources) {
+  return [...new Set(sources.map(name => name === "Field Station" ? "starpeople.ai Field Station" : name))];
+}
+
 function sourceIsSelected(sourceName, selectedSources, allSources) {
   return allSources || selectedSources.includes(sourceName);
 }
@@ -840,6 +845,7 @@ function normalizeDossierGraphConfiguration(value) {
   ["categories", "sources", "tableColumns"].forEach(key => {
     if (!Array.isArray(config[key])) config[key] = dossierClone(DEFAULT[key]);
   });
+  config.sources = currentSourceNames(config.sources);
   config.triageSignals = normalizeTriageSignals(config.triageSignals);
   return config;
 }
@@ -1303,7 +1309,7 @@ function renderControls() {
     const columnChecks = fields.map(field => `<label class="check-chip"><input type="checkbox" data-table-column="${field}" ${state.config.tableColumns.includes(field) ? "checked" : ""}><span>${escapeHTML(label(field))}</span></label>`).join("");
     roles = controlSelect("tableRole", "Rows", [{ value: "entity", label: "Entities" }, { value: "document", label: "Transcript files" }, { value: "case", label: "UAP cases" }, { value: "source", label: "Collections" }]) + `<div class="control"><div class="control-title">Columns <span>${state.config.tableColumns.length}</span></div><div class="check-grid">${columnChecks}</div></div>`;
   }
-  $("#roleControls").innerHTML = roles + (["clock", "signals", "map"].includes(state.config.type) ? controlSelect("fieldEvidence", "Evidence", [{value:"all",label:"All evidence"},{value:"documents",label:"Documents"},{value:"field",label:"Field Station"}]) : "");
+  $("#roleControls").innerHTML = roles + (["clock", "signals", "map"].includes(state.config.type) ? controlSelect("fieldEvidence", "Evidence", [{value:"all",label:"All evidence"},{value:"documents",label:"Documents"},{value:"field",label:"starpeople.ai Field Station"}]) : "");
 
   const sizeOptions = state.config.type === "timeline" && state.config.timelineRole === "event"
     ? [...(state.config.timelineGrouping ? ["eventCount"] : []), "independentSourceFamilyCount", "documentCount", "confidence"]
@@ -1409,7 +1415,7 @@ function renderControls() {
     const checked = state.config.type === "book" ? category === "book" : state.config.type === "document" || state.config.categories.includes(category);
     return `<label class="check-chip"><input type="checkbox" data-category="${category}" ${checked ? "checked" : ""} ${fixedCategories ? "disabled" : ""}><span>${escapeHTML(label(category))}</span></label>`;
   }).join("");
-  const sources = [...(state.catalog?.sources || []), ...((["clock","signals","map"].includes(state.config.type) || state.config.type === "bars" && state.config.aggregation === "source") && !(state.catalog?.sources || []).some(source => source.name === "Field Station") ? [{name:"Field Station"}] : [])];
+  const sources = [...(state.catalog?.sources || []), ...((["clock","signals","map"].includes(state.config.type) || state.config.type === "bars" && state.config.aggregation === "source") && !(state.catalog?.sources || []).some(source => source.name === "starpeople.ai Field Station") ? [{name:"starpeople.ai Field Station"}] : [])];
   const sourceNames = sources.map(source => source.name);
   const selectedSourceCount = state.config.allSources ? sourceNames.length : sourceNames.filter(name => state.config.sources.includes(name)).length;
   const sourceChecks = sources.map(source => `<label class="check-chip"><input type="checkbox" data-source="${escapeHTML(source.name)}" ${sourceIsSelected(source.name, state.config.sources, state.config.allSources) ? "checked" : ""}><span>${escapeHTML(source.name)}</span></label>`).join("");
@@ -1459,7 +1465,7 @@ function renderControls() {
       + `<div class="control"><label for="bloodSearch">Search evidence</label><input id="bloodSearch" class="text-input" type="search" value="${escapeHTML(state.config.bloodSearch)}" placeholder="Search excerpt, title, or collection" data-blood-search></div><div class="control"><div class="control-title">Collections <span data-source-count>${selectedSourceCount} / ${sourceNames.length} selected</span></div><div class="check-grid">${sourceChecks}</div></div><button class="button" type="button" data-blood-reset>Reset filters</button>`;
   }
   if (state.config.type === "clock") {
-    const clockSources = [...new Set([...(state.clockCatalog?.documents || []).map(doc => doc.source), "Field Station"])].sort();
+    const clockSources = [...new Set([...(state.clockCatalog?.documents || []).map(doc => doc.source), "starpeople.ai Field Station"])].sort();
     $("#filterControls").innerHTML = `<div class="control"><label for="clockSearch">Search passages</label><input class="text-input" id="clockSearch" type="search" value="${escapeHTML(state.config.clockSearch)}" data-clock-search></div><div class="control"><div class="control-title">Collections</div><div class="check-grid">${clockSources.map(source => `<label class="check-chip"><input type="checkbox" data-source="${escapeHTML(source)}" ${sourceMatches(source) ? "checked" : ""}><span>${escapeHTML(source)}</span></label>`).join("")}</div></div>`;
   }
   if (["drugs", "technologies"].includes(state.config.type)) {
@@ -2493,7 +2499,7 @@ function renderMap() {
   window.dispatchEvent(new CustomEvent("ufo-map-render", { detail: payload }));
   window.dispatchEvent(new CustomEvent("ufo-map-visibility", { detail: { visible: true } }));
   drawIntensityLegend();
-  setSummary(`${regions.length} Field Station county regions · ${data.length} of ${mapped.length} mapped locations${unmapped ? ` · ${unmapped} unmapped` : ""}`, "map");
+  setSummary(`${regions.length} starpeople.ai Field Station county regions · ${data.length} of ${mapped.length} mapped locations${unmapped ? ` · ${unmapped} unmapped` : ""}`, "map");
 }
 
 function preferredBookTitleAspect(item) {
@@ -2897,13 +2903,13 @@ function aggregateDocuments() {
       return { name: label(format), source: format, documents: items.length, words: items.reduce((sum, item) => sum + item.words, 0), bytes: items.reduce((sum, item) => sum + item.bytes, 0), documentIds: items.map(item => item.id) };
     });
   }
-  const sources = state.catalog.sources.filter(source => sourceMatches(source.name) && source.name !== "Field Station").map(source => {
+  const sources = state.catalog.sources.filter(source => sourceMatches(source.name) && source.name !== "starpeople.ai Field Station").map(source => {
     const items = docs.filter(doc => doc.source === source.name);
     return { name: source.name, source: source.name, records: items.length, documents: items.length, words: items.reduce((sum, item) => sum + item.words, 0), bytes: items.reduce((sum, item) => sum + item.bytes, 0), documentIds: items.map(item => item.id) };
   });
   const observations = state.catalog.fieldObservations?.observations || [];
-  if (observations.length && sourceMatches("Field Station")) sources.push({
-    name: "Field Station", source: "Field Station", evidenceKind: "field_observations",
+  if (observations.length && sourceMatches("starpeople.ai Field Station")) sources.push({
+    name: "starpeople.ai Field Station", source: "starpeople.ai Field Station", evidenceKind: "field_observations",
     records: new Set(observations.map(item => item.id)).size,
     documents: null, words: null, bytes: null, documentIds: []
   });
@@ -4685,9 +4691,9 @@ function fieldIndex() {
   return fieldIndexCache.get(section);
 }
 function fieldRecordings() {
-  if (state.config.fieldEvidence === 'documents' || !sourceIsSelected('Field Station', state.config.sources, state.config.allSources)) return [];
+  if (state.config.fieldEvidence === 'documents' || !sourceIsSelected('starpeople.ai Field Station', state.config.sources, state.config.allSources)) return [];
   const query = state.config.type === 'clock' ? String(state.config.clockSearch || '').toLowerCase().trim() : '';
-  return fieldIndex().recordings.filter(r => !query || [r.recordingId, 'Field Station', ...[...r.regions].map(id=>fieldIndex().nodes.get(id)?.county)].some(v=>String(v || '').toLowerCase().includes(query)));
+  return fieldIndex().recordings.filter(r => !query || [r.recordingId, 'starpeople.ai Field Station', ...[...r.regions].map(id=>fieldIndex().nodes.get(id)?.county)].some(v=>String(v || '').toLowerCase().includes(query)));
 }
 function fieldTime(r) { return Number.isFinite(r.startedEpoch) ? new Date(r.startedEpoch*1000).toISOString().replace('T',' ').replace(/\.\d{3}Z$/, ' UTC') : 'Start time unavailable'; }
 function fieldRegionName(id) { const n=fieldIndex().nodes.get(id); return n ? `${n.county} County, ${n.state}, ${n.country}` : 'Location unavailable'; }
@@ -4700,12 +4706,12 @@ function inspectFieldRegion(id) {
   inspectFieldRecordings(records,fieldRegionName(id),'County-level region confirmed by capture metadata or an explicitly scoped operator review. No station coordinates are shown.');
 }
 function inspectFieldRecordings(records,title,note='Recording start times are in UTC. A recording can contain multiple reviewed objects; it is not independent corroboration.') {
-  showInspector('Field Station',title,[[records.length,'recordings'],[new Set(records.flatMap(r=>[...r.observations])).size,'observations']],[],note);
+  showInspector('starpeople.ai Field Station',title,[[records.length,'recordings'],[new Set(records.flatMap(r=>[...r.observations])).size,'observations']],[],note);
   const target=$('#inspectorContent .evidence-list');target.replaceChildren();
   for(const r of records){const button=document.createElement('button');button.type='button';button.className='field-recording';button.textContent=fieldTime(r);button.onclick=()=>inspectFieldRecording(r);target.append(button);}
 }
 function inspectFieldRecording(r) {
-  showInspector('Field Station',r.recordingId,[[r.objects.size,'reviewed objects'],[r.observations.size,'observations']],[],`${fieldTime(r)} · ${r.regions.size?[...r.regions].map(fieldRegionName).join('; '):'Location unavailable'}. Recording coverage is not an exact sighting time. Human-reviewed anomalous does not establish a cause.`);
+  showInspector('starpeople.ai Field Station',r.recordingId,[[r.objects.size,'reviewed objects'],[r.observations.size,'observations']],[],`${fieldTime(r)} · ${r.regions.size?[...r.regions].map(fieldRegionName).join('; '):'Location unavailable'}. Recording coverage is not an exact sighting time. Human-reviewed anomalous does not establish a cause.`);
   const target=$('#inspectorContent .evidence-list');target.replaceChildren();
   for(const b of r.bundles.values()) {
     const card=document.createElement('div');card.className='evidence-card';
@@ -4800,7 +4806,7 @@ function inspectClockGroup(group) {
   const documents = new Map(state.clockCatalog.documents.map(doc => [doc.id, doc]));
   const evidence = group.observations.map(item => {
     if (item.recording) return { ...item,
-      sourceLabel: `${item.recording.recordingId} · Field Station · Recording start (UTC)`,
+      sourceLabel: `${item.recording.recordingId} · starpeople.ai Field Station · Recording start (UTC)`,
       sourceURL: [...item.recording.bundles.values()][0]?.url || "",
       excerpt: `${fieldTime(item.recording)}. Recording coverage is not an exact sighting time.` };
     const doc = documents.get(item.documentId);
@@ -4877,7 +4883,7 @@ function exportClockTimes() {
     const doc = documents.get(item.documentId);
     return [item.matchedText, clockTimeLabel(item.minuteOfDial), item.hour24 == null ? "" : `${String(item.hour24).padStart(2, "0")}:${String(item.minute).padStart(2, "0")}`, item.period, item.zone, doc?.title, item.source, item.segment, item.excerpt, doc ? machineDataPathURL(doc.path, state.clockCatalog.input) : ""];
   });
-  for(const item of FieldEvidence.clock(fieldRecordings(),state.config.clockPeriod)) rows.push([fieldTime(item.recording),clockTimeLabel(item.minuteOfDial),new Date(item.recording.startedEpoch*1000).toISOString().slice(11,16),item.period,"UTC",item.recording.recordingId,"Field Station","Recording start","Not an exact sighting time",[...item.recording.bundles.values()][0]?.url || ""]);
+  for(const item of FieldEvidence.clock(fieldRecordings(),state.config.clockPeriod)) rows.push([fieldTime(item.recording),clockTimeLabel(item.minuteOfDial),new Date(item.recording.startedEpoch*1000).toISOString().slice(11,16),item.period,"UTC",item.recording.recordingId,"starpeople.ai Field Station","Recording start","Not an exact sighting time",[...item.recording.bundles.values()][0]?.url || ""]);
   downloadText("ufo-files-time-mentions.csv", `${[header, ...rows].map(row => row.map(csvCell).join(",")).join("\n")}\n`, "text/csv");
 }
 
@@ -5986,7 +5992,7 @@ function setSummary(text, type) {
         : "Hou & Han: 1,853 H II regions · 1,343 molecular clouds · 735 methanol masers · Reid et al.: 199 VLBI trigonometric-parallax anchors · published fits: Norma, Scutum–Centaurus, Sagittarius–Carina, Perseus, and Local · face-on Galactocentric coordinates · 18 kpc display radius · filled points are the 2014 compilation · open circles are the separate 2019 catalog and may overlap · thin curves are the paper's H II statistical fit, not an illustration · drag to orbit · scroll to zoom · no synthetic stars, invented target coordinates, or hand-drawn morphology"
     : ["clock", "drugs", "technologies"].includes(type) ? ""
     : type === "blood" ? ""
-    : type === "bars" && state.config.aggregation === "source" ? "Records count transcript files for documentary collections and published observations for Field Station. These are different evidence types, not equally weighted corroboration. N/A means the measure does not apply."
+    : type === "bars" && state.config.aggregation === "source" ? "Records count transcript files for documentary collections and published observations for starpeople.ai Field Station. These are different evidence types, not equally weighted corroboration. N/A means the measure does not apply."
     : type === "signals" ? "Frequency observations from documents and recorded RF spectra."
     : type === "coverage" ? "Corpus gaps are not evidence that real-world events did not occur · unknown metadata remains explicit"
     : type === "timeline" ? "Correlative dates are human-curated context · Codex suggested The X-Files premiere"
@@ -6357,7 +6363,7 @@ function inspectSignalFrequency(item) {
     const list = document.createElement("div");
     list.className = "evidence-list";
     const heading = document.createElement("h4");
-    heading.textContent = "Field Station recordings · " + item.recordings.length;
+    heading.textContent = "starpeople.ai Field Station recordings · " + item.recordings.length;
     list.append(heading);
     for (const recording of item.recordings) {
       const button = document.createElement("button");
@@ -6502,7 +6508,7 @@ function inspectCollectionEdge(edge, nodes) {
 }
 
 function inspectGroup(item) {
-  if (item.evidenceKind === "field_observations") return inspectFieldRecordings(fieldIndex().recordings, "Field Station", `${formatNumber(item.records)} published human-reviewed anomalous observation records. Each record may reference multiple reviewed objects; shared recordings are counted once. Transcript words and source bytes are not applicable.`);
+  if (item.evidenceKind === "field_observations") return inspectFieldRecordings(fieldIndex().recordings, "starpeople.ai Field Station", `${formatNumber(item.records)} published human-reviewed anomalous observation records. Each record may reference multiple reviewed objects; shared recordings are counted once. Transcript words and source bytes are not applicable.`);
   const docs = item.documentIds.map(id => state.documentById.get(id)).filter(Boolean);
   showInspector("collection", item.name, [[item.documents, "documents"], [item.words, "words"], [item.bytes, "source bytes"]], docs.slice(0, 4).map(doc => ({ documentId: doc.id, excerpt: doc.title })), "An aggregate of completed transcript files; it does not alter source content.", "", dossierSelection("documents", docs));
 }
