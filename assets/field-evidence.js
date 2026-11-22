@@ -25,7 +25,7 @@
   function clock(recordings, period = 'all') {
     return recordings.filter(r => Number.isFinite(r.startedEpoch)).map(r => {
       const d = new Date(r.startedEpoch * 1000), hour = d.getUTCHours();
-      return {recording:r, minuteOfDial: (hour % 12)*60 + d.getUTCMinutes(), period: hour < 12 ? 'am':'pm', documentId:r.id, source:'Field Station'};
+      return {recording:r, minuteOfDial: (hour % 12)*60 + d.getUTCMinutes(), period: hour < 12 ? 'am':'pm', documentId:r.id, source:'starpeople.ai Field Station'};
     }).filter(r => period === 'all' || r.period === period);
   }
   function spectra(text) {
