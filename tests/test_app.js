@@ -4210,17 +4210,17 @@ test("Signals renders a corpus-only logarithmic spectrum with evidence-backed pe
   assert.ok(Number(peakNodes[0].attributes["fill-opacity"]) < Number(peakNodes[1].attributes["fill-opacity"]));
   assert.ok(Number(peakNodes[0].attributes.r) < Number(peakNodes[1].attributes.r));
   assert.match(elements.resultSummary.textContent, /2 normalized frequencies · 3 mentions · 3 documents/);
-  assert.match(elements.legend.innerHTML, /Node size \+ shade: mentions/);
-  assert.match(elements.legend.innerHTML, /Peak height: mentions/);
-  assert.match(vm.runInContext('dataAwareTitle({ ...DEFAULT, ...VIEW_DEFAULTS.signals, type: "signals" })', context), /Radio Frequencies in the Corpus/);
+  assert.match(elements.legend.innerHTML, /Node size \+ shade: observations/);
+  assert.match(elements.legend.innerHTML, /Peak height: observations/);
+  assert.match(vm.runInContext('dataAwareTitle({ ...DEFAULT, ...VIEW_DEFAULTS.signals, type: "signals" })', context), /Radio Frequencies/);
   assert.doesNotMatch(source, /Math\.sqrt\(value \/ maximum\)/);
   assert.match(source, /labelPlacements = new Map\(\), labelsByTier/);
   assert.match(source, /item\.frequencyLabel\.length \* labelSize \* \.3/);
-  assert.match(source, /Math\.sqrt\(item\.mentionCount\)/);
+  assert.match(source, /Math\.sqrt\(item\.count\)/);
   assert.doesNotMatch(source, /Math\.sqrt\(item\.documentCount\)/);
-  assert.match(source, /const maximum = Math\.max\(\.\.\.items\.map\(item => item\.mentionCount\), 1\)/);
-  assert.match(source, /py = y\(item\.mentionCount\)/);
-  assert.match(source, />Corpus frequency mentions</);
+  assert.match(source, /const maximum = Math\.max\(\.\.\.items\.map\(item => item\.count\), 1\)/);
+  assert.match(source, /py = y\(item\.count\)/);
+  assert.match(source, />Frequency observations</);
   assert.match(source, /GHz from microwave-band context/);
   assert.match(source, /"species", "signals", "coverage"/);
   const styles = fs.readFileSync("styles.css", "utf8");
@@ -5308,4 +5308,17 @@ test("Published RF profiles cover the indexed Archive measurements and retain th
       assert.ok(db.some(Number.isFinite));
     }
   }
+});
+
+test("Signals merges matching measured and cited frequencies and counts a recording once", () => {
+  const context = vm.createContext({document: {querySelector: () => null}, location: {hash: ""}, URLSearchParams});
+  vm.runInContext(fs.readFileSync("app.js","utf8").split("$$('.step-heading')")[0], context);
+  const result = vm.runInContext(`
+    const profile = {range:[0,90],db:[-70,-70,-70,-70,-58,-70,-70,-70,-70]};
+    const bundle = {assets:[{name:"rf.jsonl",sha256:"sha"}]};
+    const rec = {bundles:new Map([["a",bundle],["b",bundle]])};
+    const items = combineSignalEvidence([{frequencyHz:45,mentionCount:2}], [rec], {sha:[profile]});
+    [items.length,items[0].frequencyHz,items[0].count,items[0].recordings.length]
+  `, context);
+  assert.deepEqual(Array.from(result),[1,45,3,1]);
 });
