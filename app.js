@@ -366,7 +366,7 @@ const DEFAULT_VIEW_TYPE = "timeline";
 const VIEW_DEFAULTS = {
   scatter: { y: "epistemicAdjustedMentions" },
   network: { nodeRole: "entity", size: "independentDocumentCount", color: "category" },
-  map: { categories: ["location"], size: "epistemicAdjustedMentions", color: "intensity", labels: "top", limit: 50, moonTransitSeconds: 5 },
+  map: { categories: ["location"], size: "epistemicAdjustedMentions", color: "intensity", labels: "none", limit: 50, moonTransitSeconds: 5 },
   solar: { solarScale: "local", solarCase: "hill_fish", labels: "all" },
   book: { size: "epistemicAdjustedMentions", color: "intensity", labels: "all", limit: 20 },
   document: { size: "words", color: "source", labels: "top", documentSearch: "" },
@@ -442,6 +442,7 @@ function loadConfig() {
       const saved = JSON.parse(decodeURIComponent(escape(atob(param))));
       if (saved.allSources === undefined) saved.allSources = !saved.sources?.length;
       const config = { ...DEFAULT, ...saved };
+      if (saved.type === "map") config.labels = saved.labels ?? VIEW_DEFAULTS.map.labels;
       if (config.type === "blood" && config.bloodType === "Unspecified") config.bloodType = "all";
       if (saved.type === "solar" && !Object.hasOwn(saved, "solarScale")) config.solarScale = "local";
       if (!["none", "hill_fish"].includes(config.solarCase)) config.solarCase = DEFAULT.solarCase;
@@ -495,6 +496,7 @@ function loadConfig() {
 function persistHash() {
   const saved = Object.fromEntries(Object.entries(state.config).filter(([key, value]) => {
     if (key === "configVersion") return true;
+    if (key === "labels" && state.config.type === "map") return true;
     if (key === "solarScale" && state.config.type === "solar") return true;
     if (key === "solarCase" && state.config.type === "solar") return true;
     if (key === "claimPolicyVersion" && state.config.type === "claims") return true;
@@ -4926,18 +4928,63 @@ function exportBloodTypes() {
   downloadText("ufo-files-blood-type-mentions.csv", `${[headers, ...rows].map(row => row.map(csvCell).join(",")).join("\n")}\n`, "text/csv");
 }
 
+let fieldRFProfiles, fieldRFRequest, fieldRFError;
+
+function loadFieldRFProfiles() {
+  if (fieldRFRequest) return;
+  fieldRFError = null;
+  fieldRFRequest = fetch("assets/field-rf-profiles.json", {cache: "no-cache"})
+    .then(response => {
+      if (!response.ok) throw Error("RF profiles unavailable");
+      return response.json();
+    })
+    .then(profiles => { fieldRFProfiles = profiles; })
+    .catch(error => { fieldRFError = error; })
+    .finally(() => {
+      fieldRFRequest = null;
+      if (state.config.type === "signals") renderGraph();
+    });
+}
+
+function fieldSignalTraces(recordings) {
+  const traces = new Map();
+  for (const recording of recordings) {
+    const hashes = new Set([...recording.bundles.values()].flatMap(bundle =>
+      bundle.assets.filter(asset => asset.name === "rf.jsonl").map(asset => asset.sha256)));
+    for (const hash of hashes) for (const {range, db} of fieldRFProfiles?.[hash] || []) {
+      const key = range.join("/") + "/" + db.length;
+      if (!traces.has(key)) traces.set(key, {range, sum: new Float64Array(db.length), counts: new Uint32Array(db.length), records: new Set()});
+      const trace = traces.get(key);
+      trace.records.add(recording);
+      db.forEach((value, index) => {
+        if (Number.isFinite(value)) { trace.sum[index] += value; trace.counts[index]++; }
+      });
+    }
+  }
+  return [...traces.values()].map(({range, sum, counts, records}) => ({
+    range, records, values: Array.from(sum, (value, i) => counts[i] ? value / counts[i] : null)
+  }));
+}
+
 function renderSignals() {
   clearChart();
   const items = state.config.fieldEvidence === "field" ? [] : filteredSignalFrequencies();
-  if (!items.length) {
+  const recordings = state.catalog.fieldObservations ? fieldRecordings() : [];
+  if (recordings.length && !fieldRFProfiles && !fieldRFError) loadFieldRFProfiles();
+  const traces = fieldSignalTraces(recordings);
+  if (!items.length && !traces.length) {
     showEmpty();
-    if(fieldRecordings().length) $("#emptyState").textContent="Choose a Field Station recording below to inspect its recorded RF spectrum.";
+    if (recordings.length) $("#emptyState").textContent = fieldRFError ? "Recorded RF could not load." : fieldRFProfiles ? "No measured RF spectra in these recordings." : "Loading recorded RF…";
+    if (fieldRFError && recordings.length) {
+      const retry = document.createElement("button"); retry.textContent = "Retry"; retry.onclick = loadFieldRFProfiles; $("#emptyState").append(retry);
+    }
     return;
   }
   const svg = $("#chart"), { width, height } = dimensions();
-  const margin = { top: 42, right: 28, bottom: 66, left: 56 };
+  const margin = { top: 42, right: traces.length ? 65 : 28, bottom: 66, left: 56 };
   const baseline = height - margin.bottom;
-  const extent = [Math.max(1, Math.min(...items.map(item => item.frequencyHz))), Math.max(...items.map(item => item.frequencyHz))];
+  const frequencies = [...items.map(item => item.frequencyHz), ...traces.flatMap(trace => trace.range)];
+  const extent = [Math.max(1, Math.min(...frequencies)), Math.max(...frequencies)];
   if (extent[0] === extent[1]) { extent[0] /= 1.5; extent[1] *= 1.5; }
   const logExtent = extent.map(Math.log10);
   const x = value => scale(Math.log10(value), logExtent, [margin.left, width - margin.right]);
@@ -4954,7 +5001,7 @@ function renderSignals() {
   });
   svg.append(bands);
   const grid = el("g", { class: "signal-grid" });
-  [0, .25, .5, .75, 1].forEach(fraction => {
+  if (items.length) [0, .25, .5, .75, 1].forEach(fraction => {
     const value = Math.round(maximum * fraction), py = y(value);
     grid.append(el("line", { x1: margin.left, y1: py, x2: width - margin.right, y2: py, class: "signal-grid-line" }));
     grid.append(el("text", { x: margin.left - 9, y: py + 4, "text-anchor": "end", class: "axis-label" }, formatNumber(value)));
@@ -4980,10 +5027,37 @@ function renderSignals() {
     grid.append(el("text", { x: px, y: baseline + 22, "text-anchor": "middle", class: "axis-label" }, signalFrequencyLabel(value)));
   });
   grid.append(el("line", { x1: margin.left, y1: baseline, x2: width - margin.right, y2: baseline, class: "signal-baseline" }));
-  grid.append(el("text", { x: 14, y: (margin.top + baseline) / 2, transform: `rotate(-90 14 ${(margin.top + baseline) / 2})`, "text-anchor": "middle", class: "axis-label" }, "MENTIONS"));
+  if (items.length) grid.append(el("text", { x: 14, y: (margin.top + baseline) / 2, transform: `rotate(-90 14 ${(margin.top + baseline) / 2})`, "text-anchor": "middle", class: "axis-label" }, "MENTIONS"));
   grid.append(el("text", { x: (margin.left + width - margin.right) / 2, y: height - 15, "text-anchor": "middle", class: "axis-label" }, "RADIO FREQUENCY · LOG SCALE"));
   svg.append(grid);
 
+  if (traces.length) {
+    const levels = traces.flatMap(trace => trace.values.filter(Number.isFinite));
+    const low = Math.floor(Math.min(...levels)), high = Math.max(low + 1, Math.ceil(Math.max(...levels)));
+    const levelY = db => baseline - (db - low) / (high - low) * (baseline - margin.top - 22);
+    const axisX = items.length ? width - margin.right + 6 : margin.left - 7;
+    for (let tick = 0; tick <= 4; tick++) {
+      const db = low + (high - low) * tick / 4;
+      grid.append(el("text", {x: axisX, y: levelY(db) + 4, "text-anchor": items.length ? "start" : "end", class: "axis-label"}, db.toFixed(0) + " dB"));
+    }
+    for (const trace of traces) {
+      let d = "", connected = false;
+      trace.values.forEach((value, i) => {
+        if (!Number.isFinite(value)) { connected = false; return; }
+        const hz = trace.range[0] + (i + .5) * (trace.range[1] - trace.range[0]) / trace.values.length;
+        d += (connected ? "L" : "M") + x(hz).toFixed(2) + "," + levelY(value).toFixed(2);
+        connected = true;
+      });
+      const title = signalFrequencyLabel(trace.range[0]) + "–" + signalFrequencyLabel(trace.range[1]) + " · " + trace.records.size + " recordings";
+      const group = el("g", {class: "field-rf-trace", role: "button", tabindex: "0", "aria-label": title});
+      group.append(el("path", {d, fill:"none", stroke:"currentColor", "stroke-width":1.5}), el("path", {d, fill:"none", stroke:"transparent", "stroke-width":10}));
+      addTitle(group, title);
+      const inspect = () => inspectFieldRecordings([...trace.records], title, "Mean of the archived receiver spectra in each frequency bin, in uncalibrated dB.");
+      group.addEventListener("click", inspect);
+      group.addEventListener("keydown", e => { if (["Enter", " "].includes(e.key)) { e.preventDefault(); inspect(); } });
+      svg.append(group);
+    }
+  }
   const peakLayer = el("g", { class: "signal-peaks" });
   const rankedLabels = [...items].sort((a, b) => b.mentionCount - a.mentionCount || b.documentCount - a.documentCount);
   const strongest1600 = items.find(item => item.frequencyHz === 1_600_000_000);
@@ -5022,7 +5096,11 @@ function renderSignals() {
   });
   svg.append(peakLayer);
   $("#legend").innerHTML = `<span class="legend-item"><i class="signal-mention-key"></i>Node size + shade: mentions</span><span class="legend-item"><i class="signal-peak-key"></i>Peak height: mentions</span><span class="legend-item"><i class="signal-band-key"></i>Radio band</span>`;
-  setSummary(`${items.length} normalized frequencies · ${items.reduce((sum, item) => sum + item.mentionCount, 0)} mentions · ${new Set(items.flatMap(item => item.documentIds)).size} documents`, "signals");
+  if (!items.length) $("#legend").innerHTML = "";
+  if (traces.length) $("#legend").innerHTML += '<span class="legend-item">Field Station · mean receiver level (dB, uncalibrated)</span>';
+  const rfCount = new Set(traces.flatMap(trace => [...trace.records])).size;
+  const rfSummary = rfCount ? rfCount + " RF recordings" : "";
+  setSummary([items.length ? `${items.length} normalized frequencies · ${items.reduce((sum, item) => sum + item.mentionCount, 0)} mentions · ${new Set(items.flatMap(item => item.documentIds)).size} documents` : "", rfSummary].filter(Boolean).join(" · "), "signals");
 }
 
 function renderSpeciesLineup() {
@@ -5922,7 +6000,7 @@ function setSummary(text, type) {
     : ["clock", "drugs", "technologies"].includes(type) ? ""
     : type === "blood" ? ""
     : type === "bars" && state.config.aggregation === "source" ? "Records count transcript files for documentary collections and published observations for Field Station. These are different evidence types, not equally weighted corroboration. N/A means the measure does not apply."
-    : type === "signals" ? "Explicit numeric frequency mentions in corpus text · not live RF measurements · mention does not establish a transmission or cause"
+    : type === "signals" ? "Document peaks count frequency mentions. Field Station traces show archived receiver levels in dB."
     : type === "coverage" ? "Corpus gaps are not evidence that real-world events did not occur · unknown metadata remains explicit"
     : type === "timeline" ? "Correlative dates are human-curated context · Codex suggested The X-Files premiere"
     : type === "programs" ? "Every displayed interval is source-reviewed and shows its timeframe · every corpus program candidate has an included, merged, or excluded review decision · dashed marks identify congressional-record claims that are not agency confirmation"
