@@ -1436,7 +1436,7 @@ function renderControls() {
       <div class="control method-note"><div class="control-title">Classification boundary</div><p>Counts are literal corpus mentions, not biological verification. Ambiguous names require explicit extraterrestrial context.</p><button class="button review-button" type="button" data-review-species>Review ${formatNumber(state.catalog?.counts?.speciesReviewCandidates || 0)} ambiguous matches</button></div>` : ""}
     ${state.config.type === "solar" ? `<div class="control method-note"><div class="control-title">Astronomy classification review</div><p>Published totals include reviewed literal name matches only. Ambiguous and excluded occurrences remain outside the totals and available for inspection.</p><button class="button review-button" type="button" data-review-astronomy>Review ${formatNumber(state.catalog?.counts?.astronomyReviewCandidates || 0)} candidates</button></div>` : ""}
     ${showsEntityCategories ? `<div class="control"><div class="control-title">Entity categories</div><div class="check-grid">${categoryChecks}</div></div>` : ""}
-    ${state.config.type === "programs" ? "" : `<div class="control"><div class="control-title">Collections <span>${selectedSourceCount} / ${sourceNames.length} selected</span></div><div class="check-grid">${sourceChecks}</div></div>`}
+    ${state.config.type === "programs" ? "" : `<div class="control"><div class="control-title">Collections <span data-source-count>${selectedSourceCount} / ${sourceNames.length} selected</span></div><div class="check-grid">${sourceChecks}</div></div>`}
     ${state.config.type === "table" ? `<div class="control"><label for="tableSearch">Search rows</label><input id="tableSearch" class="text-input" type="search" value="${escapeHTML(state.config.tableSearch)}" placeholder="Filter this list" data-table-search></div>` : ""}
     ${usesEntities || ["craft", "species"].includes(state.config.type) ? `<div class="control"><label>Minimum confidence <span>${Math.round(state.config.minConfidence * 100)}%</span></label><input type="range" min="0.5" max="0.95" step="0.01" value="${state.config.minConfidence}" data-range="minConfidence"></div>` : ""}
     ${filtersByIndependentSourceFamilies ? `<div class="control"><label>Minimum independent source families <span>${state.config.minIndependentSourceFamilies}</span></label><input type="range" min="1" max="20" step="1" value="${state.config.minIndependentSourceFamilies}" data-range="minIndependentSourceFamilies"></div>` : ""}
@@ -1454,7 +1454,7 @@ function renderControls() {
   if (state.config.type === "blood") {
     const types = [...new Set((state.catalog.bloodTypes?.observations || []).map(item => item.bloodType).filter(specifiedBloodType))].sort();
     $("#filterControls").innerHTML = controlSelect("bloodType", "Blood type / Rh", [{ value: "all", label: "All mentions" }, ...types.map(value => ({ value, label: value }))])
-      + `<div class="control"><label for="bloodSearch">Search evidence</label><input id="bloodSearch" class="text-input" type="search" value="${escapeHTML(state.config.bloodSearch)}" placeholder="Search excerpt, title, or collection" data-blood-search></div><div class="control"><div class="control-title">Collections <span>${selectedSourceCount} / ${sourceNames.length} selected</span></div><div class="check-grid">${sourceChecks}</div></div><button class="button" type="button" data-blood-reset>Reset filters</button>`;
+      + `<div class="control"><label for="bloodSearch">Search evidence</label><input id="bloodSearch" class="text-input" type="search" value="${escapeHTML(state.config.bloodSearch)}" placeholder="Search excerpt, title, or collection" data-blood-search></div><div class="control"><div class="control-title">Collections <span data-source-count>${selectedSourceCount} / ${sourceNames.length} selected</span></div><div class="check-grid">${sourceChecks}</div></div><button class="button" type="button" data-blood-reset>Reset filters</button>`;
   }
   if (state.config.type === "clock") {
     const clockSources = [...new Set([...(state.clockCatalog?.documents || []).map(doc => doc.source), "Field Station"])].sort();
@@ -1543,7 +1543,7 @@ function renderControls() {
     renderPresetStatus();
     renderGraph();
   }));
-  $$('[data-category]').forEach(node => node.addEventListener("change", () => {
+  $$('input[data-category]').forEach(node => node.addEventListener("change", () => {
     state.config.categories = $$('[data-category]:checked').map(input => input.dataset.category);
     commitConfig();
   }));
@@ -1555,7 +1555,9 @@ function renderControls() {
     const selectedSources = $$('[data-source]:checked').map(input => input.dataset.source);
     Object.assign(state.config, sourceSelectionConfig(selectedSources, sourceNames));
     if (state.config.type === "triage") state.config.triageCaseId = "";
-    renderControls();
+    if (state.config.type === "species") {
+      $("[data-source-count]").textContent = `${selectedSources.length} / ${sourceNames.length} selected`;
+    } else renderControls();
     commitConfig();
   }));
   $$('[data-table-column]').forEach(node => node.addEventListener("change", () => {
@@ -4132,10 +4134,15 @@ function speciesObservationMatches(observation) {
 }
 
 function filteredSpeciesClasses() {
-  const observations = (state.catalog.species?.observations || []).filter(speciesObservationMatches);
+  const byClass = new Map();
+  for (const observation of state.catalog.species?.observations || []) {
+    if (!speciesObservationMatches(observation)) continue;
+    if (!byClass.has(observation.classId)) byClass.set(observation.classId, []);
+    byClass.get(observation.classId).push(observation);
+  }
   const query = state.config.speciesSearch.trim().toLowerCase();
   return (state.catalog.species?.classes || []).map(speciesClass => {
-    const matching = observations.filter(observation => observation.classId === speciesClass.classId);
+    const matching = byClass.get(speciesClass.classId) || [];
     const sourceCounts = new Set(matching.map(observation => observation.source));
     const matchingObservationIds = new Set(matching.map(observation => observation.id));
     const appearanceEvidence = (speciesClass.appearanceEvidence || []).filter(evidence =>
@@ -5019,7 +5026,10 @@ function renderSignals() {
 }
 
 function renderSpeciesLineup() {
-  const { svg } = clearChart();
+  const wrap = $("#chartWrap");
+  const updating = wrap.classList.contains("species-lineup-mode") && !$("#chart").hasAttribute("hidden") && wrap.querySelector(".species-lineup-wall");
+  const svg = updating ? $("#chart") : clearChart().svg;
+  const previous = updating ? new Map(Array.from(svg.querySelectorAll(".species-lineup-character"), group => [group.dataset.classId, group])) : new Map();
   const metric = state.config.speciesY === "observationCount" ? "observationCount" : "physicalHeight";
   const query = state.config.speciesSearch.trim().toLowerCase();
   const corpusClasses = filteredSpeciesClasses();
@@ -5032,32 +5042,35 @@ function renderSpeciesLineup() {
   const classes = [...corpusClasses, ...referenceProfiles].sort((left, right) =>
     right.observationCount - left.observationCount || left.name.localeCompare(right.name)
   );
-  if (!classes.length) return showEmpty();
-  const width = Math.max(360, svg.getBoundingClientRect().width);
+  if (!classes.length) { clearChart(); return showEmpty(); }
+  const width = Math.max(360, wrap.clientWidth || svg.getBoundingClientRect().width);
   const minimumHeight = width < 760 ? 440 : 520;
-  const measuredHeight = svg.getBoundingClientRect().height || $("#chartWrap").clientHeight;
+  const measuredHeight = wrap.clientHeight || svg.getBoundingClientRect().height;
   const layout = speciesLineupLayout(classes, width, Math.max(minimumHeight, measuredHeight || minimumHeight), metric, state.config.speciesSpacing);
   svg.setAttribute("viewBox", `0 0 ${layout.canvasWidth} ${layout.height}`);
   svg.style.setProperty("width", `${layout.canvasWidth}px`);
   svg.style.setProperty("height", `${layout.height}px`);
   $("#chartWrap").classList.add("species-mode", "species-lineup-mode");
 
-  const defs = el("defs");
-  const backgroundFilter = el("filter", {
-    id: "species-lineup-character-background",
-    x: "-10%",
-    y: "-10%",
-    width: "120%",
-    height: "120%",
-    primitiveUnits: "userSpaceOnUse",
-    "color-interpolation-filters": "sRGB"
-  });
-  backgroundFilter.append(
-    el("feFlood", { class: "species-lineup-background-color", result: "speciesLineupBackgroundColor" }),
-    el("feComposite", { in: "speciesLineupBackgroundColor", in2: "SourceAlpha", operator: "in" })
-  );
-  defs.append(backgroundFilter);
-  svg.append(defs);
+  if (!updating) {
+    const defs = el("defs");
+    const backgroundFilter = el("filter", {
+      id: "species-lineup-character-background",
+      x: "-10%",
+      y: "-10%",
+      width: "120%",
+      height: "120%",
+      primitiveUnits: "userSpaceOnUse",
+      "color-interpolation-filters": "sRGB"
+    });
+    backgroundFilter.append(
+      el("feFlood", { class: "species-lineup-background-color", result: "speciesLineupBackgroundColor" }),
+      el("feComposite", { in: "speciesLineupBackgroundColor", in2: "SourceAlpha", operator: "in" })
+    );
+    defs.append(backgroundFilter);
+    svg.append(defs);
+  }
+  svg.style.setProperty("--graph-label-size", `${state.config.labelSize}px`);
 
   const wall = el("g", { class: "species-lineup-wall", "aria-hidden": "true" });
   const ticks = metric === "physicalHeight"
@@ -5075,7 +5088,9 @@ function renderSpeciesLineup() {
   if (layout.canvasWidth > width) {
     wall.append(el("text", { x: width - 12, y: layout.top + 10, "text-anchor": "end", class: "species-lineup-scroll-hint" }, `${classes.length} PROFILE ROSTER →`));
   }
-  svg.append(wall);
+  if (updating) svg.querySelector(".species-lineup-wall").replaceWith(wall);
+  else svg.append(wall);
+  let preceding = wall;
 
   const mentionRank = new Map(classes.map((speciesClass, index) => [speciesClass.classId, index]));
   const paintOrder = [...classes].sort((left, right) =>
@@ -5100,7 +5115,7 @@ function renderSpeciesLineup() {
     const mentionText = speciesClass.groundingType === "reference" && !speciesClass.observationCount
       ? "reference profile"
       : `${speciesClass.observationCount} ${speciesClass.observationCount === 1 ? "mention" : "mentions"}`;
-    const group = el("g", {
+    const attributes = {
       class: `species-lineup-character mark${position.isScaled ? "" : " is-unscaled"}${usesGenericFigure ? " uses-generic-figure" : ""}`,
       tabindex: "0",
       role: "button",
@@ -5113,14 +5128,31 @@ function renderSpeciesLineup() {
       "data-scaled": String(position.isScaled),
       "data-appearance-evidence-count": String(speciesClass.appearanceEvidenceCount || 0),
       "data-figure-kind": usesGenericFigure ? "generic-figure" : "reference-grounded"
-    });
+    };
+    const group = previous.get(speciesClass.classId) || el("g");
+    previous.delete(speciesClass.classId);
+    for (const [key, value] of Object.entries(attributes)) group.setAttribute(key, value);
+    // Keep decoded SVG images attached while replacing the inexpensive text and hit targets.
+    const existingImages = new Map(Array.from(group.children).filter(child => child.tagName === "image").map(child => [child.getAttribute("class").split(" ")[0], child]));
+    for (const child of Array.from(group.children)) if (child.tagName !== "image") child.remove();
+    function figureImage(attrs) {
+      const key = attrs.class.split(" ")[0], image = existingImages.get(key);
+      if (!image) {
+        const node = el("image", attrs);
+        group.append(node);
+        return node;
+      }
+      existingImages.delete(key);
+      for (const [attr, value] of Object.entries(attrs)) if (image.getAttribute(attr) !== String(value)) image.setAttribute(attr, value);
+      return image;
+    }
     const imageFrame = speciesLineupImageFrame(
       position,
       usesGenericFigure ? "generic_figure" : speciesClass.classId,
       layout.baseline
     );
     if (silhouette) {
-      group.append(el("image", {
+      const background = figureImage({
         href: silhouette,
         x: imageFrame.x,
         y: imageFrame.y,
@@ -5130,18 +5162,20 @@ function renderSpeciesLineup() {
         filter: "url(#species-lineup-character-background)",
         class: `species-lineup-figure-background${speciesClass.classId === "orb_light_beings" ? " is-translucent" : ""}`,
         "aria-hidden": "true"
-      }));
+      });
+      if (updating && group.firstChild !== background) group.insertBefore(background, group.firstChild);
     }
-    group.append(el("rect", {
+    const focus = el("rect", {
       x: position.x - layout.itemWidth / 2 + 4,
       y: Math.max(layout.top, layout.baseline - position.displayHeight - 8),
       width: layout.itemWidth - 8,
       height: layout.baseline - Math.max(layout.top, layout.baseline - position.displayHeight - 8) + 68,
       rx: 3,
       class: "species-lineup-focus"
-    }));
+    });
+    group.append(focus);
     if (asset) {
-      group.append(el("image", {
+      const figure = figureImage({
         href: asset,
         x: imageFrame.x,
         y: imageFrame.y,
@@ -5149,7 +5183,8 @@ function renderSpeciesLineup() {
         height: imageFrame.height,
         preserveAspectRatio: "xMidYMax meet",
         class: "species-lineup-figure"
-      }));
+      });
+      if (updating && focus.nextSibling !== figure) group.insertBefore(focus, figure);
     } else {
       group.append(el("rect", { x: position.x - 23, y: layout.baseline - 88, width: 46, height: 88, class: "species-lineup-missing" }));
       group.append(el("text", { x: position.x, y: layout.baseline - 42, "text-anchor": "middle", class: "species-lineup-missing-label" }, "NO ART"));
@@ -5164,11 +5199,15 @@ function renderSpeciesLineup() {
     addTitle(group, speciesClass.groundingType === "reference" && !speciesClass.observationCount
       ? `${speciesClass.name}: ${metricText}; reference profile, not a corpus observation`
       : `${speciesClass.name}: ${metricText}; ${speciesClass.observationCount} name observations across ${speciesClass.documentCount} documents in the filtered corpus`);
-    group.addEventListener("click", () => inspectSpecies(speciesClass));
-    group.addEventListener("keydown", event => { if (["Enter", " "].includes(event.key)) inspectSpecies(speciesClass); });
-    svg.append(group);
+    for (const image of existingImages.values()) image.remove();
+    group.onclick = () => inspectSpecies(speciesClass);
+    group.onkeydown = event => { if (["Enter", " "].includes(event.key)) inspectSpecies(speciesClass); };
+    if (!updating) svg.append(group);
+    else if (preceding.nextSibling !== group) svg.insertBefore(group, preceding.nextSibling);
+    preceding = group;
   });
 
+  for (const group of previous.values()) group.remove();
   const scaledCount = classes.filter(item => Number.isFinite(item.physicalHeight?.representativeFeet)).length;
   const genericCount = classes.filter(item => !speciesSupportsBespokeFigure(item)).length;
   $("#legend").innerHTML = metric === "physicalHeight"
