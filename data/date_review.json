@@ -1,14 +1,14 @@
 {
   "schema": "ufo-files-date-review/v2",
-  "generatedAt": "2026-11-21T21:29:35Z",
+  "generatedAt": "2026-11-24T03:40:10Z",
   "input": {
     "rootName": "machine-data",
     "transcriptsAreSourceOfTruth": true,
     "pairedLanguage": "en",
     "repository": "starpeopleai/machine-data",
-    "revision": "b88d29402a0bd3e441c3d01f5462851633eeeecf"
+    "revision": "c69e29e4649754d292e51c3d3b797933cf7466c9"
   },
-  "documentsWithCandidates": 45332,
+  "documentsWithCandidates": 46747,
   "recordShards": [
     {
       "path": "date-review/records-001.json",
@@ -48,9 +48,9 @@
     },
     {
       "path": "date-review/records-007.json",
-      "records": 26413,
-      "bytes": 15309653,
-      "version": "d4d427b8e353d38c1155237455281e68db63b29acf60da0017b81c632d6cc0b8"
+      "records": 27828,
+      "bytes": 15932595,
+      "version": "4be29e7acf27ed52923ba83ff5c13888c5b4a9c89e9cd0cd7c823d8e311a3808"
     }
   ]
 }
