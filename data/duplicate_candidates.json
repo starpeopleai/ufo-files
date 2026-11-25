@@ -5,11 +5,11 @@
     "transcriptsAreSourceOfTruth": true,
     "pairedLanguage": "en",
     "repository": "starpeopleai/machine-data",
-    "revision": "c69e29e4649754d292e51c3d3b797933cf7466c9"
+    "revision": "73369be207c481d4eab01186592183aab6633173"
   },
-  "count": 8329,
-  "totalCount": 8329,
-  "shownCount": 8329,
+  "count": 8360,
+  "totalCount": 8360,
+  "shownCount": 8360,
   "candidates": [
     {
       "category": "organization",
@@ -543,8 +543,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Special Investigations",
-        "mentions": 167,
-        "documentCount": 142
+        "mentions": 169,
+        "documentCount": 144
       },
       "right": {
         "name": "Directorate of Special Investigation",
@@ -783,8 +783,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Center",
-        "mentions": 1582,
-        "documentCount": 1349
+        "mentions": 1588,
+        "documentCount": 1355
       },
       "right": {
         "name": "Air Technical Intelligence Cente",
@@ -799,8 +799,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Center",
-        "mentions": 1582,
-        "documentCount": 1349
+        "mentions": 1588,
+        "documentCount": 1355
       },
       "right": {
         "name": "Air Technical Intelligence Centers",
@@ -815,8 +815,8 @@
       "category": "organization",
       "left": {
         "name": "Air Intelligence Service Squadron",
-        "mentions": 279,
-        "documentCount": 240
+        "mentions": 281,
+        "documentCount": 242
       },
       "right": {
         "name": "Air Intelligence Service Squadrons",
@@ -1055,8 +1055,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Paterson Air Force Base",
@@ -1071,8 +1071,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright Patterson Airforce Base",
@@ -1087,8 +1087,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wight-Patterson Air Force Base",
@@ -2015,8 +2015,8 @@
       "category": "government_agency",
       "left": {
         "name": "Defense Intelligence Agency",
-        "mentions": 16455,
-        "documentCount": 6917
+        "mentions": 16461,
+        "documentCount": 6923
       },
       "right": {
         "name": "DEF-ENSE INTELLIGENCE AGENCY",
@@ -2031,8 +2031,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1691,
-        "documentCount": 1351
+        "mentions": 1692,
+        "documentCount": 1352
       },
       "right": {
         "name": "FOREIGHN TECHNOLOGY DIVISION",
@@ -2492,6 +2492,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "location",
+      "left": {
+        "name": "Clinton County Army Airfield",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "right": {
+        "name": "CLINTON COUNTY ARMY AIR FIELD",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "similarity": 0.982,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "organization",
       "left": {
         "name": "Institute of Applied Science",
@@ -2548,22 +2564,6 @@
       },
       "right": {
         "name": "AIRDIV INTELLIGENCE OFFICER",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.982,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "location",
-      "left": {
-        "name": "Clinton County Army Airfield",
-        "mentions": 3,
-        "documentCount": 3
-      },
-      "right": {
-        "name": "CLINTON COUNTY ARMY AIR FIELD",
         "mentions": 2,
         "documentCount": 2
       },
@@ -2927,8 +2927,8 @@
       "category": "organization",
       "left": {
         "name": "University of California",
-        "mentions": 4506,
-        "documentCount": 1291
+        "mentions": 4507,
+        "documentCount": 1292
       },
       "right": {
         "name": "University of Californiao",
@@ -3055,8 +3055,8 @@
       "category": "government_agency",
       "left": {
         "name": "Government Printing Office",
-        "mentions": 208,
-        "documentCount": 132
+        "mentions": 209,
+        "documentCount": 133
       },
       "right": {
         "name": "Goverment Printing Office",
@@ -3103,8 +3103,8 @@
       "category": "location",
       "left": {
         "name": "McClellan Air Force Base",
-        "mentions": 158,
-        "documentCount": 120
+        "mentions": 159,
+        "documentCount": 121
       },
       "right": {
         "name": "McClelland Air Force Base",
@@ -3167,8 +3167,8 @@
       "category": "location",
       "left": {
         "name": "Greater Pittsburgh Airport",
-        "mentions": 79,
-        "documentCount": 66
+        "mentions": 80,
+        "documentCount": 67
       },
       "right": {
         "name": "Greater Pittsburg Airport",
@@ -3199,8 +3199,8 @@
       "category": "location",
       "left": {
         "name": "AREA AT TIME OF SIGHTING",
-        "mentions": 63,
-        "documentCount": 62
+        "mentions": 64,
+        "documentCount": 63
       },
       "right": {
         "name": "AREA AT TIME OF SIGHTINGS",
@@ -3252,8 +3252,8 @@
       },
       "right": {
         "name": "NO THUNDER STORMS IN AREA",
-        "mentions": 3,
-        "documentCount": 3
+        "mentions": 4,
+        "documentCount": 4
       },
       "similarity": 0.98,
       "reason": "similar name",
@@ -3295,8 +3295,8 @@
       "category": "government_agency",
       "left": {
         "name": "COVERNMENT PRINTING OFFICE",
-        "mentions": 27,
-        "documentCount": 25
+        "mentions": 28,
+        "documentCount": 26
       },
       "right": {
         "name": "COVERMENT PRINTING OFFICE",
@@ -3566,6 +3566,22 @@
     {
       "category": "government_agency",
       "left": {
+        "name": "GOVERAMENT PRINTING OFFICE",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "right": {
+        "name": "Goverment Printing Office",
+        "mentions": 8,
+        "documentCount": 8
+      },
+      "similarity": 0.98,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
         "name": "Ballistic Missile Agency",
         "mentions": 8,
         "documentCount": 5
@@ -3606,22 +3622,6 @@
         "name": "New Castle County Airport",
         "mentions": 7,
         "documentCount": 7
-      },
-      "similarity": 0.98,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "government_agency",
-      "left": {
-        "name": "GOVERAMENT PRINTING OFFICE",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "right": {
-        "name": "Goverment Printing Office",
-        "mentions": 8,
-        "documentCount": 8
       },
       "similarity": 0.98,
       "reason": "similar name",
@@ -3972,8 +3972,8 @@
       },
       "right": {
         "name": "Malstrom Air Force Base",
-        "mentions": 23,
-        "documentCount": 21
+        "mentions": 24,
+        "documentCount": 22
       },
       "similarity": 0.979,
       "reason": "similar name",
@@ -3983,8 +3983,8 @@
       "category": "organization",
       "left": {
         "name": "University of California",
-        "mentions": 4506,
-        "documentCount": 1291
+        "mentions": 4507,
+        "documentCount": 1292
       },
       "right": {
         "name": "University of Californa",
@@ -3999,8 +3999,8 @@
       "category": "organization",
       "left": {
         "name": "University of California",
-        "mentions": 4506,
-        "documentCount": 1291
+        "mentions": 4507,
+        "documentCount": 1292
       },
       "right": {
         "name": "University of Californi",
@@ -4015,8 +4015,8 @@
       "category": "organization",
       "left": {
         "name": "University of California",
-        "mentions": 4506,
-        "documentCount": 1291
+        "mentions": 4507,
+        "documentCount": 1292
       },
       "right": {
         "name": "University of Califoria",
@@ -4031,8 +4031,8 @@
       "category": "location",
       "left": {
         "name": "Holloman Air Force Base",
-        "mentions": 1095,
-        "documentCount": 678
+        "mentions": 1097,
+        "documentCount": 679
       },
       "right": {
         "name": "Hollowman Air Force Base",
@@ -4127,8 +4127,8 @@
       "category": "organization",
       "left": {
         "name": "Johns Hopkins University",
-        "mentions": 273,
-        "documentCount": 218
+        "mentions": 274,
+        "documentCount": 219
       },
       "right": {
         "name": "John Hopkins University",
@@ -4319,8 +4319,8 @@
       "category": "location",
       "left": {
         "name": "Malstrom Air Force Base",
-        "mentions": 23,
-        "documentCount": 21
+        "mentions": 24,
+        "documentCount": 22
       },
       "right": {
         "name": "Maelstrom Air Force Base",
@@ -4335,8 +4335,8 @@
       "category": "location",
       "left": {
         "name": "Malstrom Air Force Base",
-        "mentions": 23,
-        "documentCount": 21
+        "mentions": 24,
+        "documentCount": 22
       },
       "right": {
         "name": "Malvstrom Air Force Base",
@@ -4831,8 +4831,8 @@
       "category": "organization",
       "left": {
         "name": "University of Colorado",
-        "mentions": 2260,
-        "documentCount": 1214
+        "mentions": 2272,
+        "documentCount": 1217
       },
       "right": {
         "name": "University of Colorados",
@@ -4847,8 +4847,8 @@
       "category": "organization",
       "left": {
         "name": "University of Colorado",
-        "mentions": 2260,
-        "documentCount": 1214
+        "mentions": 2272,
+        "documentCount": 1217
       },
       "right": {
         "name": "The University of Colo-rado",
@@ -4863,8 +4863,8 @@
       "category": "location",
       "left": {
         "name": "Kirtland Air Force Base",
-        "mentions": 1399,
-        "documentCount": 858
+        "mentions": 1404,
+        "documentCount": 862
       },
       "right": {
         "name": "Kirtland Airforce Base",
@@ -4879,8 +4879,8 @@
       "category": "location",
       "left": {
         "name": "Holloman Air Force Base",
-        "mentions": 1095,
-        "documentCount": 678
+        "mentions": 1097,
+        "documentCount": 679
       },
       "right": {
         "name": "Hollman Air Force Base",
@@ -4895,8 +4895,8 @@
       "category": "location",
       "left": {
         "name": "Holloman Air Force Base",
-        "mentions": 1095,
-        "documentCount": 678
+        "mentions": 1097,
+        "documentCount": 679
       },
       "right": {
         "name": "Hollomn Air Force Base",
@@ -4959,8 +4959,8 @@
       "category": "location",
       "left": {
         "name": "MacDill Air Force Base",
-        "mentions": 458,
-        "documentCount": 324
+        "mentions": 460,
+        "documentCount": 326
       },
       "right": {
         "name": "Mac Dill Air Force Base",
@@ -5071,8 +5071,8 @@
       "category": "location",
       "left": {
         "name": "McGuire Air Force Base",
-        "mentions": 112,
-        "documentCount": 92
+        "mentions": 114,
+        "documentCount": 93
       },
       "right": {
         "name": "Mc Guire Air Force Base",
@@ -5108,8 +5108,8 @@
       },
       "right": {
         "name": "Mitchel Air Force Base",
-        "mentions": 66,
-        "documentCount": 55
+        "mentions": 69,
+        "documentCount": 57
       },
       "similarity": 0.978,
       "reason": "similar name",
@@ -5599,8 +5599,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of Defense",
-        "mentions": 12117,
-        "documentCount": 4451
+        "mentions": 12120,
+        "documentCount": 4454
       },
       "right": {
         "name": "Department of Denfense",
@@ -5647,8 +5647,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of Commerce",
-        "mentions": 652,
-        "documentCount": 327
+        "mentions": 653,
+        "documentCount": 328
       },
       "right": {
         "name": "Department of Comerce",
@@ -5663,8 +5663,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of Commerce",
-        "mentions": 652,
-        "documentCount": 327
+        "mentions": 653,
+        "documentCount": 328
       },
       "right": {
         "name": "Department of Commerc",
@@ -5679,8 +5679,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Division",
-        "mentions": 518,
-        "documentCount": 433
+        "mentions": 522,
+        "documentCount": 437
       },
       "right": {
         "name": "Intelligences Division",
@@ -5695,8 +5695,8 @@
       "category": "location",
       "left": {
         "name": "MacDill Air Force Base",
-        "mentions": 458,
-        "documentCount": 324
+        "mentions": 460,
+        "documentCount": 326
       },
       "right": {
         "name": "McDill Air Force Base",
@@ -5711,8 +5711,8 @@
       "category": "location",
       "left": {
         "name": "MacDill Air Force Base",
-        "mentions": 458,
-        "documentCount": 324
+        "mentions": 460,
+        "documentCount": 326
       },
       "right": {
         "name": "Macdill Airforce Base",
@@ -5791,8 +5791,8 @@
       "category": "location",
       "left": {
         "name": "Robins Air Force Base",
-        "mentions": 150,
-        "documentCount": 124
+        "mentions": 152,
+        "documentCount": 126
       },
       "right": {
         "name": "Robbins Air Force Base",
@@ -6036,6 +6036,22 @@
       },
       "right": {
         "name": "COMDR AIR TECHNICLA INTELLIGENCE CEN WRIGHT",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.977,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "organization",
+      "left": {
+        "name": "COMDR AIR TECHNICAL INTELLIGENCE CEN WRIGHT",
+        "mentions": 16,
+        "documentCount": 16
+      },
+      "right": {
+        "name": "COMDR AIR TECHNIRAL INTELLIGENCE CEN WRIGHT",
         "mentions": 2,
         "documentCount": 2
       },
@@ -6575,8 +6591,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of the Air",
-        "mentions": 1183,
-        "documentCount": 719
+        "mentions": 1186,
+        "documentCount": 721
       },
       "right": {
         "name": "DEPARTMENT OF THE AI",
@@ -6591,8 +6607,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of the Air",
-        "mentions": 1183,
-        "documentCount": 719
+        "mentions": 1186,
+        "documentCount": 721
       },
       "right": {
         "name": "Department of the Ar",
@@ -6623,8 +6639,8 @@
       "category": "location",
       "left": {
         "name": "Nellis Air Force Base",
-        "mentions": 797,
-        "documentCount": 495
+        "mentions": 799,
+        "documentCount": 497
       },
       "right": {
         "name": "Nellis Airforce Base",
@@ -6719,8 +6735,8 @@
       "category": "location",
       "left": {
         "name": "Offutt Air Force Base",
-        "mentions": 147,
-        "documentCount": 132
+        "mentions": 148,
+        "documentCount": 133
       },
       "right": {
         "name": "Offut Air Force Base",
@@ -7198,14 +7214,14 @@
     {
       "category": "organization",
       "left": {
-        "name": "Directorate of Intell",
-        "mentions": 4,
-        "documentCount": 4
+        "name": "Publications Division",
+        "mentions": 3,
+        "documentCount": 3
       },
       "right": {
-        "name": "Directorate of Intel",
-        "mentions": 5,
-        "documentCount": 4
+        "name": "Publication Division",
+        "mentions": 7,
+        "documentCount": 7
       },
       "similarity": 0.976,
       "reason": "similar name",
@@ -7214,14 +7230,14 @@
     {
       "category": "organization",
       "left": {
-        "name": "Publications Division",
-        "mentions": 3,
-        "documentCount": 3
+        "name": "Directorate of Intell",
+        "mentions": 4,
+        "documentCount": 4
       },
       "right": {
-        "name": "Publication Division",
-        "mentions": 6,
-        "documentCount": 6
+        "name": "Directorate of Intel",
+        "mentions": 5,
+        "documentCount": 4
       },
       "similarity": 0.976,
       "reason": "similar name",
@@ -7356,6 +7372,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "University Committee",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "right": {
+        "name": "University Committees",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.976,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "location",
       "left": {
         "name": "Peace Air Force Base",
@@ -7444,22 +7476,6 @@
       },
       "right": {
         "name": "County Communications",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.976,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "University Committee",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "right": {
-        "name": "University Committees",
         "mentions": 2,
         "documentCount": 2
       },
@@ -7679,8 +7695,8 @@
       "category": "organization",
       "left": {
         "name": "Space Administration",
-        "mentions": 346,
-        "documentCount": 297
+        "mentions": 347,
+        "documentCount": 298
       },
       "right": {
         "name": "Spac Administration",
@@ -8607,8 +8623,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Center",
-        "mentions": 1292,
-        "documentCount": 949
+        "mentions": 1295,
+        "documentCount": 952
       },
       "right": {
         "name": "Intelligence CentE",
@@ -8687,8 +8703,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Special Investigations",
-        "mentions": 167,
-        "documentCount": 142
+        "mentions": 169,
+        "documentCount": 144
       },
       "right": {
         "name": "DIRECTORATE OF SPECIAL INVESTICATIONS",
@@ -8740,8 +8756,8 @@
       },
       "right": {
         "name": "Phillips Laboratory",
-        "mentions": 83,
-        "documentCount": 43
+        "mentions": 84,
+        "documentCount": 44
       },
       "similarity": 0.973,
       "reason": "similar name",
@@ -9500,6 +9516,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "Wing Operational Intelligence Officer",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "right": {
+        "name": "WING OPERATIONAL INTELLIGENCE OFFUCER",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.973,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "program",
       "left": {
         "name": "Project Ice Breaker",
@@ -9711,8 +9743,8 @@
       "category": "government_agency",
       "left": {
         "name": "United States Army",
-        "mentions": 5106,
-        "documentCount": 2276
+        "mentions": 5108,
+        "documentCount": 2278
       },
       "right": {
         "name": "United State Army",
@@ -11279,13 +11311,13 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Center",
-        "mentions": 1582,
-        "documentCount": 1349
+        "mentions": 1588,
+        "documentCount": 1355
       },
       "right": {
         "name": "Air Technical Intelligence Conter",
-        "mentions": 21,
-        "documentCount": 21
+        "mentions": 22,
+        "documentCount": 22
       },
       "similarity": 0.97,
       "reason": "similar name",
@@ -11295,8 +11327,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Center",
-        "mentions": 1582,
-        "documentCount": 1349
+        "mentions": 1588,
+        "documentCount": 1355
       },
       "right": {
         "name": "Air Technical Intelligence Genter",
@@ -11311,8 +11343,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Center",
-        "mentions": 1582,
-        "documentCount": 1349
+        "mentions": 1588,
+        "documentCount": 1355
       },
       "right": {
         "name": "Air Technical Intelligence Canter",
@@ -11327,8 +11359,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Center",
-        "mentions": 1582,
-        "documentCount": 1349
+        "mentions": 1588,
+        "documentCount": 1355
       },
       "right": {
         "name": "Air Technical Intelligence Centar",
@@ -11343,8 +11375,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Center",
-        "mentions": 1582,
-        "documentCount": 1349
+        "mentions": 1588,
+        "documentCount": 1355
       },
       "right": {
         "name": "Air Technical Intelligence Senter",
@@ -11359,8 +11391,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Center",
-        "mentions": 1582,
-        "documentCount": 1349
+        "mentions": 1588,
+        "documentCount": 1355
       },
       "right": {
         "name": "Air Technical Intelligence Cen'er",
@@ -11375,8 +11407,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Center",
-        "mentions": 1582,
-        "documentCount": 1349
+        "mentions": 1588,
+        "documentCount": 1355
       },
       "right": {
         "name": "Air Technical Intelligence Oenter",
@@ -11391,8 +11423,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Center",
-        "mentions": 1582,
-        "documentCount": 1349
+        "mentions": 1588,
+        "documentCount": 1355
       },
       "right": {
         "name": "Air Technical Intelligence Centor",
@@ -11407,8 +11439,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Center",
-        "mentions": 1582,
-        "documentCount": 1349
+        "mentions": 1588,
+        "documentCount": 1355
       },
       "right": {
         "name": "Air Technical Intelligence Jenter",
@@ -11455,8 +11487,8 @@
       "category": "organization",
       "left": {
         "name": "National Investigations Committee",
-        "mentions": 1222,
-        "documentCount": 645
+        "mentions": 1223,
+        "documentCount": 646
       },
       "right": {
         "name": "National Investigationa Committee",
@@ -11471,8 +11503,8 @@
       "category": "organization",
       "left": {
         "name": "National Investigations Committee",
-        "mentions": 1222,
-        "documentCount": 645
+        "mentions": 1223,
+        "documentCount": 646
       },
       "right": {
         "name": "National Iuvestigations Committee",
@@ -11487,8 +11519,8 @@
       "category": "organization",
       "left": {
         "name": "National Investigations Committee",
-        "mentions": 1222,
-        "documentCount": 645
+        "mentions": 1223,
+        "documentCount": 646
       },
       "right": {
         "name": "NATIONAL INVESTICATIONS COMMITTEE",
@@ -11727,8 +11759,8 @@
       "category": "organization",
       "left": {
         "name": "Air Intelligence Service Squadron",
-        "mentions": 279,
-        "documentCount": 240
+        "mentions": 281,
+        "documentCount": 242
       },
       "right": {
         "name": "Air Intelligence Service Souadron",
@@ -11743,8 +11775,8 @@
       "category": "organization",
       "left": {
         "name": "Air Intelligence Service Squadron",
-        "mentions": 279,
-        "documentCount": 240
+        "mentions": 281,
+        "documentCount": 242
       },
       "right": {
         "name": "Air Intelligence Service Squadroa",
@@ -11852,6 +11884,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "government_agency",
+      "left": {
+        "name": "Office of Special",
+        "mentions": 183,
+        "documentCount": 149
+      },
+      "right": {
+        "name": "Office of Specia",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "similarity": 0.97,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "person",
       "left": {
         "name": "Michael Marshall",
@@ -11871,29 +11919,13 @@
       "category": "organization",
       "left": {
         "name": "American Institute of Aeronautics and Astronautics",
-        "mentions": 180,
-        "documentCount": 127
+        "mentions": 181,
+        "documentCount": 128
       },
       "right": {
         "name": "American Institute for Aeronautics and Astronautics",
         "mentions": 2,
         "documentCount": 2
-      },
-      "similarity": 0.97,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "government_agency",
-      "left": {
-        "name": "Office of Special",
-        "mentions": 179,
-        "documentCount": 145
-      },
-      "right": {
-        "name": "Office of Specia",
-        "mentions": 3,
-        "documentCount": 3
       },
       "similarity": 0.97,
       "reason": "similar name",
@@ -11967,8 +11999,8 @@
       "category": "organization",
       "left": {
         "name": "University of New",
-        "mentions": 102,
-        "documentCount": 92
+        "mentions": 103,
+        "documentCount": 93
       },
       "right": {
         "name": "University of Ne",
@@ -12412,6 +12444,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "Air Technical Intelligence Conter",
+        "mentions": 22,
+        "documentCount": 22
+      },
+      "right": {
+        "name": "Air Technical Intelligence Canter",
+        "mentions": 6,
+        "documentCount": 6
+      },
+      "similarity": 0.97,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "person",
       "left": {
         "name": "Captain William Schaffner",
@@ -12438,22 +12486,6 @@
         "name": "David Duwallabies",
         "mentions": 14,
         "documentCount": 2
-      },
-      "similarity": 0.97,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "Air Technical Intelligence Conter",
-        "mentions": 21,
-        "documentCount": 21
-      },
-      "right": {
-        "name": "Air Technical Intelligence Canter",
-        "mentions": 6,
-        "documentCount": 6
       },
       "similarity": 0.97,
       "reason": "similar name",
@@ -12524,6 +12556,54 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "Air Technical Intelligence Conter",
+        "mentions": 22,
+        "documentCount": 22
+      },
+      "right": {
+        "name": "Air Technical Intelligence Oenter",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.97,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "organization",
+      "left": {
+        "name": "Air Technical Intelligence Conter",
+        "mentions": 22,
+        "documentCount": 22
+      },
+      "right": {
+        "name": "Air Tochnical Intelligence Conter",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.97,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "organization",
+      "left": {
+        "name": "Air Technical Intelligence Conter",
+        "mentions": 22,
+        "documentCount": 22
+      },
+      "right": {
+        "name": "Air Technioal Intelligence Conter",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.97,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "book",
       "left": {
         "name": "The Roswell Incident",
@@ -12566,54 +12646,6 @@
         "name": "Air Technical Intelligence Senter",
         "mentions": 4,
         "documentCount": 4
-      },
-      "similarity": 0.97,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "Air Technical Intelligence Conter",
-        "mentions": 21,
-        "documentCount": 21
-      },
-      "right": {
-        "name": "Air Technical Intelligence Oenter",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.97,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "Air Technical Intelligence Conter",
-        "mentions": 21,
-        "documentCount": 21
-      },
-      "right": {
-        "name": "Air Tochnical Intelligence Conter",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.97,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "Air Technical Intelligence Conter",
-        "mentions": 21,
-        "documentCount": 21
-      },
-      "right": {
-        "name": "Air Technioal Intelligence Conter",
-        "mentions": 2,
-        "documentCount": 2
       },
       "similarity": 0.97,
       "reason": "similar name",
@@ -13775,8 +13807,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Center",
-        "mentions": 1582,
-        "documentCount": 1349
+        "mentions": 1588,
+        "documentCount": 1355
       },
       "right": {
         "name": "Air Technical Intelligence Cntr",
@@ -13844,8 +13876,8 @@
       },
       "right": {
         "name": "Air Technical Intelligence Conter",
-        "mentions": 21,
-        "documentCount": 21
+        "mentions": 22,
+        "documentCount": 22
       },
       "similarity": 0.969,
       "reason": "similar name",
@@ -14175,8 +14207,8 @@
       "category": "government_agency",
       "left": {
         "name": "Federal Bureau of Investigation",
-        "mentions": 36598,
-        "documentCount": 9307
+        "mentions": 36609,
+        "documentCount": 9318
       },
       "right": {
         "name": "FEDERAL BUREAU GF INVESTIGATION",
@@ -14191,8 +14223,8 @@
       "category": "government_agency",
       "left": {
         "name": "Federal Bureau of Investigation",
-        "mentions": 36598,
-        "documentCount": 9307
+        "mentions": 36609,
+        "documentCount": 9318
       },
       "right": {
         "name": "Federal Bureau of Inveatigation",
@@ -14207,8 +14239,8 @@
       "category": "government_agency",
       "left": {
         "name": "Federal Bureau of Investigation",
-        "mentions": 36598,
-        "documentCount": 9307
+        "mentions": 36609,
+        "documentCount": 9318
       },
       "right": {
         "name": "FEDERAL BUREAU Of TINESTIGATION",
@@ -14223,8 +14255,8 @@
       "category": "government_agency",
       "left": {
         "name": "Federal Bureau of Investigation",
-        "mentions": 36598,
-        "documentCount": 9307
+        "mentions": 36609,
+        "documentCount": 9318
       },
       "right": {
         "name": "Federal Bureau of Investlgation",
@@ -14239,8 +14271,8 @@
       "category": "government_agency",
       "left": {
         "name": "Federal Bureau of Investigation",
-        "mentions": 36598,
-        "documentCount": 9307
+        "mentions": 36609,
+        "documentCount": 9318
       },
       "right": {
         "name": "FEDERAL BUREAU OF INVESTIGATIDN",
@@ -14255,8 +14287,8 @@
       "category": "government_agency",
       "left": {
         "name": "Federal Bureau of Investigation",
-        "mentions": 36598,
-        "documentCount": 9307
+        "mentions": 36609,
+        "documentCount": 9318
       },
       "right": {
         "name": "Federal Bureau of Investigetion",
@@ -14271,8 +14303,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Fatterson Air Force Base",
@@ -14287,8 +14319,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "WRICHT-PATTERSON AIR FORCE BASE",
@@ -14303,8 +14335,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Patterson Air Torce Base",
@@ -14319,8 +14351,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Patteraon Air Force Base",
@@ -14335,8 +14367,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Petterson Air Force Base",
@@ -14351,8 +14383,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "WRIGHT-PATTERSON AIR FORCS BASE",
@@ -14367,8 +14399,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Patterson Air Foroe Base",
@@ -14383,8 +14415,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Pattergon Air Force Base",
@@ -14399,8 +14431,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Weight-Patterson Air Force Base",
@@ -14415,8 +14447,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Pattercon Air Force Base",
@@ -14431,8 +14463,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wrighü-Patterson Air Force Base",
@@ -14447,8 +14479,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "WRIGHT-PATTERBON AIR FORCE BASE",
@@ -14463,8 +14495,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Pattereon Air Force Base",
@@ -14479,8 +14511,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright Patterson Aix Force Base",
@@ -14495,8 +14527,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "WRIGHT-PATTERSON AIR FOPCE BASE",
@@ -14511,8 +14543,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "WRIGHT PATTIRSON AIR FORCE BASE",
@@ -14527,8 +14559,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wrigat-Patterson Air Force Base",
@@ -14543,8 +14575,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Patterson Air Forco Base",
@@ -14559,8 +14591,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Patterson Atr Force Base",
@@ -14575,8 +14607,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Batterson Air Force Base",
@@ -14591,8 +14623,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "WRIGHT-PITTERSON AIR FORCE BASE",
@@ -14607,8 +14639,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "WRIGHT-PATTERSON AIR FOACE BASE",
@@ -14623,8 +14655,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "WRIGHT PATThRSON AIR FORCE BASE",
@@ -14639,8 +14671,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "WRIGHT-PATTERRON AIR FORCE BASE",
@@ -14655,8 +14687,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Patterson Air Jorce Base",
@@ -14671,8 +14703,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "WRIGHT-PATTERJON AIR FORCE BASE",
@@ -14687,8 +14719,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "WRIGHT-PATTERSON AIK FORCE BASE",
@@ -14703,8 +14735,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Patterson Air Forge Base",
@@ -14719,8 +14751,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-ratterson Air Force Base",
@@ -14735,8 +14767,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "WHIGHT-PATTERSON AIR FORCE BASE",
@@ -14751,8 +14783,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "WRISHT-PATTERSON AIR FORCE BASE",
@@ -15103,8 +15135,8 @@
       "category": "organization",
       "left": {
         "name": "Air Intelligence",
-        "mentions": 373,
-        "documentCount": 218
+        "mentions": 374,
+        "documentCount": 219
       },
       "right": {
         "name": "Ar Intelligence",
@@ -15407,8 +15439,8 @@
       "category": "location",
       "left": {
         "name": "COUNTRY OR AREA REPORT CONCERNS",
-        "mentions": 111,
-        "documentCount": 111
+        "mentions": 115,
+        "documentCount": 115
       },
       "right": {
         "name": "COUNTRY OF AREA REPORT CONCERNS",
@@ -15535,8 +15567,8 @@
       "category": "location",
       "left": {
         "name": "Rogers Dry Lake",
-        "mentions": 90,
-        "documentCount": 29
+        "mentions": 91,
+        "documentCount": 30
       },
       "right": {
         "name": "Rodgers Dry Lake",
@@ -16396,6 +16428,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "program",
+      "left": {
+        "name": "Project Man-High",
+        "mentions": 13,
+        "documentCount": 11
+      },
+      "right": {
+        "name": "Project Manhigh",
+        "mentions": 10,
+        "documentCount": 2
+      },
+      "similarity": 0.968,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "location",
       "left": {
         "name": "Wright-Fatterson Air Force Base",
@@ -16437,22 +16485,6 @@
       "right": {
         "name": "ELEcrRICAL ENGINEERING DIVISION",
         "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.968,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "program",
-      "left": {
-        "name": "Project Man-High",
-        "mentions": 12,
-        "documentCount": 10
-      },
-      "right": {
-        "name": "Project Manhigh",
-        "mentions": 10,
         "documentCount": 2
       },
       "similarity": 0.968,
@@ -19311,8 +19343,8 @@
       "category": "person",
       "left": {
         "name": "Kenneth Arnold",
-        "mentions": 6007,
-        "documentCount": 2176
+        "mentions": 6008,
+        "documentCount": 2177
       },
       "right": {
         "name": "Kenneth Arnolds",
@@ -19343,8 +19375,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4152,
-        "documentCount": 1777
+        "mentions": 4153,
+        "documentCount": 1778
       },
       "right": {
         "name": "George Adamskis",
@@ -19359,8 +19391,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4152,
-        "documentCount": 1777
+        "mentions": 4153,
+        "documentCount": 1778
       },
       "right": {
         "name": "George Adamskiâ",
@@ -19471,8 +19503,8 @@
       "category": "program",
       "left": {
         "name": "Project Grudge",
-        "mentions": 872,
-        "documentCount": 449
+        "mentions": 873,
+        "documentCount": 450
       },
       "right": {
         "name": "Project Grundge",
@@ -19711,8 +19743,8 @@
       "category": "person",
       "left": {
         "name": "Thomas Mantell",
-        "mentions": 228,
-        "documentCount": 173
+        "mentions": 230,
+        "documentCount": 174
       },
       "right": {
         "name": "Thomas Mantells",
@@ -19727,8 +19759,8 @@
       "category": "person",
       "left": {
         "name": "Thomas Mantell",
-        "mentions": 228,
-        "documentCount": 173
+        "mentions": 230,
+        "documentCount": 174
       },
       "right": {
         "name": "Thomas Manthell",
@@ -19759,8 +19791,8 @@
       "category": "person",
       "left": {
         "name": "James McAndrew",
-        "mentions": 197,
-        "documentCount": 145
+        "mentions": 198,
+        "documentCount": 146
       },
       "right": {
         "name": "James McAndrews",
@@ -21996,6 +22028,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "location",
+      "left": {
+        "name": "Base Operation",
+        "mentions": 4,
+        "documentCount": 4
+      },
+      "right": {
+        "name": "Base Operationa",
+        "mentions": 4,
+        "documentCount": 4
+      },
+      "similarity": 0.966,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "person",
       "left": {
         "name": "Michael Swiney",
@@ -22086,22 +22134,6 @@
         "name": "Services Office",
         "mentions": 4,
         "documentCount": 4
-      },
-      "similarity": 0.966,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "location",
-      "left": {
-        "name": "Base Operation",
-        "mentions": 4,
-        "documentCount": 4
-      },
-      "right": {
-        "name": "Base Operationa",
-        "mentions": 3,
-        "documentCount": 3
       },
       "similarity": 0.966,
       "reason": "similar name",
@@ -22895,8 +22927,8 @@
       "category": "government_agency",
       "left": {
         "name": "United States Weather Bureau",
-        "mentions": 78,
-        "documentCount": 67
+        "mentions": 79,
+        "documentCount": 68
       },
       "right": {
         "name": "United States Meather Bureau",
@@ -22911,8 +22943,8 @@
       "category": "government_agency",
       "left": {
         "name": "United States Weather Bureau",
-        "mentions": 78,
-        "documentCount": 67
+        "mentions": 79,
+        "documentCount": 68
       },
       "right": {
         "name": "United States Feather Bureau",
@@ -22927,8 +22959,8 @@
       "category": "government_agency",
       "left": {
         "name": "United States Weather Bureau",
-        "mentions": 78,
-        "documentCount": 67
+        "mentions": 79,
+        "documentCount": 68
       },
       "right": {
         "name": "United States Yeather Bureau",
@@ -22943,11 +22975,27 @@
       "category": "government_agency",
       "left": {
         "name": "United States Weather Bureau",
-        "mentions": 78,
-        "documentCount": 67
+        "mentions": 79,
+        "documentCount": 68
       },
       "right": {
         "name": "United States Waather Bureau",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.964,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "United States Weather Bureau",
+        "mentions": 79,
+        "documentCount": 68
+      },
+      "right": {
+        "name": "Unitad States Weather Bureau",
         "mentions": 2,
         "documentCount": 2
       },
@@ -23244,6 +23292,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "location",
+      "left": {
+        "name": "CLINTON COUNTY ARMY AIR FIELD",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "right": {
+        "name": "Clinton County Army Air Fld",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.964,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "organization",
       "left": {
         "name": "Community Relstions Division",
@@ -23292,27 +23356,11 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
-      "category": "location",
-      "left": {
-        "name": "Clinton County Army Air Fld",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "right": {
-        "name": "CLINTON COUNTY ARMY AIR FIELD",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.964,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
       "category": "government_agency",
       "left": {
         "name": "Central Intelligence Agency",
-        "mentions": 66986,
-        "documentCount": 16887
+        "mentions": 66991,
+        "documentCount": 16892
       },
       "right": {
         "name": "CENTRAL INTELLICENCE AGENCY",
@@ -23327,8 +23375,8 @@
       "category": "government_agency",
       "left": {
         "name": "Central Intelligence Agency",
-        "mentions": 66986,
-        "documentCount": 16887
+        "mentions": 66991,
+        "documentCount": 16892
       },
       "right": {
         "name": "The Central IAtelligence Agency",
@@ -23343,8 +23391,8 @@
       "category": "government_agency",
       "left": {
         "name": "Central Intelligence Agency",
-        "mentions": 66986,
-        "documentCount": 16887
+        "mentions": 66991,
+        "documentCount": 16892
       },
       "right": {
         "name": "CENTRAL INTELLIGZNCE AGENCY",
@@ -23359,8 +23407,8 @@
       "category": "government_agency",
       "left": {
         "name": "Central Intelligence Agency",
-        "mentions": 66986,
-        "documentCount": 16887
+        "mentions": 66991,
+        "documentCount": 16892
       },
       "right": {
         "name": "Contral Intelligence Agency",
@@ -23407,8 +23455,8 @@
       "category": "person",
       "left": {
         "name": "Kenneth Arnold",
-        "mentions": 6007,
-        "documentCount": 2176
+        "mentions": 6008,
+        "documentCount": 2177
       },
       "right": {
         "name": "Kenneth Arnol",
@@ -23423,8 +23471,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4152,
-        "documentCount": 1777
+        "mentions": 4153,
+        "documentCount": 1778
       },
       "right": {
         "name": "George Adamsk",
@@ -23615,8 +23663,8 @@
       "category": "book",
       "left": {
         "name": "Flying Saucers",
-        "mentions": 2062,
-        "documentCount": 1211
+        "mentions": 2063,
+        "documentCount": 1212
       },
       "right": {
         "name": "Flying Saucer",
@@ -23679,8 +23727,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1691,
-        "documentCount": 1351
+        "mentions": 1692,
+        "documentCount": 1352
       },
       "right": {
         "name": "FOREIGH TECHNOLOGY DIVISION",
@@ -23695,8 +23743,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1691,
-        "documentCount": 1351
+        "mentions": 1692,
+        "documentCount": 1352
       },
       "right": {
         "name": "FOREIGN TECHMOLOGY DIVISION",
@@ -23711,8 +23759,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1691,
-        "documentCount": 1351
+        "mentions": 1692,
+        "documentCount": 1352
       },
       "right": {
         "name": "FOREION TECHNOLOGY DIVISION",
@@ -23727,8 +23775,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1691,
-        "documentCount": 1351
+        "mentions": 1692,
+        "documentCount": 1352
       },
       "right": {
         "name": "Foriegn Technology Division",
@@ -23743,8 +23791,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1691,
-        "documentCount": 1351
+        "mentions": 1692,
+        "documentCount": 1352
       },
       "right": {
         "name": "Foreiga Technology Division",
@@ -23759,8 +23807,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1691,
-        "documentCount": 1351
+        "mentions": 1692,
+        "documentCount": 1352
       },
       "right": {
         "name": "Fereign Technology Division",
@@ -23775,8 +23823,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1691,
-        "documentCount": 1351
+        "mentions": 1692,
+        "documentCount": 1352
       },
       "right": {
         "name": "FOREIGN TECHROLOGY DIVISION",
@@ -23791,8 +23839,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1691,
-        "documentCount": 1351
+        "mentions": 1692,
+        "documentCount": 1352
       },
       "right": {
         "name": "FOREIGK TECHNOLOGY DIVISION",
@@ -23919,8 +23967,8 @@
       "category": "program",
       "left": {
         "name": "Project Grudge",
-        "mentions": 872,
-        "documentCount": 449
+        "mentions": 873,
+        "documentCount": 450
       },
       "right": {
         "name": "Project GRUDG",
@@ -23951,8 +23999,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "DIRECTORATE OF INTELLICENCE",
@@ -23967,8 +24015,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "Directorate of Intolligence",
@@ -23983,8 +24031,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "Directorate of Intelligance",
@@ -23999,8 +24047,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "Directorete of Intelligence",
@@ -24015,8 +24063,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "Directorate of Intalligence",
@@ -24031,8 +24079,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "Directorate of Intelligenoe",
@@ -24047,8 +24095,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "Directorata of Intelligence",
@@ -24063,8 +24111,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "Directorate of Intelligenes",
@@ -24079,8 +24127,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "Directorate of Intellieence",
@@ -24095,8 +24143,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "Dirpctorate of Intelligence",
@@ -24111,8 +24159,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "DIRECTOHATE OF INTELLIGENCE",
@@ -24127,8 +24175,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "Directarate of Intelligence",
@@ -24767,8 +24815,8 @@
       "category": "person",
       "left": {
         "name": "Thomas Mantell",
-        "mentions": 228,
-        "documentCount": 173
+        "mentions": 230,
+        "documentCount": 174
       },
       "right": {
         "name": "Thomas Mantel",
@@ -25566,14 +25614,14 @@
     {
       "category": "person",
       "left": {
-        "name": "John Humphreys",
-        "mentions": 56,
-        "documentCount": 17
+        "name": "Robert Mueller",
+        "mentions": 57,
+        "documentCount": 41
       },
       "right": {
-        "name": "John Humphrey",
+        "name": "Robert Muller",
         "mentions": 10,
-        "documentCount": 8
+        "documentCount": 7
       },
       "similarity": 0.963,
       "reason": "similar name",
@@ -25582,14 +25630,14 @@
     {
       "category": "person",
       "left": {
-        "name": "Robert Mueller",
+        "name": "John Humphreys",
         "mentions": 56,
-        "documentCount": 40
+        "documentCount": 17
       },
       "right": {
-        "name": "Robert Muller",
+        "name": "John Humphrey",
         "mentions": 10,
-        "documentCount": 7
+        "documentCount": 8
       },
       "similarity": 0.963,
       "reason": "similar name",
@@ -27164,6 +27212,38 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "Acting Intelligence Officer",
+        "mentions": 15,
+        "documentCount": 15
+      },
+      "right": {
+        "name": "Aching Intelligence Officer",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.963,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "organization",
+      "left": {
+        "name": "Acting Intelligence Officer",
+        "mentions": 15,
+        "documentCount": 15
+      },
+      "right": {
+        "name": "Aoting Intelligence Officer",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.963,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "person",
       "left": {
         "name": "Charles Sturt",
@@ -27253,38 +27333,6 @@
       "right": {
         "name": "Lee Winterston",
         "mentions": 5,
-        "documentCount": 2
-      },
-      "similarity": 0.963,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "Acting Intelligence Officer",
-        "mentions": 14,
-        "documentCount": 14
-      },
-      "right": {
-        "name": "Aching Intelligence Officer",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.963,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "Acting Intelligence Officer",
-        "mentions": 14,
-        "documentCount": 14
-      },
-      "right": {
-        "name": "Aoting Intelligence Officer",
-        "mentions": 2,
         "documentCount": 2
       },
       "similarity": 0.963,
@@ -29391,8 +29439,24 @@
       "category": "government_agency",
       "left": {
         "name": "Government Printing Office",
-        "mentions": 208,
-        "documentCount": 132
+        "mentions": 209,
+        "documentCount": 133
+      },
+      "right": {
+        "name": "GOVERAMENT PRINTING OFFICE",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "similarity": 0.962,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "Government Printing Office",
+        "mentions": 209,
+        "documentCount": 133
       },
       "right": {
         "name": "GOVERNNENT PRINTING OFFICE",
@@ -29407,24 +29471,8 @@
       "category": "government_agency",
       "left": {
         "name": "Government Printing Office",
-        "mentions": 208,
-        "documentCount": 132
-      },
-      "right": {
-        "name": "GOVERAMENT PRINTING OFFICE",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.962,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "government_agency",
-      "left": {
-        "name": "Government Printing Office",
-        "mentions": 208,
-        "documentCount": 132
+        "mentions": 209,
+        "documentCount": 133
       },
       "right": {
         "name": "Governmant Printing Office",
@@ -29439,8 +29487,8 @@
       "category": "government_agency",
       "left": {
         "name": "Government Printing Office",
-        "mentions": 208,
-        "documentCount": 132
+        "mentions": 209,
+        "documentCount": 133
       },
       "right": {
         "name": "GOVENNMENT PRINTING OFFICE",
@@ -29455,8 +29503,8 @@
       "category": "government_agency",
       "left": {
         "name": "Government Printing Office",
-        "mentions": 208,
-        "documentCount": 132
+        "mentions": 209,
+        "documentCount": 133
       },
       "right": {
         "name": "GOVERNMENY PRINTING OFFICE",
@@ -29487,8 +29535,8 @@
       "category": "location",
       "left": {
         "name": "Greater Pittsburgh Airport",
-        "mentions": 79,
-        "documentCount": 66
+        "mentions": 80,
+        "documentCount": 67
       },
       "right": {
         "name": "Greater Pittaburgh Airport",
@@ -29519,8 +29567,8 @@
       "category": "location",
       "left": {
         "name": "Greater Pittsburgh Airport",
-        "mentions": 79,
-        "documentCount": 66
+        "mentions": 80,
+        "documentCount": 67
       },
       "right": {
         "name": "GREATER PITTSBURCH AIRPORT",
@@ -31087,8 +31135,8 @@
       "category": "organization",
       "left": {
         "name": "Wing Intelligence Officer",
-        "mentions": 319,
-        "documentCount": 272
+        "mentions": 325,
+        "documentCount": 277
       },
       "right": {
         "name": "Wing Intelligence Officey",
@@ -31215,8 +31263,8 @@
       "category": "organization",
       "left": {
         "name": "ORGANIZATION AND LOCATION",
-        "mentions": 232,
-        "documentCount": 148
+        "mentions": 234,
+        "documentCount": 149
       },
       "right": {
         "name": "ORGANIZATION ANO LOCATION",
@@ -31599,8 +31647,8 @@
       "category": "person",
       "left": {
         "name": "Arthur Clarke",
-        "mentions": 111,
-        "documentCount": 87
+        "mentions": 113,
+        "documentCount": 88
       },
       "right": {
         "name": "Arthur Clark",
@@ -33260,6 +33308,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "Bell Aircraft Corporation",
+        "mentions": 24,
+        "documentCount": 21
+      },
+      "right": {
+        "name": "Bell Airoraft Corporation",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.96,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "person",
       "left": {
         "name": "John Shuster",
@@ -33284,22 +33348,6 @@
       },
       "right": {
         "name": "Air Intellegence Division",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.96,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "Bell Aircraft Corporation",
-        "mentions": 23,
-        "documentCount": 20
-      },
-      "right": {
-        "name": "Bell Airoraft Corporation",
         "mentions": 2,
         "documentCount": 2
       },
@@ -33996,6 +34044,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "Committee for Aeronautics",
+        "mentions": 15,
+        "documentCount": 11
+      },
+      "right": {
+        "name": "Committee for Aerouautics",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.96,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "person",
       "left": {
         "name": "General John Sanford",
@@ -34070,22 +34134,6 @@
         "name": "Jacques Vale",
         "mentions": 8,
         "documentCount": 8
-      },
-      "similarity": 0.96,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "Committee for Aeronautics",
-        "mentions": 14,
-        "documentCount": 10
-      },
-      "right": {
-        "name": "Committee for Aerouautics",
-        "mentions": 2,
-        "documentCount": 2
       },
       "similarity": 0.96,
       "reason": "similar name",
@@ -34350,6 +34398,22 @@
     {
       "category": "location",
       "left": {
+        "name": "Pinecastle Air Forca Base",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "right": {
+        "name": "Pinecastle Air Force Base",
+        "mentions": 11,
+        "documentCount": 11
+      },
+      "similarity": 0.96,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "location",
+      "left": {
         "name": "Braden River",
         "mentions": 7,
         "documentCount": 6
@@ -34550,22 +34614,6 @@
         "name": "Fargo Airport",
         "mentions": 5,
         "documentCount": 5
-      },
-      "similarity": 0.96,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "location",
-      "left": {
-        "name": "Pinecastle Air Forca Base",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "right": {
-        "name": "Pinecastle Air Force Base",
-        "mentions": 10,
-        "documentCount": 10
       },
       "similarity": 0.96,
       "reason": "similar name",
@@ -35868,6 +35916,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "location",
+      "left": {
+        "name": "NO THUNDER STORMS IN AREA",
+        "mentions": 4,
+        "documentCount": 4
+      },
+      "right": {
+        "name": "NO THUNDER STROMS IN AREA",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.96,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "person",
       "left": {
         "name": "David Gosling",
@@ -36102,22 +36166,6 @@
         "name": "Mount Raini e",
         "mentions": 3,
         "documentCount": 3
-      },
-      "similarity": 0.96,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "location",
-      "left": {
-        "name": "NO THUNDER STORMS IN AREA",
-        "mentions": 3,
-        "documentCount": 3
-      },
-      "right": {
-        "name": "NO THUNDER STROMS IN AREA",
-        "mentions": 2,
-        "documentCount": 2
       },
       "similarity": 0.96,
       "reason": "similar name",
@@ -36367,8 +36415,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Special Investigations",
-        "mentions": 167,
-        "documentCount": 142
+        "mentions": 169,
+        "documentCount": 144
       },
       "right": {
         "name": "Directorate of Special Imestigations",
@@ -36527,8 +36575,8 @@
       "category": "organization",
       "left": {
         "name": "University of California",
-        "mentions": 4506,
-        "documentCount": 1291
+        "mentions": 4507,
+        "documentCount": 1292
       },
       "right": {
         "name": "University of Celifornia",
@@ -36543,8 +36591,8 @@
       "category": "organization",
       "left": {
         "name": "University of California",
-        "mentions": 4506,
-        "documentCount": 1291
+        "mentions": 4507,
+        "documentCount": 1292
       },
       "right": {
         "name": "University of Californie",
@@ -36703,8 +36751,8 @@
       "category": "location",
       "left": {
         "name": "McClellan Air Force Base",
-        "mentions": 158,
-        "documentCount": 120
+        "mentions": 159,
+        "documentCount": 121
       },
       "right": {
         "name": "MeClellan Air Force Base",
@@ -36831,8 +36879,8 @@
       "category": "location",
       "left": {
         "name": "AREA AT TIME OF SIGHTING",
-        "mentions": 63,
-        "documentCount": 62
+        "mentions": 64,
+        "documentCount": 63
       },
       "right": {
         "name": "AREA AI TIME OF SIGHTING",
@@ -36847,8 +36895,8 @@
       "category": "location",
       "left": {
         "name": "AREA AT TIME OF SIGHTING",
-        "mentions": 63,
-        "documentCount": 62
+        "mentions": 64,
+        "documentCount": 63
       },
       "right": {
         "name": "THE AREA AT TINE OF SIGHTING",
@@ -36863,8 +36911,8 @@
       "category": "location",
       "left": {
         "name": "AREA AT TIME OF SIGHTING",
-        "mentions": 63,
-        "documentCount": 62
+        "mentions": 64,
+        "documentCount": 63
       },
       "right": {
         "name": "THE AREA AT TIME OF SICHTING",
@@ -38015,8 +38063,8 @@
       "category": "organization",
       "left": {
         "name": "University of California",
-        "mentions": 4506,
-        "documentCount": 1291
+        "mentions": 4507,
+        "documentCount": 1292
       },
       "right": {
         "name": "University of Californ",
@@ -38207,8 +38255,8 @@
       "category": "location",
       "left": {
         "name": "Kirtland Air Force Base",
-        "mentions": 1399,
-        "documentCount": 858
+        "mentions": 1404,
+        "documentCount": 862
       },
       "right": {
         "name": "Kirkland Air Force Base",
@@ -38223,8 +38271,8 @@
       "category": "location",
       "left": {
         "name": "Kirtland Air Force Base",
-        "mentions": 1399,
-        "documentCount": 858
+        "mentions": 1404,
+        "documentCount": 862
       },
       "right": {
         "name": "Kirtland Air Porce Base",
@@ -38239,8 +38287,8 @@
       "category": "location",
       "left": {
         "name": "Kirtland Air Force Base",
-        "mentions": 1399,
-        "documentCount": 858
+        "mentions": 1404,
+        "documentCount": 862
       },
       "right": {
         "name": "KIRTIAND AIR FORCE BASE",
@@ -38255,8 +38303,8 @@
       "category": "location",
       "left": {
         "name": "Kirtland Air Force Base",
-        "mentions": 1399,
-        "documentCount": 858
+        "mentions": 1404,
+        "documentCount": 862
       },
       "right": {
         "name": "Kirtland Alr Force Base",
@@ -38271,8 +38319,8 @@
       "category": "location",
       "left": {
         "name": "Kirtland Air Force Base",
-        "mentions": 1399,
-        "documentCount": 858
+        "mentions": 1404,
+        "documentCount": 862
       },
       "right": {
         "name": "Kircland Air Force Base",
@@ -38319,8 +38367,8 @@
       "category": "location",
       "left": {
         "name": "Holloman Air Force Base",
-        "mentions": 1095,
-        "documentCount": 678
+        "mentions": 1097,
+        "documentCount": 679
       },
       "right": {
         "name": "Hollomon Air Force Base",
@@ -38335,8 +38383,8 @@
       "category": "location",
       "left": {
         "name": "Holloman Air Force Base",
-        "mentions": 1095,
-        "documentCount": 678
+        "mentions": 1097,
+        "documentCount": 679
       },
       "right": {
         "name": "Hollonan Air Force Base",
@@ -38351,8 +38399,8 @@
       "category": "location",
       "left": {
         "name": "Holloman Air Force Base",
-        "mentions": 1095,
-        "documentCount": 678
+        "mentions": 1097,
+        "documentCount": 679
       },
       "right": {
         "name": "Holloman Air Porce Base",
@@ -38367,8 +38415,8 @@
       "category": "location",
       "left": {
         "name": "Holloman Air Force Base",
-        "mentions": 1095,
-        "documentCount": 678
+        "mentions": 1097,
+        "documentCount": 679
       },
       "right": {
         "name": "Hollomen Air Force Base",
@@ -38383,8 +38431,8 @@
       "category": "location",
       "left": {
         "name": "Holloman Air Force Base",
-        "mentions": 1095,
-        "documentCount": 678
+        "mentions": 1097,
+        "documentCount": 679
       },
       "right": {
         "name": "Holloman Air Forca Base",
@@ -38399,8 +38447,8 @@
       "category": "location",
       "left": {
         "name": "Holloman Air Force Base",
-        "mentions": 1095,
-        "documentCount": 678
+        "mentions": 1097,
+        "documentCount": 679
       },
       "right": {
         "name": "Holloman Alr Force Base",
@@ -38415,8 +38463,8 @@
       "category": "program",
       "left": {
         "name": "Project Sign",
-        "mentions": 1023,
-        "documentCount": 446
+        "mentions": 1025,
+        "documentCount": 447
       },
       "right": {
         "name": "Project Sig",
@@ -38575,8 +38623,8 @@
       "category": "person",
       "left": {
         "name": "Edgar Hoover",
-        "mentions": 664,
-        "documentCount": 410
+        "mentions": 665,
+        "documentCount": 411
       },
       "right": {
         "name": "Edgar Hoove",
@@ -38927,8 +38975,8 @@
       "category": "location",
       "left": {
         "name": "Hamilton Air Force Base",
-        "mentions": 266,
-        "documentCount": 203
+        "mentions": 269,
+        "documentCount": 206
       },
       "right": {
         "name": "Hemilton Air Force Base",
@@ -38943,8 +38991,8 @@
       "category": "location",
       "left": {
         "name": "Hamilton Air Force Base",
-        "mentions": 266,
-        "documentCount": 203
+        "mentions": 269,
+        "documentCount": 206
       },
       "right": {
         "name": "Hanilton Air Force Base",
@@ -38959,8 +39007,8 @@
       "category": "location",
       "left": {
         "name": "Hamilton Air Force Base",
-        "mentions": 266,
-        "documentCount": 203
+        "mentions": 269,
+        "documentCount": 206
       },
       "right": {
         "name": "Hamiiton Air Force Base",
@@ -39436,6 +39484,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "location",
+      "left": {
+        "name": "Lake Charles",
+        "mentions": 131,
+        "documentCount": 90
+      },
+      "right": {
+        "name": "Lake Charle",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.957,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "person",
       "left": {
         "name": "David Marla",
@@ -39446,22 +39510,6 @@
         "name": "David Marlar",
         "mentions": 117,
         "documentCount": 51
-      },
-      "similarity": 0.957,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "location",
-      "left": {
-        "name": "Lake Charles",
-        "mentions": 130,
-        "documentCount": 89
-      },
-      "right": {
-        "name": "Lake Charle",
-        "mentions": 2,
-        "documentCount": 2
       },
       "similarity": 0.957,
       "reason": "similar name",
@@ -41228,6 +41276,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "CI Division",
+        "mentions": 5,
+        "documentCount": 5
+      },
+      "right": {
+        "name": "CIP Division",
+        "mentions": 21,
+        "documentCount": 17
+      },
+      "similarity": 0.957,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "government_agency",
       "left": {
         "name": "Federal Office Building",
@@ -41334,22 +41398,6 @@
         "name": "Scott Brown",
         "mentions": 19,
         "documentCount": 13
-      },
-      "similarity": 0.957,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "CI Division",
-        "mentions": 5,
-        "documentCount": 5
-      },
-      "right": {
-        "name": "CIP Division",
-        "mentions": 19,
-        "documentCount": 16
       },
       "similarity": 0.957,
       "reason": "similar name",
@@ -45407,8 +45455,8 @@
       "category": "organization",
       "left": {
         "name": "University of Colorado",
-        "mentions": 2260,
-        "documentCount": 1214
+        "mentions": 2272,
+        "documentCount": 1217
       },
       "right": {
         "name": "University of Colarado",
@@ -45423,8 +45471,8 @@
       "category": "organization",
       "left": {
         "name": "University of Colorado",
-        "mentions": 2260,
-        "documentCount": 1214
+        "mentions": 2272,
+        "documentCount": 1217
       },
       "right": {
         "name": "University of Colorade",
@@ -45439,8 +45487,8 @@
       "category": "organization",
       "left": {
         "name": "University of Colorado",
-        "mentions": 2260,
-        "documentCount": 1214
+        "mentions": 2272,
+        "documentCount": 1217
       },
       "right": {
         "name": "University of Colerado",
@@ -45455,8 +45503,8 @@
       "category": "organization",
       "left": {
         "name": "University of Colorado",
-        "mentions": 2260,
-        "documentCount": 1214
+        "mentions": 2272,
+        "documentCount": 1217
       },
       "right": {
         "name": "University of Coloraao",
@@ -45471,8 +45519,8 @@
       "category": "location",
       "left": {
         "name": "Holloman Air Force Base",
-        "mentions": 1095,
-        "documentCount": 678
+        "mentions": 1097,
+        "documentCount": 679
       },
       "right": {
         "name": "Holoman Airforce Base",
@@ -45503,8 +45551,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of Commerce",
-        "mentions": 652,
-        "documentCount": 327
+        "mentions": 653,
+        "documentCount": 328
       },
       "right": {
         "name": "Department of Cormerce",
@@ -45583,8 +45631,8 @@
       "category": "location",
       "left": {
         "name": "MacDill Air Force Base",
-        "mentions": 458,
-        "documentCount": 324
+        "mentions": 460,
+        "documentCount": 326
       },
       "right": {
         "name": "Machill Air Force Base",
@@ -45599,8 +45647,8 @@
       "category": "location",
       "left": {
         "name": "MacDill Air Force Base",
-        "mentions": 458,
-        "documentCount": 324
+        "mentions": 460,
+        "documentCount": 326
       },
       "right": {
         "name": "MACOILL AIR FORCE BASE",
@@ -45756,6 +45804,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "location",
+      "left": {
+        "name": "McGuire Air Force Base",
+        "mentions": 114,
+        "documentCount": 93
+      },
+      "right": {
+        "name": "Maguire Air Force Base",
+        "mentions": 4,
+        "documentCount": 4
+      },
+      "similarity": 0.955,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "organization",
       "left": {
         "name": "University of Rochester",
@@ -45775,13 +45839,29 @@
       "category": "location",
       "left": {
         "name": "McGuire Air Force Base",
-        "mentions": 112,
-        "documentCount": 92
+        "mentions": 114,
+        "documentCount": 93
       },
       "right": {
-        "name": "Maguire Air Force Base",
-        "mentions": 4,
-        "documentCount": 4
+        "name": "MeGuire Air Force Base",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.955,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "location",
+      "left": {
+        "name": "McGuire Air Force Base",
+        "mentions": 114,
+        "documentCount": 93
+      },
+      "right": {
+        "name": "McGuire Air Farce Base",
+        "mentions": 2,
+        "documentCount": 2
       },
       "similarity": 0.955,
       "reason": "similar name",
@@ -45812,38 +45892,6 @@
       },
       "right": {
         "name": "Stevart Air Force Base",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.955,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "location",
-      "left": {
-        "name": "McGuire Air Force Base",
-        "mentions": 112,
-        "documentCount": 92
-      },
-      "right": {
-        "name": "MeGuire Air Force Base",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.955,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "location",
-      "left": {
-        "name": "McGuire Air Force Base",
-        "mentions": 112,
-        "documentCount": 92
-      },
-      "right": {
-        "name": "McGuire Air Farce Base",
         "mentions": 2,
         "documentCount": 2
       },
@@ -45951,8 +45999,8 @@
       "category": "location",
       "left": {
         "name": "Mitchel Air Force Base",
-        "mentions": 66,
-        "documentCount": 55
+        "mentions": 69,
+        "documentCount": 57
       },
       "right": {
         "name": "Mitchel Air Porce Base",
@@ -46156,6 +46204,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "Air Technical Intelligence Centers",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "right": {
+        "name": "Air Technical Intelligence Conter",
+        "mentions": 22,
+        "documentCount": 22
+      },
+      "similarity": 0.955,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "location",
       "left": {
         "name": "ORLANDO AIR FORCE BASE",
@@ -46166,22 +46230,6 @@
         "name": "Orlando Air Porce Base",
         "mentions": 3,
         "documentCount": 3
-      },
-      "similarity": 0.955,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "Air Technical Intelligence Centers",
-        "mentions": 3,
-        "documentCount": 3
-      },
-      "right": {
-        "name": "Air Technical Intelligence Conter",
-        "mentions": 21,
-        "documentCount": 21
       },
       "similarity": 0.955,
       "reason": "similar name",
@@ -47268,8 +47316,8 @@
       },
       "right": {
         "name": "Air Technical Intelligence Conter",
-        "mentions": 21,
-        "documentCount": 21
+        "mentions": 22,
+        "documentCount": 22
       },
       "similarity": 0.954,
       "reason": "similar name",
@@ -47676,11 +47724,27 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "COMDR AIR TECHNICLA INTELLIGENCE CEN WRIGHT",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "right": {
+        "name": "COMDR AIR TECHNIRAL INTELLIGENCE CEN WRIGHT",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.953,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "government_agency",
       "left": {
         "name": "Department of Defense",
-        "mentions": 12117,
-        "documentCount": 4451
+        "mentions": 12120,
+        "documentCount": 4454
       },
       "right": {
         "name": "Department of De-ense",
@@ -47695,8 +47759,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of Defense",
-        "mentions": 12117,
-        "documentCount": 4451
+        "mentions": 12120,
+        "documentCount": 4454
       },
       "right": {
         "name": "Department of Derense",
@@ -47711,8 +47775,8 @@
       "category": "organization",
       "left": {
         "name": "University of Colorado",
-        "mentions": 2260,
-        "documentCount": 1214
+        "mentions": 2272,
+        "documentCount": 1217
       },
       "right": {
         "name": "University of Colora",
@@ -47727,8 +47791,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Center",
-        "mentions": 1582,
-        "documentCount": 1349
+        "mentions": 1588,
+        "documentCount": 1355
       },
       "right": {
         "name": "Air Technical Intelligence Cen",
@@ -47743,8 +47807,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of Commerce",
-        "mentions": 652,
-        "documentCount": 327
+        "mentions": 653,
+        "documentCount": 328
       },
       "right": {
         "name": "DEPARTMENT OF COMMER",
@@ -47775,8 +47839,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Division",
-        "mentions": 518,
-        "documentCount": 433
+        "mentions": 522,
+        "documentCount": 437
       },
       "right": {
         "name": "Intelligonce Division",
@@ -47791,8 +47855,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Division",
-        "mentions": 518,
-        "documentCount": 433
+        "mentions": 522,
+        "documentCount": 437
       },
       "right": {
         "name": "Intelligence Diviaion",
@@ -47807,8 +47871,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Division",
-        "mentions": 518,
-        "documentCount": 433
+        "mentions": 522,
+        "documentCount": 437
       },
       "right": {
         "name": "Intalligence Division",
@@ -47823,8 +47887,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Division",
-        "mentions": 518,
-        "documentCount": 433
+        "mentions": 522,
+        "documentCount": 437
       },
       "right": {
         "name": "Intolligence Division",
@@ -47839,8 +47903,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Division",
-        "mentions": 518,
-        "documentCount": 433
+        "mentions": 522,
+        "documentCount": 437
       },
       "right": {
         "name": "Intellipence Division",
@@ -47855,8 +47919,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Division",
-        "mentions": 518,
-        "documentCount": 433
+        "mentions": 522,
+        "documentCount": 437
       },
       "right": {
         "name": "Intellitence Division",
@@ -47871,8 +47935,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Division",
-        "mentions": 518,
-        "documentCount": 433
+        "mentions": 522,
+        "documentCount": 437
       },
       "right": {
         "name": "Intelligenco Division",
@@ -47887,8 +47951,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Division",
-        "mentions": 518,
-        "documentCount": 433
+        "mentions": 522,
+        "documentCount": 437
       },
       "right": {
         "name": "INTELLICENCE DIVISION",
@@ -47903,8 +47967,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Division",
-        "mentions": 518,
-        "documentCount": 433
+        "mentions": 522,
+        "documentCount": 437
       },
       "right": {
         "name": "Intelligence Pivision",
@@ -47919,8 +47983,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Division",
-        "mentions": 518,
-        "documentCount": 433
+        "mentions": 522,
+        "documentCount": 437
       },
       "right": {
         "name": "Intelligenca Division",
@@ -47935,8 +47999,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Division",
-        "mentions": 518,
-        "documentCount": 433
+        "mentions": 522,
+        "documentCount": 437
       },
       "right": {
         "name": "IITELLIGENCE DIVISION",
@@ -47951,8 +48015,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Division",
-        "mentions": 518,
-        "documentCount": 433
+        "mentions": 522,
+        "documentCount": 437
       },
       "right": {
         "name": "Intellirence Division",
@@ -48079,8 +48143,8 @@
       "category": "location",
       "left": {
         "name": "Robins Air Force Base",
-        "mentions": 150,
-        "documentCount": 124
+        "mentions": 152,
+        "documentCount": 126
       },
       "right": {
         "name": "Robins Air Porce Base",
@@ -48095,8 +48159,8 @@
       "category": "location",
       "left": {
         "name": "Robins Air Force Base",
-        "mentions": 150,
-        "documentCount": 124
+        "mentions": 152,
+        "documentCount": 126
       },
       "right": {
         "name": "Robing Air Force Base",
@@ -48111,8 +48175,8 @@
       "category": "location",
       "left": {
         "name": "Offutt Air Force Base",
-        "mentions": 147,
-        "documentCount": 132
+        "mentions": 148,
+        "documentCount": 133
       },
       "right": {
         "name": "Offutt Air Foree Base",
@@ -49823,8 +49887,8 @@
       "category": "government_agency",
       "left": {
         "name": "Federal Bureau of Investigation",
-        "mentions": 36598,
-        "documentCount": 9307
+        "mentions": 36609,
+        "documentCount": 9318
       },
       "right": {
         "name": "FEDERAL BUREAU OF INVESTIGAnON",
@@ -49839,8 +49903,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Write-Patterson Air Force Base",
@@ -49855,8 +49919,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Patterson Mr Force Base",
@@ -49871,8 +49935,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright Faterson Air Force Base",
@@ -52703,8 +52767,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of Defense",
-        "mentions": 12117,
-        "documentCount": 4451
+        "mentions": 12120,
+        "documentCount": 4454
       },
       "right": {
         "name": "Department of Defen",
@@ -52799,8 +52863,8 @@
       "category": "location",
       "left": {
         "name": "Eglin Air Force Base",
-        "mentions": 525,
-        "documentCount": 313
+        "mentions": 532,
+        "documentCount": 319
       },
       "right": {
         "name": "Eg-in Air Force Base",
@@ -52815,8 +52879,8 @@
       "category": "location",
       "left": {
         "name": "Eglin Air Force Base",
-        "mentions": 525,
-        "documentCount": 313
+        "mentions": 532,
+        "documentCount": 319
       },
       "right": {
         "name": "Eglia Air Force Base",
@@ -52847,8 +52911,8 @@
       "category": "organization",
       "left": {
         "name": "University of Wyoming",
-        "mentions": 334,
-        "documentCount": 235
+        "mentions": 339,
+        "documentCount": 236
       },
       "right": {
         "name": "The University of Wyomi",
@@ -52902,6 +52966,22 @@
         "name": "Lowry Air Porce Base",
         "mentions": 3,
         "documentCount": 3
+      },
+      "similarity": 0.95,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "location",
+      "left": {
+        "name": "Lowry Air Force Base",
+        "mentions": 162,
+        "documentCount": 132
+      },
+      "right": {
+        "name": "LORRY AIR FORCE BASE",
+        "mentions": 2,
+        "documentCount": 2
       },
       "similarity": 0.95,
       "reason": "similar name",
@@ -53588,6 +53668,22 @@
       },
       "right": {
         "name": "Department of the Ar",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.95,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "location",
+      "left": {
+        "name": "LOURY AIR FORCE BASE",
+        "mentions": 8,
+        "documentCount": 8
+      },
+      "right": {
+        "name": "LORRY AIR FORCE BASE",
         "mentions": 2,
         "documentCount": 2
       },
@@ -55007,8 +55103,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Center",
-        "mentions": 1292,
-        "documentCount": 949
+        "mentions": 1295,
+        "documentCount": 952
       },
       "right": {
         "name": "Intelligence Conter",
@@ -55023,8 +55119,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Center",
-        "mentions": 1292,
-        "documentCount": 949
+        "mentions": 1295,
+        "documentCount": 952
       },
       "right": {
         "name": "Intelligence Genter",
@@ -55279,8 +55375,8 @@
       "category": "organization",
       "left": {
         "name": "Counterintelligence Division",
-        "mentions": 241,
-        "documentCount": 178
+        "mentions": 249,
+        "documentCount": 183
       },
       "right": {
         "name": "Counter Intelligence Diviilon",
@@ -56300,6 +56396,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "location",
+      "left": {
+        "name": "Yuma County Airport",
+        "mentions": 7,
+        "documentCount": 7
+      },
+      "right": {
+        "name": "Yuna County Airport",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.947,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "government_agency",
       "left": {
         "name": "OFFICE IS PHEPARING",
@@ -56500,22 +56612,6 @@
       },
       "right": {
         "name": "ForaatiOD Counter Intelligence Officer",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.947,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "location",
-      "left": {
-        "name": "Yuma County Airport",
-        "mentions": 5,
-        "documentCount": 5
-      },
-      "right": {
-        "name": "Yuna County Airport",
         "mentions": 2,
         "documentCount": 2
       },
@@ -57151,8 +57247,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1691,
-        "documentCount": 1351
+        "mentions": 1692,
+        "documentCount": 1352
       },
       "right": {
         "name": "FOREIGN TECHtjOLOGY DiVISION",
@@ -57871,8 +57967,8 @@
       "category": "government_agency",
       "left": {
         "name": "United States Navy",
-        "mentions": 6271,
-        "documentCount": 2483
+        "mentions": 6273,
+        "documentCount": 2485
       },
       "right": {
         "name": "Uniteo States Navy",
@@ -57887,8 +57983,8 @@
       "category": "government_agency",
       "left": {
         "name": "United States Army",
-        "mentions": 5106,
-        "documentCount": 2276
+        "mentions": 5108,
+        "documentCount": 2278
       },
       "right": {
         "name": "United Slates Army",
@@ -57935,8 +58031,8 @@
       "category": "person",
       "left": {
         "name": "Dwight D. Eisenhower",
-        "mentions": 1357,
-        "documentCount": 657
+        "mentions": 1358,
+        "documentCount": 658
       },
       "right": {
         "name": "General Dwight Eisenhower",
@@ -57951,8 +58047,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Center",
-        "mentions": 1292,
-        "documentCount": 949
+        "mentions": 1295,
+        "documentCount": 952
       },
       "right": {
         "name": "Intelligence Cent",
@@ -58068,8 +58164,8 @@
       },
       "right": {
         "name": "District Office Nr",
-        "mentions": 8,
-        "documentCount": 8
+        "mentions": 10,
+        "documentCount": 9
       },
       "similarity": 0.944,
       "reason": "similar name",
@@ -58220,6 +58316,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "location",
+      "left": {
+        "name": "Long Beach Airport",
+        "mentions": 55,
+        "documentCount": 43
+      },
+      "right": {
+        "name": "Long Bench Airport",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.944,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "organization",
       "left": {
         "name": "University of Maine",
@@ -58245,22 +58357,6 @@
       "right": {
         "name": "Origination Agency's",
         "mentions": 4,
-        "documentCount": 2
-      },
-      "similarity": 0.944,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "location",
-      "left": {
-        "name": "Long Beach Airport",
-        "mentions": 53,
-        "documentCount": 42
-      },
-      "right": {
-        "name": "Long Bench Airport",
-        "mentions": 2,
         "documentCount": 2
       },
       "similarity": 0.944,
@@ -60159,8 +60255,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "Directorate of Intelligeuc",
@@ -60239,8 +60335,8 @@
       "category": "government_agency",
       "left": {
         "name": "Government Printing Office",
-        "mentions": 208,
-        "documentCount": 132
+        "mentions": 209,
+        "documentCount": 133
       },
       "right": {
         "name": "GOl'ERNMENT PRINTING OFFICE",
@@ -60255,8 +60351,8 @@
       "category": "government_agency",
       "left": {
         "name": "Government Printing Office",
-        "mentions": 208,
-        "documentCount": 132
+        "mentions": 209,
+        "documentCount": 133
       },
       "right": {
         "name": "GOVERNNENT PRI NTING OFFICE",
@@ -61230,6 +61326,22 @@
     {
       "category": "organization",
       "left": {
+        "name": "COMDR AIR TECHNICAL INTELLIGENCE CNTR WRIGHT",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "right": {
+        "name": "COMDR AIR TECHNIRAL INTELLIGENCE CEN WRIGHT",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.943,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "organization",
+      "left": {
         "name": "FMS Foundation Newsleffet September",
         "mentions": 2,
         "documentCount": 2
@@ -61503,8 +61615,8 @@
       "category": "government_agency",
       "left": {
         "name": "Police Department",
-        "mentions": 637,
-        "documentCount": 508
+        "mentions": 640,
+        "documentCount": 511
       },
       "right": {
         "name": "Pollce Department",
@@ -61519,8 +61631,8 @@
       "category": "government_agency",
       "left": {
         "name": "Police Department",
-        "mentions": 637,
-        "documentCount": 508
+        "mentions": 640,
+        "documentCount": 511
       },
       "right": {
         "name": "Polioe Department",
@@ -61663,8 +61775,8 @@
       "category": "location",
       "left": {
         "name": "Municipal Airport",
-        "mentions": 233,
-        "documentCount": 188
+        "mentions": 236,
+        "documentCount": 190
       },
       "right": {
         "name": "Municipel Airport",
@@ -61679,8 +61791,8 @@
       "category": "location",
       "left": {
         "name": "Municipal Airport",
-        "mentions": 233,
-        "documentCount": 188
+        "mentions": 236,
+        "documentCount": 190
       },
       "right": {
         "name": "Munieipal Airport",
@@ -61727,8 +61839,8 @@
       "category": "government_agency",
       "left": {
         "name": "Office of Special",
-        "mentions": 179,
-        "documentCount": 145
+        "mentions": 183,
+        "documentCount": 149
       },
       "right": {
         "name": "Office of Specicl",
@@ -61743,8 +61855,8 @@
       "category": "government_agency",
       "left": {
         "name": "Office of Special",
-        "mentions": 179,
-        "documentCount": 145
+        "mentions": 183,
+        "documentCount": 149
       },
       "right": {
         "name": "Office of Speclal",
@@ -61839,8 +61951,8 @@
       "category": "organization",
       "left": {
         "name": "University of New",
-        "mentions": 102,
-        "documentCount": 92
+        "mentions": 103,
+        "documentCount": 93
       },
       "right": {
         "name": "University of NSW",
@@ -61935,8 +62047,8 @@
       "category": "location",
       "left": {
         "name": "AIR BASE SQUADRON",
-        "mentions": 68,
-        "documentCount": 56
+        "mentions": 70,
+        "documentCount": 58
       },
       "right": {
         "name": "ATR BASE SQUADRON",
@@ -61999,8 +62111,8 @@
       "category": "location",
       "left": {
         "name": "AREA AT TIME OF SIGHTING",
-        "mentions": 63,
-        "documentCount": 62
+        "mentions": 64,
+        "documentCount": 63
       },
       "right": {
         "name": "AREA AT TIME OF SIGHTING PD",
@@ -62910,14 +63022,14 @@
     {
       "category": "organization",
       "left": {
-        "name": "Defense Committee",
-        "mentions": 13,
-        "documentCount": 11
+        "name": "Acting Intelligence Officer",
+        "mentions": 15,
+        "documentCount": 15
       },
       "right": {
-        "name": "Defence Committee",
-        "mentions": 4,
-        "documentCount": 3
+        "name": "ATG Intelligence Officer",
+        "mentions": 2,
+        "documentCount": 2
       },
       "similarity": 0.941,
       "reason": "similar name",
@@ -62926,14 +63038,14 @@
     {
       "category": "organization",
       "left": {
-        "name": "Acting Intelligence Officer",
-        "mentions": 14,
-        "documentCount": 14
+        "name": "Defense Committee",
+        "mentions": 13,
+        "documentCount": 11
       },
       "right": {
-        "name": "ATG Intelligence Officer",
-        "mentions": 2,
-        "documentCount": 2
+        "name": "Defence Committee",
+        "mentions": 4,
+        "documentCount": 3
       },
       "similarity": 0.941,
       "reason": "similar name",
@@ -64428,6 +64540,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "Juth Air Division",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "right": {
+        "name": "JATH AIR DIVISION",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.941,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "government_agency",
       "left": {
         "name": "Department of the Airforce",
@@ -64516,6 +64644,22 @@
       },
       "right": {
         "name": "Commander Canadian Atlantic Area",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.941,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "location",
+      "left": {
+        "name": "LBRARY SUBJECT & AREA CODES",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "right": {
+        "name": "LIBRARY SURJECT & AREA CODES",
         "mentions": 2,
         "documentCount": 2
       },
@@ -64684,22 +64828,6 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
-      "category": "organization",
-      "left": {
-        "name": "Juth Air Division",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "right": {
-        "name": "JATH AIR DIVISION",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.941,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
       "category": "government_agency",
       "left": {
         "name": "Keep the Bureau of Uaval Personnel",
@@ -64799,8 +64927,8 @@
       "category": "organization",
       "left": {
         "name": "American Institute of Aeronautics and Astronautics",
-        "mentions": 180,
-        "documentCount": 127
+        "mentions": 181,
+        "documentCount": 128
       },
       "right": {
         "name": "American Institute of Astronautics and Aeronautics",
@@ -64927,8 +65055,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Center",
-        "mentions": 1582,
-        "documentCount": 1349
+        "mentions": 1588,
+        "documentCount": 1355
       },
       "right": {
         "name": "Air Technical Intelligence Cantar",
@@ -64943,8 +65071,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Center",
-        "mentions": 1582,
-        "documentCount": 1349
+        "mentions": 1588,
+        "documentCount": 1355
       },
       "right": {
         "name": "Air Tochnical Intelligence Conter",
@@ -64959,8 +65087,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Center",
-        "mentions": 1582,
-        "documentCount": 1349
+        "mentions": 1588,
+        "documentCount": 1355
       },
       "right": {
         "name": "Air Technioal Intelligence Conter",
@@ -65108,8 +65236,8 @@
       },
       "right": {
         "name": "Air Technical Intelligence Conter",
-        "mentions": 21,
-        "documentCount": 21
+        "mentions": 22,
+        "documentCount": 22
       },
       "similarity": 0.939,
       "reason": "similar name",
@@ -65140,8 +65268,8 @@
       },
       "right": {
         "name": "Airport Traffic Controller",
-        "mentions": 8,
-        "documentCount": 8
+        "mentions": 9,
+        "documentCount": 9
       },
       "similarity": 0.939,
       "reason": "similar name",
@@ -65231,13 +65359,29 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Conter",
-        "mentions": 21,
-        "documentCount": 21
+        "mentions": 22,
+        "documentCount": 22
       },
       "right": {
         "name": "Air Technical Intelligence Centar",
         "mentions": 5,
         "documentCount": 5
+      },
+      "similarity": 0.939,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "organization",
+      "left": {
+        "name": "Air Technical Intelligence Conter",
+        "mentions": 22,
+        "documentCount": 22
+      },
+      "right": {
+        "name": "Air Technical Intelligence Senter",
+        "mentions": 4,
+        "documentCount": 4
       },
       "similarity": 0.939,
       "reason": "similar name",
@@ -65254,22 +65398,6 @@
         "name": "Air Technical Intelligence Canter",
         "mentions": 6,
         "documentCount": 6
-      },
-      "similarity": 0.939,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "Air Technical Intelligence Conter",
-        "mentions": 21,
-        "documentCount": 21
-      },
-      "right": {
-        "name": "Air Technical Intelligence Senter",
-        "mentions": 4,
-        "documentCount": 4
       },
       "similarity": 0.939,
       "reason": "similar name",
@@ -65300,8 +65428,8 @@
       },
       "right": {
         "name": "Air Technical Intelligence Conter",
-        "mentions": 21,
-        "documentCount": 21
+        "mentions": 22,
+        "documentCount": 22
       },
       "similarity": 0.939,
       "reason": "similar name",
@@ -65311,8 +65439,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Conter",
-        "mentions": 21,
-        "documentCount": 21
+        "mentions": 22,
+        "documentCount": 22
       },
       "right": {
         "name": "Air Technical Intelligence Centor",
@@ -65327,8 +65455,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Conter",
-        "mentions": 21,
-        "documentCount": 21
+        "mentions": 22,
+        "documentCount": 22
       },
       "right": {
         "name": "Air Technical Intelligence Cantar",
@@ -65343,8 +65471,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Conter",
-        "mentions": 21,
-        "documentCount": 21
+        "mentions": 22,
+        "documentCount": 22
       },
       "right": {
         "name": "Air Technical Intelligence Jenter",
@@ -65804,6 +65932,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "Hynek of Northwestern University",
+        "mentions": 7,
+        "documentCount": 7
+      },
+      "right": {
+        "name": "Dr. Heineck of Northwestern University",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.939,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "government_agency",
       "left": {
         "name": "Texas Parks and Wildlife Department",
@@ -66006,22 +66150,6 @@
         "name": "James Randi Education Foundation",
         "mentions": 6,
         "documentCount": 6
-      },
-      "similarity": 0.939,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "Hynek of Northwestern University",
-        "mentions": 6,
-        "documentCount": 6
-      },
-      "right": {
-        "name": "Dr. Heineck of Northwestern University",
-        "mentions": 2,
-        "documentCount": 2
       },
       "similarity": 0.939,
       "reason": "similar name",
@@ -67087,8 +67215,8 @@
       "category": "organization",
       "left": {
         "name": "Air Intelligence",
-        "mentions": 373,
-        "documentCount": 218
+        "mentions": 374,
+        "documentCount": 219
       },
       "right": {
         "name": "Alr Intelligence",
@@ -67103,8 +67231,8 @@
       "category": "organization",
       "left": {
         "name": "Air Intelligence",
-        "mentions": 373,
-        "documentCount": 218
+        "mentions": 374,
+        "documentCount": 219
       },
       "right": {
         "name": "AIC INTELLIGENCE",
@@ -67167,8 +67295,8 @@
       "category": "location",
       "left": {
         "name": "Municipal Airport",
-        "mentions": 233,
-        "documentCount": 188
+        "mentions": 236,
+        "documentCount": 190
       },
       "right": {
         "name": "Munical Airport",
@@ -67247,8 +67375,8 @@
       "category": "government_agency",
       "left": {
         "name": "Office of Special",
-        "mentions": 179,
-        "documentCount": 145
+        "mentions": 183,
+        "documentCount": 149
       },
       "right": {
         "name": "Office of Speci",
@@ -68835,6 +68963,22 @@
         "documentCount": 11
       },
       "right": {
+        "name": "Office of Special Invostigations",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.938,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "OFFICE OF SPECIAL INVESTICATIONS",
+        "mentions": 11,
+        "documentCount": 11
+      },
+      "right": {
         "name": "OFFICE CF SPECIAL INVESTIGATIONS",
         "mentions": 2,
         "documentCount": 2
@@ -69934,6 +70078,22 @@
     {
       "category": "organization",
       "left": {
+        "name": "COMDR AIR TECH INTELLIGENCE CEN WRIGHT",
+        "mentions": 5,
+        "documentCount": 5
+      },
+      "right": {
+        "name": "COMDR AIR TECHNIRAL INTELLIGENCE CEN WRIGHT",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.938,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "organization",
+      "left": {
         "name": "Price Foundation",
         "mentions": 3,
         "documentCount": 3
@@ -70372,6 +70532,22 @@
       },
       "right": {
         "name": "Office of Spefial Investigations",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.938,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "OFFICE OF SPECIAL INVESTIGATTONS",
+        "mentions": 4,
+        "documentCount": 4
+      },
+      "right": {
+        "name": "Office of Special Invostigations",
         "mentions": 2,
         "documentCount": 2
       },
@@ -71075,6 +71251,22 @@
         "documentCount": 3
       },
       "right": {
+        "name": "Office of Special Invostigations",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.938,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "Office of Special Investigetions",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "right": {
         "name": "OFFICE CF SPECIAL INVESTIGATIONS",
         "mentions": 2,
         "documentCount": 2
@@ -71123,6 +71315,22 @@
         "documentCount": 3
       },
       "right": {
+        "name": "Office of Special Invostigations",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.938,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "OFFICE OF SPECLAL INVESTIGATIONS",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "right": {
         "name": "OFFICE CF SPECIAL INVESTIGATIONS",
         "mentions": 2,
         "documentCount": 2
@@ -71142,6 +71350,22 @@
         "name": "Office of Special Investinations",
         "mentions": 2,
         "documentCount": 2
+      },
+      "similarity": 0.938,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "Office of Special Invostigations",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "right": {
+        "name": "Office of Spesial Investigations",
+        "mentions": 3,
+        "documentCount": 3
       },
       "similarity": 0.938,
       "reason": "similar name",
@@ -71859,6 +72083,22 @@
         "documentCount": 2
       },
       "right": {
+        "name": "Office of Special Invostigations",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.938,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "OFFICE OF SPECIAL INVESTIOATIONS",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "right": {
         "name": "OFFICE CF SPECIAL INVESTIGATIONS",
         "mentions": 2,
         "documentCount": 2
@@ -71924,6 +72164,22 @@
       },
       "right": {
         "name": "Office of Spefial Investigations",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.938,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "Office of Special Investigatione",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "right": {
+        "name": "Office of Special Invostigations",
         "mentions": 2,
         "documentCount": 2
       },
@@ -72004,6 +72260,22 @@
       },
       "right": {
         "name": "Office of Spefial Investigations",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.938,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "Office of Spocial Investigations",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "right": {
+        "name": "Office of Special Invostigations",
         "mentions": 2,
         "documentCount": 2
       },
@@ -72115,6 +72387,22 @@
         "documentCount": 2
       },
       "right": {
+        "name": "Office of Special Invostigations",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.938,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "Office of Special Inveatigations",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "right": {
         "name": "OFFICE CF SPECIAL INVESTIGATIONS",
         "mentions": 2,
         "documentCount": 2
@@ -72163,6 +72451,22 @@
         "documentCount": 2
       },
       "right": {
+        "name": "Office of Special Invostigations",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.938,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "OFFICE OF SPECIAL INYESTIGATIONS",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "right": {
         "name": "OFFICE CF SPECIAL INVESTIGATIONS",
         "mentions": 2,
         "documentCount": 2
@@ -72180,6 +72484,22 @@
       },
       "right": {
         "name": "Office of Special Investinations",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.938,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "Office of Spefial Investigations",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "right": {
+        "name": "Office of Special Invostigations",
         "mentions": 2,
         "documentCount": 2
       },
@@ -72223,6 +72543,38 @@
       "category": "government_agency",
       "left": {
         "name": "Office of Spefial Investigations",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "right": {
+        "name": "Office of Special Investinations",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.938,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "Office of Special Invostigations",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "right": {
+        "name": "OFFICE CF SPECIAL INVESTIGATIONS",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.938,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "Office of Special Invostigations",
         "mentions": 2,
         "documentCount": 2
       },
@@ -72479,8 +72831,8 @@
       "category": "government_agency",
       "left": {
         "name": "National Security Agency",
-        "mentions": 10546,
-        "documentCount": 3709
+        "mentions": 10547,
+        "documentCount": 3710
       },
       "right": {
         "name": "NatiOnal Secunty Agency's",
@@ -72527,8 +72879,8 @@
       "category": "organization",
       "left": {
         "name": "University of Minnesota",
-        "mentions": 404,
-        "documentCount": 277
+        "mentions": 405,
+        "documentCount": 278
       },
       "right": {
         "name": "University of Afinnesota",
@@ -72623,8 +72975,8 @@
       "category": "organization",
       "left": {
         "name": "University of Missouri",
-        "mentions": 112,
-        "documentCount": 91
+        "mentions": 114,
+        "documentCount": 92
       },
       "right": {
         "name": "University of Missouri St",
@@ -74207,8 +74559,8 @@
       "category": "government_agency",
       "left": {
         "name": "Federal Bureau of Investigation",
-        "mentions": 36598,
-        "documentCount": 9307
+        "mentions": 36609,
+        "documentCount": 9318
       },
       "right": {
         "name": "FEDERAL BUREAU OF IRVESTIGATIOR",
@@ -74223,8 +74575,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Fattorson Air Force Base",
@@ -74239,8 +74591,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Patterson Air Foros Base",
@@ -74255,8 +74607,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Pattercon Air Porce Base",
@@ -74271,8 +74623,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4663,
-        "documentCount": 3602
+        "mentions": 4669,
+        "documentCount": 3607
       },
       "right": {
         "name": "Wright-Patterson Air Porco Base",
@@ -74287,8 +74639,8 @@
       "category": "organization",
       "left": {
         "name": "Air Technical Intelligence Center",
-        "mentions": 1582,
-        "documentCount": 1349
+        "mentions": 1588,
+        "documentCount": 1355
       },
       "right": {
         "name": "Air Technical Intelligence Ce",
@@ -74335,8 +74687,8 @@
       "category": "organization",
       "left": {
         "name": "Air Intelligence Service Squadron",
-        "mentions": 279,
-        "documentCount": 240
+        "mentions": 281,
+        "documentCount": 242
       },
       "right": {
         "name": "Air Intelligence Service Sadn",
@@ -74524,6 +74876,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "Air Technical Intelligence Ce",
+        "mentions": 5,
+        "documentCount": 5
+      },
+      "right": {
+        "name": "Air Technical Intelligence Conter",
+        "mentions": 22,
+        "documentCount": 22
+      },
+      "similarity": 0.935,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "location",
       "left": {
         "name": "Wright-Patteraon Air Force Base",
@@ -74598,22 +74966,6 @@
         "name": "Wright-Pattergon Air Force Base",
         "mentions": 7,
         "documentCount": 7
-      },
-      "similarity": 0.935,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "Air Technical Intelligence Ce",
-        "mentions": 5,
-        "documentCount": 5
-      },
-      "right": {
-        "name": "Air Technical Intelligence Conter",
-        "mentions": 21,
-        "documentCount": 21
       },
       "similarity": 0.935,
       "reason": "similar name",
@@ -74748,6 +75100,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "Air Technical Intelligence Conter",
+        "mentions": 22,
+        "documentCount": 22
+      },
+      "right": {
+        "name": "Air Technical Intelligence Co",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.935,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "location",
       "left": {
         "name": "Wright-Fatterson Air Force Base",
@@ -74822,22 +75190,6 @@
         "name": "Research & Engineering Division",
         "mentions": 18,
         "documentCount": 4
-      },
-      "similarity": 0.935,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "Air Technical Intelligence Conter",
-        "mentions": 21,
-        "documentCount": 21
-      },
-      "right": {
-        "name": "Air Technical Intelligence Co",
-        "mentions": 2,
-        "documentCount": 2
       },
       "similarity": 0.935,
       "reason": "similar name",
@@ -83343,8 +83695,8 @@
       "category": "government_agency",
       "left": {
         "name": "Federal Bureau of Investigation",
-        "mentions": 36598,
-        "documentCount": 9307
+        "mentions": 36609,
+        "documentCount": 9318
       },
       "right": {
         "name": "FEDERAL BUREAU OF INVESTIGATE",
@@ -83375,8 +83727,8 @@
       "category": "organization",
       "left": {
         "name": "University of California",
-        "mentions": 4506,
-        "documentCount": 1291
+        "mentions": 4507,
+        "documentCount": 1292
       },
       "right": {
         "name": "University of Califor",
@@ -83391,8 +83743,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4152,
-        "documentCount": 1777
+        "mentions": 4153,
+        "documentCount": 1778
       },
       "right": {
         "name": "George Adamskiin",
@@ -83407,8 +83759,8 @@
       "category": "book",
       "left": {
         "name": "Flying Saucers",
-        "mentions": 2062,
-        "documentCount": 1211
+        "mentions": 2063,
+        "documentCount": 1212
       },
       "right": {
         "name": "Flying Saucerers",
@@ -83503,8 +83855,8 @@
       "category": "location",
       "left": {
         "name": "Holloman Air Force Base",
-        "mentions": 1095,
-        "documentCount": 678
+        "mentions": 1097,
+        "documentCount": 679
       },
       "right": {
         "name": "Hallman Air Force Base",
@@ -83887,8 +84239,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Division",
-        "mentions": 518,
-        "documentCount": 433
+        "mentions": 522,
+        "documentCount": 437
       },
       "right": {
         "name": "THE INTELLIGENCE DIVISION ON",
@@ -83919,8 +84271,8 @@
       "category": "organization",
       "left": {
         "name": "University of Washington",
-        "mentions": 462,
-        "documentCount": 334
+        "mentions": 463,
+        "documentCount": 335
       },
       "right": {
         "name": "University of Washing",
@@ -83935,8 +84287,8 @@
       "category": "organization",
       "left": {
         "name": "University of Minnesota",
-        "mentions": 404,
-        "documentCount": 277
+        "mentions": 405,
+        "documentCount": 278
       },
       "right": {
         "name": "University of Mimesota",
@@ -84862,14 +85214,14 @@
     {
       "category": "location",
       "left": {
-        "name": "Andrews AF Base",
-        "mentions": 65,
-        "documentCount": 62
+        "name": "Mitohell Air Force Base",
+        "mentions": 2,
+        "documentCount": 2
       },
       "right": {
-        "name": "Andrews AP Base",
-        "mentions": 6,
-        "documentCount": 6
+        "name": "Mitchel Air Force Base",
+        "mentions": 69,
+        "documentCount": 57
       },
       "similarity": 0.933,
       "reason": "similar name",
@@ -84878,14 +85230,14 @@
     {
       "category": "location",
       "left": {
-        "name": "Mitohell Air Force Base",
-        "mentions": 2,
-        "documentCount": 2
+        "name": "Andrews AF Base",
+        "mentions": 65,
+        "documentCount": 62
       },
       "right": {
-        "name": "Mitchel Air Force Base",
-        "mentions": 66,
-        "documentCount": 55
+        "name": "Andrews AP Base",
+        "mentions": 6,
+        "documentCount": 6
       },
       "similarity": 0.933,
       "reason": "similar name",
@@ -85102,6 +85454,22 @@
     {
       "category": "organization",
       "left": {
+        "name": "Deputy for Intelligence",
+        "mentions": 52,
+        "documentCount": 48
+      },
+      "right": {
+        "name": "Deputy of Intelligence",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.933,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "organization",
+      "left": {
         "name": "University Park",
         "mentions": 52,
         "documentCount": 30
@@ -85142,22 +85510,6 @@
         "name": "Department of Notional Defence",
         "mentions": 22,
         "documentCount": 7
-      },
-      "similarity": 0.933,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "Deputy for Intelligence",
-        "mentions": 51,
-        "documentCount": 47
-      },
-      "right": {
-        "name": "Deputy of Intelligence",
-        "mentions": 2,
-        "documentCount": 2
       },
       "similarity": 0.933,
       "reason": "similar name",
@@ -92079,8 +92431,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "Directorate of Air Intelligence",
@@ -92095,8 +92447,8 @@
       "category": "location",
       "left": {
         "name": "COUNTRY OR AREA REPORT CONCERNS",
-        "mentions": 111,
-        "documentCount": 111
+        "mentions": 115,
+        "documentCount": 115
       },
       "right": {
         "name": "COUNTRY OR AREA REPORT CONC",
@@ -92703,8 +93055,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of the Air",
-        "mentions": 1183,
-        "documentCount": 719
+        "mentions": 1186,
+        "documentCount": 721
       },
       "right": {
         "name": "Department of the Army",
@@ -92719,8 +93071,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of the Air",
-        "mentions": 1183,
-        "documentCount": 719
+        "mentions": 1186,
+        "documentCount": 721
       },
       "right": {
         "name": "The Department of the Armr",
@@ -92735,8 +93087,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of the Air",
-        "mentions": 1183,
-        "documentCount": 719
+        "mentions": 1186,
+        "documentCount": 721
       },
       "right": {
         "name": "Department of the Aray",
@@ -92799,8 +93151,8 @@
       "category": "location",
       "left": {
         "name": "MacDill Air Force Base",
-        "mentions": 458,
-        "documentCount": 324
+        "mentions": 460,
+        "documentCount": 326
       },
       "right": {
         "name": "MoDill Air Force Base",
@@ -92831,8 +93183,8 @@
       "category": "organization",
       "left": {
         "name": "University of Minnesota",
-        "mentions": 404,
-        "documentCount": 277
+        "mentions": 405,
+        "documentCount": 278
       },
       "right": {
         "name": "University Minnesota",
@@ -92879,8 +93231,8 @@
       "category": "organization",
       "left": {
         "name": "Space Administration",
-        "mentions": 346,
-        "documentCount": 297
+        "mentions": 347,
+        "documentCount": 298
       },
       "right": {
         "name": "Space Administration Nl",
@@ -93932,6 +94284,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "COMDR AIR TECHNICAL INTELLIGENCE CTR WRIGHT",
+        "mentions": 6,
+        "documentCount": 5
+      },
+      "right": {
+        "name": "COMDR AIR TECHNIRAL INTELLIGENCE CEN WRIGHT",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.93,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "government_agency",
       "left": {
         "name": "The Department of the Armr",
@@ -94943,8 +95311,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4152,
-        "documentCount": 1777
+        "mentions": 4153,
+        "documentCount": 1778
       },
       "right": {
         "name": "George Adamsky",
@@ -94959,8 +95327,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4152,
-        "documentCount": 1777
+        "mentions": 4153,
+        "documentCount": 1778
       },
       "right": {
         "name": "George Adamskl",
@@ -94975,8 +95343,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4152,
-        "documentCount": 1777
+        "mentions": 4153,
+        "documentCount": 1778
       },
       "right": {
         "name": "George Adamaki",
@@ -94991,8 +95359,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4152,
-        "documentCount": 1777
+        "mentions": 4153,
+        "documentCount": 1778
       },
       "right": {
         "name": "George Adomski",
@@ -95007,8 +95375,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4152,
-        "documentCount": 1777
+        "mentions": 4153,
+        "documentCount": 1778
       },
       "right": {
         "name": "George Adnmski",
@@ -95023,8 +95391,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4152,
-        "documentCount": 1777
+        "mentions": 4153,
+        "documentCount": 1778
       },
       "right": {
         "name": "George Adamskj",
@@ -95247,8 +95615,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1691,
-        "documentCount": 1351
+        "mentions": 1692,
+        "documentCount": 1352
       },
       "right": {
         "name": "Foreign Technologies Division",
@@ -95295,8 +95663,8 @@
       "category": "government_agency",
       "left": {
         "name": "Weather Bureau",
-        "mentions": 953,
-        "documentCount": 778
+        "mentions": 957,
+        "documentCount": 782
       },
       "right": {
         "name": "Westher Bureau",
@@ -95311,8 +95679,8 @@
       "category": "government_agency",
       "left": {
         "name": "Weather Bureau",
-        "mentions": 953,
-        "documentCount": 778
+        "mentions": 957,
+        "documentCount": 782
       },
       "right": {
         "name": "Weatner Bureau",
@@ -95343,8 +95711,8 @@
       "category": "program",
       "left": {
         "name": "Project Grudge",
-        "mentions": 872,
-        "documentCount": 449
+        "mentions": 873,
+        "documentCount": 450
       },
       "right": {
         "name": "Project Grunge",
@@ -95359,8 +95727,8 @@
       "category": "program",
       "left": {
         "name": "Project Grudge",
-        "mentions": 872,
-        "documentCount": 449
+        "mentions": 873,
+        "documentCount": 450
       },
       "right": {
         "name": "Project Crudge",
@@ -95375,8 +95743,8 @@
       "category": "program",
       "left": {
         "name": "Project Grudge",
-        "mentions": 872,
-        "documentCount": 449
+        "mentions": 873,
+        "documentCount": 450
       },
       "right": {
         "name": "Project Grudre",
@@ -95391,8 +95759,8 @@
       "category": "location",
       "left": {
         "name": "Lake Michigan",
-        "mentions": 827,
-        "documentCount": 494
+        "mentions": 828,
+        "documentCount": 495
       },
       "right": {
         "name": "Lake Michigan--J",
@@ -96463,8 +96831,8 @@
       "category": "government_agency",
       "left": {
         "name": "United States Weather Bureau",
-        "mentions": 78,
-        "documentCount": 67
+        "mentions": 79,
+        "documentCount": 68
       },
       "right": {
         "name": "United States Yeathor Bureau",
@@ -96956,6 +97324,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "Louisiana State University",
+        "mentions": 52,
+        "documentCount": 49
+      },
+      "right": {
+        "name": "Louisiana State University LSU",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.929,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "person",
       "left": {
         "name": "Major Donald Keyhole",
@@ -97004,22 +97388,6 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
-      "category": "organization",
-      "left": {
-        "name": "Louisiana State University",
-        "mentions": 51,
-        "documentCount": 48
-      },
-      "right": {
-        "name": "Louisiana State University LSU",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.929,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
       "category": "program",
       "left": {
         "name": "Project Recover",
@@ -97038,14 +97406,14 @@
     {
       "category": "person",
       "left": {
-        "name": "Robert Waggoner",
-        "mentions": 31,
-        "documentCount": 9
+        "name": "Edward Harrison",
+        "mentions": 11,
+        "documentCount": 10
       },
       "right": {
-        "name": "Robert Wagner",
-        "mentions": 21,
-        "documentCount": 18
+        "name": "Edward Harris",
+        "mentions": 41,
+        "documentCount": 28
       },
       "similarity": 0.929,
       "reason": "similar name",
@@ -97054,14 +97422,14 @@
     {
       "category": "person",
       "left": {
-        "name": "Edward Harrison",
-        "mentions": 10,
+        "name": "Robert Waggoner",
+        "mentions": 31,
         "documentCount": 9
       },
       "right": {
-        "name": "Edward Harris",
-        "mentions": 41,
-        "documentCount": 28
+        "name": "Robert Wagner",
+        "mentions": 21,
+        "documentCount": 18
       },
       "similarity": 0.929,
       "reason": "similar name",
@@ -99955,6 +100323,22 @@
         "documentCount": 9
       },
       "right": {
+        "name": "Unitad States Weather Bureau",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.929,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "United States Meather Bureau",
+        "mentions": 9,
+        "documentCount": 9
+      },
+      "right": {
         "name": "United States Yeathor Bureau",
         "mentions": 2,
         "documentCount": 2
@@ -101267,6 +101651,22 @@
         "documentCount": 4
       },
       "right": {
+        "name": "Unitad States Weather Bureau",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.929,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "United States Feather Bureau",
+        "mentions": 4,
+        "documentCount": 4
+      },
+      "right": {
         "name": "United States Yeathor Bureau",
         "mentions": 2,
         "documentCount": 2
@@ -101902,6 +102302,22 @@
     {
       "category": "government_agency",
       "left": {
+        "name": "United States Yeather Bureau",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "right": {
+        "name": "Unitad States Weather Bureau",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.929,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
         "name": "Federal Bureau of Investig",
         "mentions": 3,
         "documentCount": 3
@@ -102340,6 +102756,22 @@
       },
       "right": {
         "name": "Department of National Defenr",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.929,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "United States Waather Bureau",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "right": {
+        "name": "Unitad States Weather Bureau",
         "mentions": 2,
         "documentCount": 2
       },
@@ -103103,8 +103535,8 @@
       "category": "organization",
       "left": {
         "name": "University of Colorado",
-        "mentions": 2260,
-        "documentCount": 1214
+        "mentions": 2272,
+        "documentCount": 1217
       },
       "right": {
         "name": "University of Color",
@@ -103119,8 +103551,8 @@
       "category": "organization",
       "left": {
         "name": "University of Colorado",
-        "mentions": 2260,
-        "documentCount": 1214
+        "mentions": 2272,
+        "documentCount": 1217
       },
       "right": {
         "name": "University Colorado",
@@ -103135,13 +103567,29 @@
       "category": "government_agency",
       "left": {
         "name": "Department of the Air",
-        "mentions": 1183,
-        "documentCount": 719
+        "mentions": 1186,
+        "documentCount": 721
       },
       "right": {
         "name": "DEPARTMENT OF THE AL",
         "mentions": 8,
         "documentCount": 7
+      },
+      "similarity": 0.927,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "Department of the Air",
+        "mentions": 1186,
+        "documentCount": 721
+      },
+      "right": {
+        "name": "Department of the In",
+        "mentions": 4,
+        "documentCount": 4
       },
       "similarity": 0.927,
       "reason": "similar name",
@@ -103158,22 +103606,6 @@
         "name": "Intelligence Commun",
         "mentions": 4,
         "documentCount": 2
-      },
-      "similarity": 0.927,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "government_agency",
-      "left": {
-        "name": "Department of the Air",
-        "mentions": 1183,
-        "documentCount": 719
-      },
-      "right": {
-        "name": "Department of the In",
-        "mentions": 4,
-        "documentCount": 4
       },
       "similarity": 0.927,
       "reason": "similar name",
@@ -103215,8 +103647,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of Commerce",
-        "mentions": 652,
-        "documentCount": 327
+        "mentions": 653,
+        "documentCount": 328
       },
       "right": {
         "name": "DEPARTMENT OF COMME",
@@ -103247,8 +103679,8 @@
       "category": "location",
       "left": {
         "name": "Hill Air Force Base",
-        "mentions": 605,
-        "documentCount": 270
+        "mentions": 606,
+        "documentCount": 271
       },
       "right": {
         "name": "HacDill Air Force Base",
@@ -103359,8 +103791,8 @@
       "category": "location",
       "left": {
         "name": "Offutt Air Force Base",
-        "mentions": 147,
-        "documentCount": 132
+        "mentions": 148,
+        "documentCount": 133
       },
       "right": {
         "name": "Offit Air Force Base",
@@ -103439,13 +103871,29 @@
       "category": "organization",
       "left": {
         "name": "University of North",
-        "mentions": 69,
-        "documentCount": 59
+        "mentions": 70,
+        "documentCount": 60
       },
       "right": {
         "name": "University of Northern",
         "mentions": 12,
         "documentCount": 11
+      },
+      "similarity": 0.927,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "organization",
+      "left": {
+        "name": "University of North",
+        "mentions": 70,
+        "documentCount": 60
+      },
+      "right": {
+        "name": "University of North Da",
+        "mentions": 2,
+        "documentCount": 2
       },
       "similarity": 0.927,
       "reason": "similar name",
@@ -103460,22 +103908,6 @@
       },
       "right": {
         "name": "Saybrook University Dr",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.927,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "University of North",
-        "mentions": 69,
-        "documentCount": 59
-      },
-      "right": {
-        "name": "University of North Da",
         "mentions": 2,
         "documentCount": 2
       },
@@ -104499,6 +104931,22 @@
         "documentCount": 3
       },
       "right": {
+        "name": "LORRY AIR FORCE BASE",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.927,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "location",
+      "left": {
+        "name": "Lowery Air Force Base",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "right": {
         "name": "Lover Air Force Base",
         "mentions": 2,
         "documentCount": 2
@@ -104895,8 +105343,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1691,
-        "documentCount": 1351
+        "mentions": 1692,
+        "documentCount": 1352
       },
       "right": {
         "name": "FOREIGH TECHHOLOGY DIVISION",
@@ -104911,8 +105359,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1691,
-        "documentCount": 1351
+        "mentions": 1692,
+        "documentCount": 1352
       },
       "right": {
         "name": "FORLIGH TECHNOLOGY DIVISION",
@@ -104959,8 +105407,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "Directorate of Intelllgenee",
@@ -104975,8 +105423,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "Directorate of Intelliscnce",
@@ -104991,8 +105439,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "Directorate of Jntelligenae",
@@ -105007,8 +105455,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "Directorate of Intelligenos",
@@ -105326,6 +105774,22 @@
     {
       "category": "organization",
       "left": {
+        "name": "Intelligence Requirements",
+        "mentions": 18,
+        "documentCount": 18
+      },
+      "right": {
+        "name": "Intelligence Requirements Div",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "similarity": 0.926,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "organization",
+      "left": {
         "name": "Foriegn Technology Division",
         "mentions": 2,
         "documentCount": 2
@@ -105382,22 +105846,6 @@
         "name": "Army Research & Development",
         "mentions": 2,
         "documentCount": 2
-      },
-      "similarity": 0.926,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "Intelligence Requirements",
-        "mentions": 17,
-        "documentCount": 17
-      },
-      "right": {
-        "name": "Intelligence Requirements Div",
-        "mentions": 3,
-        "documentCount": 3
       },
       "similarity": 0.926,
       "reason": "similar name",
@@ -106748,6 +107196,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "location",
+      "left": {
+        "name": "NO THUNDER STORMS IN AREA",
+        "mentions": 4,
+        "documentCount": 4
+      },
+      "right": {
+        "name": "NO THUNDER STORMS IN THE AREA",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.926,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "organization",
       "left": {
         "name": "Flvfs Foundation Newsletter",
@@ -107140,22 +107604,6 @@
       },
       "right": {
         "name": "Contral Intelligence Agency",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.926,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "location",
-      "left": {
-        "name": "NO THUNDER STORMS IN AREA",
-        "mentions": 3,
-        "documentCount": 3
-      },
-      "right": {
-        "name": "NO THUNDER STORMS IN THE AREA",
         "mentions": 2,
         "documentCount": 2
       },
@@ -107903,8 +108351,8 @@
       "category": "organization",
       "left": {
         "name": "American Institute of Aeronautics and Astronautics",
-        "mentions": 180,
-        "documentCount": 127
+        "mentions": 181,
+        "documentCount": 128
       },
       "right": {
         "name": "American Institute of Aeronautics and Astro",
@@ -107919,8 +108367,8 @@
       "category": "location",
       "left": {
         "name": "COUNTRY OR AREA REPORT CONCERNS",
-        "mentions": 111,
-        "documentCount": 111
+        "mentions": 115,
+        "documentCount": 115
       },
       "right": {
         "name": "COUNTRY OR AREA REPORT CONCERNS DATE",
@@ -108287,8 +108735,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of Defense",
-        "mentions": 12117,
-        "documentCount": 4451
+        "mentions": 12120,
+        "documentCount": 4454
       },
       "right": {
         "name": "Department of Defe",
@@ -108303,8 +108751,8 @@
       "category": "person",
       "left": {
         "name": "Kenneth Arnold",
-        "mentions": 6007,
-        "documentCount": 2176
+        "mentions": 6008,
+        "documentCount": 2177
       },
       "right": {
         "name": "Kenneth Arno",
@@ -108319,8 +108767,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4152,
-        "documentCount": 1777
+        "mentions": 4153,
+        "documentCount": 1778
       },
       "right": {
         "name": "George Adams",
@@ -108543,8 +108991,8 @@
       "category": "location",
       "left": {
         "name": "Rhode Island",
-        "mentions": 1363,
-        "documentCount": 811
+        "mentions": 1364,
+        "documentCount": 812
       },
       "right": {
         "name": "Rhode Island--J",
@@ -108575,8 +109023,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Center",
-        "mentions": 1292,
-        "documentCount": 949
+        "mentions": 1295,
+        "documentCount": 952
       },
       "right": {
         "name": "Intelligence Cf'nter",
@@ -108591,8 +109039,8 @@
       "category": "organization",
       "left": {
         "name": "National Investigations Committee",
-        "mentions": 1222,
-        "documentCount": 645
+        "mentions": 1223,
+        "documentCount": 646
       },
       "right": {
         "name": "National Investigative Committee",
@@ -108607,8 +109055,8 @@
       "category": "organization",
       "left": {
         "name": "National Investigations Committee",
-        "mentions": 1222,
-        "documentCount": 645
+        "mentions": 1223,
+        "documentCount": 646
       },
       "right": {
         "name": "Natural Investigations Committee",
@@ -108639,8 +109087,8 @@
       "category": "organization",
       "left": {
         "name": "Harvard University",
-        "mentions": 1108,
-        "documentCount": 741
+        "mentions": 1109,
+        "documentCount": 742
       },
       "right": {
         "name": "Harvard University CO",
@@ -108671,8 +109119,8 @@
       "category": "program",
       "left": {
         "name": "Project Sign",
-        "mentions": 1023,
-        "documentCount": 446
+        "mentions": 1025,
+        "documentCount": 447
       },
       "right": {
         "name": "Project Signed",
@@ -108783,8 +109231,8 @@
       "category": "program",
       "left": {
         "name": "Project Grudge",
-        "mentions": 872,
-        "documentCount": 449
+        "mentions": 873,
+        "documentCount": 450
       },
       "right": {
         "name": "Project Grud",
@@ -108799,8 +109247,8 @@
       "category": "location",
       "left": {
         "name": "Lake Michigan",
-        "mentions": 827,
-        "documentCount": 494
+        "mentions": 828,
+        "documentCount": 495
       },
       "right": {
         "name": "Lake Hichigan",
@@ -108815,8 +109263,8 @@
       "category": "organization",
       "left": {
         "name": "Directorate of Intelligence",
-        "mentions": 719,
-        "documentCount": 454
+        "mentions": 725,
+        "documentCount": 460
       },
       "right": {
         "name": "Directorate of Intelllgen",
@@ -109535,8 +109983,8 @@
       "category": "person",
       "left": {
         "name": "Thomas Mantell",
-        "mentions": 228,
-        "documentCount": 173
+        "mentions": 230,
+        "documentCount": 174
       },
       "right": {
         "name": "Thomas Mante",
@@ -110239,8 +110687,8 @@
       "category": "location",
       "left": {
         "name": "March Air Force Base",
-        "mentions": 124,
-        "documentCount": 97
+        "mentions": 125,
+        "documentCount": 98
       },
       "right": {
         "name": "Mark Air Force Base",
@@ -110751,8 +111199,8 @@
       "category": "organization",
       "left": {
         "name": "Phillips Laboratory",
-        "mentions": 83,
-        "documentCount": 43
+        "mentions": 84,
+        "documentCount": 44
       },
       "right": {
         "name": "Philippus Laboratory",
@@ -111036,6 +111484,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "University of North Dakota",
+        "mentions": 61,
+        "documentCount": 44
+      },
+      "right": {
+        "name": "University of South Dakota",
+        "mentions": 7,
+        "documentCount": 7
+      },
+      "similarity": 0.923,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "person",
       "left": {
         "name": "David Duchovny",
@@ -111094,6 +111558,22 @@
         "name": "George Adamskl",
         "mentions": 13,
         "documentCount": 11
+      },
+      "similarity": 0.923,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "location",
+      "left": {
+        "name": "AREA AT TIME OF SIGHTING",
+        "mentions": 64,
+        "documentCount": 63
+      },
+      "right": {
+        "name": "AREA AT THE TIME OF SIGHTING",
+        "mentions": 2,
+        "documentCount": 2
       },
       "similarity": 0.923,
       "reason": "similar name",
@@ -111164,22 +111644,6 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
-      "category": "location",
-      "left": {
-        "name": "AREA AT TIME OF SIGHTING",
-        "mentions": 63,
-        "documentCount": 62
-      },
-      "right": {
-        "name": "AREA AT THE TIME OF SIGHTING",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.923,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
       "category": "person",
       "left": {
         "name": "Michael Saleh",
@@ -111206,22 +111670,6 @@
         "name": "Marlon County",
         "mentions": 2,
         "documentCount": 2
-      },
-      "similarity": 0.923,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "University of North Dakota",
-        "mentions": 56,
-        "documentCount": 43
-      },
-      "right": {
-        "name": "University of South Dakota",
-        "mentions": 7,
-        "documentCount": 7
       },
       "similarity": 0.923,
       "reason": "similar name",
@@ -112348,6 +112796,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "government_agency",
+      "left": {
+        "name": "Ordnanco Navy",
+        "mentions": 5,
+        "documentCount": 5
+      },
+      "right": {
+        "name": "Ordnance Navy",
+        "mentions": 31,
+        "documentCount": 31
+      },
+      "similarity": 0.923,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "location",
       "left": {
         "name": "AIRPORT GROUND EMERGENCY",
@@ -112438,22 +112902,6 @@
         "name": "Pinal County Chapter",
         "mentions": 13,
         "documentCount": 13
-      },
-      "similarity": 0.923,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "government_agency",
-      "left": {
-        "name": "Ordnanco Navy",
-        "mentions": 5,
-        "documentCount": 5
-      },
-      "right": {
-        "name": "Ordnance Navy",
-        "mentions": 30,
-        "documentCount": 30
       },
       "similarity": 0.923,
       "reason": "similar name",
@@ -112556,6 +113004,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "government_agency",
+      "left": {
+        "name": "Ordnaneo Navy",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "right": {
+        "name": "Ordnance Navy",
+        "mentions": 31,
+        "documentCount": 31
+      },
+      "similarity": 0.923,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "person",
       "left": {
         "name": "Charles Townes",
@@ -112638,14 +113102,14 @@
     {
       "category": "government_agency",
       "left": {
-        "name": "Ordnaneo Navy",
-        "mentions": 3,
-        "documentCount": 3
+        "name": "Ordnance Navy",
+        "mentions": 31,
+        "documentCount": 31
       },
       "right": {
-        "name": "Ordnance Navy",
-        "mentions": 30,
-        "documentCount": 30
+        "name": "Oranance Navy",
+        "mentions": 2,
+        "documentCount": 2
       },
       "similarity": 0.923,
       "reason": "similar name",
@@ -112790,22 +113254,6 @@
         "name": "University of Essex",
         "mentions": 3,
         "documentCount": 3
-      },
-      "similarity": 0.923,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "government_agency",
-      "left": {
-        "name": "Ordnance Navy",
-        "mentions": 30,
-        "documentCount": 30
-      },
-      "right": {
-        "name": "Oranance Navy",
-        "mentions": 2,
-        "documentCount": 2
       },
       "similarity": 0.923,
       "reason": "similar name",
@@ -114492,6 +114940,22 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "ATTN INTELLIGENCE OFFICER",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "right": {
+        "name": "Acting Intelligence Officer",
+        "mentions": 15,
+        "documentCount": 15
+      },
+      "similarity": 0.923,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "location",
       "left": {
         "name": "Camino Island",
@@ -114742,22 +115206,6 @@
         "name": "Assistant Wing Intelligence Officer",
         "mentions": 11,
         "documentCount": 11
-      },
-      "similarity": 0.923,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "organization",
-      "left": {
-        "name": "ATTN INTELLIGENCE OFFICER",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "right": {
-        "name": "Acting Intelligence Officer",
-        "mentions": 14,
-        "documentCount": 14
       },
       "similarity": 0.923,
       "reason": "similar name",
@@ -117326,6 +117774,22 @@
     {
       "category": "person",
       "left": {
+        "name": "Eric Kodaware",
+        "mentions": 6,
+        "documentCount": 6
+      },
+      "right": {
+        "name": "Eric Kodawara",
+        "mentions": 4,
+        "documentCount": 4
+      },
+      "similarity": 0.923,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "person",
+      "left": {
         "name": "Thomas Thomas",
         "mentions": 7,
         "documentCount": 7
@@ -118326,22 +118790,6 @@
         "name": "Professor Charles Meany",
         "mentions": 4,
         "documentCount": 4
-      },
-      "similarity": 0.923,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "person",
-      "left": {
-        "name": "Eric Kodaware",
-        "mentions": 5,
-        "documentCount": 5
-      },
-      "right": {
-        "name": "Eric Kodawara",
-        "mentions": 3,
-        "documentCount": 3
       },
       "similarity": 0.923,
       "reason": "similar name",
@@ -119644,6 +120092,38 @@
       "aliasFile": "data/entity_aliases.json"
     },
     {
+      "category": "organization",
+      "left": {
+        "name": "Ting Intelligence Officer",
+        "mentions": 4,
+        "documentCount": 4
+      },
+      "right": {
+        "name": "TIONAL INTELLIGENCE OFFICER",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.923,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "GOVERAMENT PRINTING OFFICE",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "right": {
+        "name": "GOVERNNENT PRINTING OFFICE",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "similarity": 0.923,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
       "category": "government_agency",
       "left": {
         "name": "Department of Geosciences",
@@ -120335,13 +120815,45 @@
       "category": "government_agency",
       "left": {
         "name": "GOVERAMENT PRINTING OFFICE",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "right": {
+        "name": "Governmant Printing Office",
         "mentions": 2,
         "documentCount": 2
       },
-      "right": {
-        "name": "GOVERNNENT PRINTING OFFICE",
+      "similarity": 0.923,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "GOVERAMENT PRINTING OFFICE",
         "mentions": 3,
         "documentCount": 3
+      },
+      "right": {
+        "name": "GOVENNMENT PRINTING OFFICE",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.923,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "government_agency",
+      "left": {
+        "name": "GOVERAMENT PRINTING OFFICE",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "right": {
+        "name": "GOVERNMENY PRINTING OFFICE",
+        "mentions": 2,
+        "documentCount": 2
       },
       "similarity": 0.923,
       "reason": "similar name",
@@ -121198,54 +121710,6 @@
     {
       "category": "government_agency",
       "left": {
-        "name": "GOVERAMENT PRINTING OFFICE",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "right": {
-        "name": "Governmant Printing Office",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.923,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "government_agency",
-      "left": {
-        "name": "GOVERAMENT PRINTING OFFICE",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "right": {
-        "name": "GOVENNMENT PRINTING OFFICE",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.923,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "government_agency",
-      "left": {
-        "name": "GOVERAMENT PRINTING OFFICE",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "right": {
-        "name": "GOVERNMENY PRINTING OFFICE",
-        "mentions": 2,
-        "documentCount": 2
-      },
-      "similarity": 0.923,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "government_agency",
-      "left": {
         "name": "Governmant Printing Office",
         "mentions": 2,
         "documentCount": 2
@@ -121428,8 +121892,8 @@
       },
       "right": {
         "name": "Air Technical Intelligence Conter",
-        "mentions": 21,
-        "documentCount": 21
+        "mentions": 22,
+        "documentCount": 22
       },
       "similarity": 0.921,
       "reason": "similar name",
@@ -121934,6 +122398,22 @@
     {
       "category": "organization",
       "left": {
+        "name": "CONDR AIR TECHNICAL INTELLIGENCE CENTEJ WRIGHT",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "right": {
+        "name": "COMDR AIR TECHNIRAL INTELLIGENCE CEN WRIGHT",
+        "mentions": 2,
+        "documentCount": 2
+      },
+      "similarity": 0.921,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "organization",
+      "left": {
         "name": "Head of the Teaching Division",
         "mentions": 2,
         "documentCount": 2
@@ -122148,8 +122628,8 @@
       },
       "right": {
         "name": "Acting Intelligence Officer",
-        "mentions": 14,
-        "documentCount": 14
+        "mentions": 15,
+        "documentCount": 15
       },
       "similarity": 0.92,
       "reason": "similar name",
@@ -124212,8 +124692,8 @@
       },
       "right": {
         "name": "Ronald Leo Sprinkle",
-        "mentions": 4,
-        "documentCount": 4
+        "mentions": 5,
+        "documentCount": 5
       },
       "similarity": 0.905,
       "reason": "similar person name",
@@ -125870,14 +126350,14 @@
     {
       "category": "person",
       "left": {
-        "name": "Stephen Novella",
-        "mentions": 4,
-        "documentCount": 4
+        "name": "Edward Harrison",
+        "mentions": 11,
+        "documentCount": 10
       },
       "right": {
-        "name": "Steven Novella",
-        "mentions": 11,
-        "documentCount": 8
+        "name": "Edgar Harrison",
+        "mentions": 4,
+        "documentCount": 4
       },
       "similarity": 0.897,
       "reason": "similar person name",
@@ -125886,14 +126366,14 @@
     {
       "category": "person",
       "left": {
-        "name": "Edward Harrison",
-        "mentions": 10,
-        "documentCount": 9
-      },
-      "right": {
-        "name": "Edgar Harrison",
+        "name": "Stephen Novella",
         "mentions": 4,
         "documentCount": 4
+      },
+      "right": {
+        "name": "Steven Novella",
+        "mentions": 11,
+        "documentCount": 8
       },
       "similarity": 0.897,
       "reason": "similar person name",
@@ -133118,6 +133598,22 @@
     {
       "category": "person",
       "left": {
+        "name": "General Medical Evaluation",
+        "mentions": 4,
+        "documentCount": 2
+      },
+      "right": {
+        "name": "General Medicine Evaluation",
+        "mentions": 3,
+        "documentCount": 3
+      },
+      "similarity": 0.865,
+      "reason": "similar person name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "person",
+      "left": {
         "name": "George Knapp George Knapp",
         "mentions": 9,
         "documentCount": 9
@@ -133183,8 +133679,8 @@
       "category": "government_agency",
       "left": {
         "name": "NASA",
-        "mentions": 245608,
-        "documentCount": 31772
+        "mentions": 245616,
+        "documentCount": 31778
       },
       "right": {
         "name": "North American Space Agency",
@@ -133199,8 +133695,8 @@
       "category": "government_agency",
       "left": {
         "name": "NASA",
-        "mentions": 245608,
-        "documentCount": 31772
+        "mentions": 245616,
+        "documentCount": 31778
       },
       "right": {
         "name": "National Aeronautics & Space Agency",
@@ -133247,8 +133743,8 @@
       "category": "government_agency",
       "left": {
         "name": "NASA",
-        "mentions": 245608,
-        "documentCount": 31772
+        "mentions": 245616,
+        "documentCount": 31778
       },
       "right": {
         "name": "National Aeronautics and Space Agency",
