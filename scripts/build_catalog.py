@@ -31,11 +31,13 @@ from typing import Iterable
 
 try:
     from .field_observations import load_field_observations
+    from .sighting_angles import reported_angles
     from .extraction_runtime import extraction_fingerprint, iter_extracted_documents
     from .time_mentions import time_observations_for_segment
     from .topic_mentions import TOPICS, topic_observations_for_segment, write_topic_catalogs
 except ImportError:
     from field_observations import load_field_observations
+    from sighting_angles import reported_angles
     from extraction_runtime import extraction_fingerprint, iter_extracted_documents
     from time_mentions import time_observations_for_segment
     from topic_mentions import TOPICS, topic_observations_for_segment, write_topic_catalogs
@@ -3949,6 +3951,7 @@ def build(
     astronomy_candidates: list[dict] = []
     signal_observations: list[dict] = []
     blood_type_observations: list[dict] = []
+    sighting_angles = []
     clock_observations: list[dict] = []
     topic_observations = {topic: [] for topic in TOPICS}
     epistemic_qualifiers_by_segment: dict[str, list[dict]] = {}
@@ -4092,6 +4095,8 @@ def build(
         for number, segment in enumerate(segments):
             sid = f"{doc_id}:{segment_ids[number]}" if segment_ids else f"{doc_id}:{number}"
             signal_segment = segment_ids[number] if segment_ids else number
+            for angle in reported_angles(segment):
+                sighting_angles.append(dict(angle, documentId=doc_id, source=source, segment=signal_segment, path=relative))
             evidence = extracted["evidence"][number]
             detected_qualifiers = evidence["qualifiers"]
             if detected_qualifiers:
@@ -4449,6 +4454,7 @@ def build(
             "unknownSourceFamilies": sum(1 for family in source_families if family["status"] == "unknown"),
         },
         "fieldObservations": field_observations,
+        "sightingAngles": {"observations": sighting_angles},
         "sources": sources,
         "documents": documents,
         "sourceFamilies": source_families,
@@ -4696,7 +4702,7 @@ def write_catalog_section_shards(catalog: dict, data_dir: Path,
     shard_dir.mkdir(parents=True, exist_ok=True)
     published = dict(catalog)
     manifest, expected = [], set()
-    for section in ("coverage", "astronomy", "craft", "species", "signals", "bloodTypes", "fieldObservations"):
+    for section in ("coverage", "astronomy", "craft", "species", "signals", "bloodTypes", "fieldObservations", "sightingAngles"):
         original = catalog.get(section)
         if not isinstance(original, dict):
             continue

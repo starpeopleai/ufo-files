@@ -298,6 +298,7 @@ const TYPES = [
   { id: "species", label: "Species", scope: "ET names in corpus", icon: "<circle cx='15.5' cy='8' r='5'/><path d='M8 18c1-5 4-7 7.5-7s6.5 2 7.5 7M13 7h1m3 0h1M4 4h4m15 0h4M3 15h4m17 0h4'/>" },
   { id: "drugs", label: "Drugs", scope: "Substances in corpus", icon: "<path d='M9 3a6 6 0 0 1 8 0l6 6a6 6 0 0 1-8 8l-6-6a6 6 0 0 1 0-8ZM11 5l10 10'/>" },
   { id: "technologies", label: "Technologies", scope: "Systems in corpus", icon: "<circle cx='16' cy='10' r='8'/><path d='M16 10l7-6M16 2v3m-8 5h3m5 8v-3m8-5h-3'/><circle cx='16' cy='10' r='2'/>" },
+  { id: "angles", label: "Sighting angles", scope: "Azimuth and elevation", icon: "<path d='M3 17h26M3 17L23 3M12 17a9 9 0 0 0-2-5'/>" },
   { id: "clock", label: "Clock", scope: "Times in documents", icon: "<circle cx='16' cy='10' r='9'/><path d='M16 4v6l4 3'/>" },
   { id: "blood", label: "Blood types", scope: "ABO + Rh mentions", icon: "<path d='M16 2C13 7 8 11 8 15a8 8 0 0 0 16 0c0-4-5-8-8-13Z'/>" },
   { id: "signals", label: "Signals", scope: "Frequency observations", icon: "<path d='M2 17h27M4 17V13l2-1 2 5 2-9 2 9 3-3 2 3 2-13 2 13 2-6 2 6h3'/><path d='M4 3v3m23-3v3'/>" },
@@ -377,6 +378,7 @@ const VIEW_DEFAULTS = {
   timeline: { timelineRole: "event", timelineGrouping: true, timelineGroupPeriod: "month", timelineCorrelativeMarkers: true, timelineHistoricalCandidates: false, x: "startDate", y: "mentionRank", size: "eventCount", color: "eventType", categories: ["date"], labels: "top", limit: 500, relationshipLayer: "always", timelineRelevanceCutoff: DEFAULT_TIMELINE_RELEVANCE_CUTOFF, timelineRecencyYear: DEFAULT_TIMELINE_RECENCY_YEAR },
   drugs: { topicTerm: "all", topicSearch: "", allSources: true, sources: [], labelSize: 12 },
   technologies: { topicTerm: "all", topicSearch: "", allSources: true, sources: [], labelSize: 12 },
+  angles: { fieldEvidence: "all", allSources: true, sources: [], labelSize: 12 },
   clock: { clockPeriod: "all", clockSearch: "", clockResolution: "hour", allSources: true, sources: [], labelSize: 12 },
   blood: { bloodType: "all", bloodSearch: "", bloodView: "scatter" },
   programs: { programStatus: "all", programKind: "all", programSearch: "", labelSize: 12 },
@@ -596,6 +598,8 @@ function dataAwareTitle(config) {
     title = "Reported Craft Shapes";
   } else if (config.type === "species") {
     title = "ET Species in the Corpus";
+  } else if (config.type === "angles") {
+    title = "Sighting Azimuth and Elevation";
   } else if (config.type === "signals") {
     title = "Radio Frequencies";
   } else if (["drugs", "technologies"].includes(config.type)) {
@@ -1156,8 +1160,8 @@ function triageSubtitle(config = state.config) {
 
 function renderPresetControl() {
   const presetStep = $('[data-step="2"]');
-  if (presetStep) presetStep.hidden = ["blood", "clock", "drugs", "technologies"].includes(state.config.type);
-  if (["clock", "drugs", "technologies"].includes(state.config.type)) { $("#presetControls").innerHTML = ""; return; }
+  if (presetStep) presetStep.hidden = ["angles", "blood", "clock", "drugs", "technologies"].includes(state.config.type);
+  if (["angles", "clock", "drugs", "technologies"].includes(state.config.type)) { $("#presetControls").innerHTML = ""; return; }
   if (state.config.type === "blood") {
     $("#presetControls").innerHTML = "";
     return;
@@ -1273,6 +1277,8 @@ function renderControls() {
     roles = `<div class="control"><div class="control-title">Marks</div><select disabled><option>Explicit numeric frequency mentions</option></select></div><div class="control"><div class="control-title">X axis</div><select disabled><option>Logarithmic radio frequency</option></select></div>`;
   } else if (["drugs", "technologies"].includes(state.config.type)) {
     roles = controlSelect("topicTerm", state.config.type === "drugs" ? "Drug" : "Technology", [{ value: "all", label: "All mentions" }, ...(state.topicCatalogs[state.config.type]?.terms || []).map(term => ({ value: term.id, label: term.label }))]);
+  } else if (state.config.type === "angles") {
+    roles = "";
   } else if (state.config.type === "clock") {
     roles = controlSelect("clockPeriod", "Time of day", [{ value: "all", label: "All times" }, { value: "am", label: "AM" }, { value: "pm", label: "PM" }, { value: "unspecified", label: "AM/PM not stated" }]) + controlSelect("clockResolution", "Precision", [{ value: "hour", label: "Hour" }, { value: "quarter", label: "15 minutes" }, { value: "minute", label: "Minute" }]);
   } else if (state.config.type === "blood") {
@@ -1309,7 +1315,7 @@ function renderControls() {
     const columnChecks = fields.map(field => `<label class="check-chip"><input type="checkbox" data-table-column="${field}" ${state.config.tableColumns.includes(field) ? "checked" : ""}><span>${escapeHTML(label(field))}</span></label>`).join("");
     roles = controlSelect("tableRole", "Rows", [{ value: "entity", label: "Entities" }, { value: "document", label: "Transcript files" }, { value: "case", label: "UAP cases" }, { value: "source", label: "Collections" }]) + `<div class="control"><div class="control-title">Columns <span>${state.config.tableColumns.length}</span></div><div class="check-grid">${columnChecks}</div></div>`;
   }
-  $("#roleControls").innerHTML = roles + (["clock", "signals", "map"].includes(state.config.type) ? controlSelect("fieldEvidence", "Evidence", [{value:"all",label:"All evidence"},{value:"documents",label:"Documents"},{value:"field",label:"starpeople.ai Field Station"}]) : "");
+  $("#roleControls").innerHTML = roles + (["clock", "signals", "map", "angles"].includes(state.config.type) ? controlSelect("fieldEvidence", "Evidence", [{value:"all",label:"All evidence"},{value:"documents",label:"Documents"},{value:"field",label:"starpeople.ai Field Station"}]) : "");
 
   const sizeOptions = state.config.type === "timeline" && state.config.timelineRole === "event"
     ? [...(state.config.timelineGrouping ? ["eventCount"] : []), "independentSourceFamilyCount", "documentCount", "confidence"]
@@ -1389,7 +1395,7 @@ function renderControls() {
       ]) + `<div class="control method-note"><div class="control-title">Mention graph</div><p>Size and shade encode prominence. Line patterns identify the reviewed reference grouping; links represent shared corpus documents.</p></div>` + labelSizeControl;
   } else if (state.config.type === "signals") {
     $("#encodeControls").innerHTML = `<div class="control"><div class="control-title">Peak height</div><select disabled><option>Frequency observations</option></select></div><div class="control method-note"><div class="control-title">Spectrum semantics</div><p>Each document mention counts once. Each recording counts once per peak frequency. A receiver peak is a local maximum at least 6 dB above the median of up to four neighboring bins on either side in its average spectrum.</p></div>` + labelSizeControl;
-  } else if (["clock", "drugs", "technologies"].includes(state.config.type)) {
+  } else if (["angles", "clock", "drugs", "technologies"].includes(state.config.type)) {
     $("#encodeControls").innerHTML = labelSizeControl;
   } else if (state.config.type === "blood") {
     $("#encodeControls").innerHTML = labelSizeControl;
@@ -1415,7 +1421,7 @@ function renderControls() {
     const checked = state.config.type === "book" ? category === "book" : state.config.type === "document" || state.config.categories.includes(category);
     return `<label class="check-chip"><input type="checkbox" data-category="${category}" ${checked ? "checked" : ""} ${fixedCategories ? "disabled" : ""}><span>${escapeHTML(label(category))}</span></label>`;
   }).join("");
-  const sources = [...(state.catalog?.sources || []), ...((["clock","signals","map"].includes(state.config.type) || state.config.type === "bars" && state.config.aggregation === "source") && !(state.catalog?.sources || []).some(source => source.name === "starpeople.ai Field Station") ? [{name:"starpeople.ai Field Station"}] : [])];
+  const sources = [...(state.catalog?.sources || []), ...((["clock","signals","map","angles"].includes(state.config.type) || state.config.type === "bars" && state.config.aggregation === "source") && !(state.catalog?.sources || []).some(source => source.name === "starpeople.ai Field Station") ? [{name:"starpeople.ai Field Station"}] : [])];
   const sourceNames = sources.map(source => source.name);
   const selectedSourceCount = state.config.allSources ? sourceNames.length : sourceNames.filter(name => state.config.sources.includes(name)).length;
   const sourceChecks = sources.map(source => `<label class="check-chip"><input type="checkbox" data-source="${escapeHTML(source.name)}" ${sourceIsSelected(source.name, state.config.sources, state.config.allSources) ? "checked" : ""}><span>${escapeHTML(source.name)}</span></label>`).join("");
@@ -1463,6 +1469,9 @@ function renderControls() {
     const types = [...new Set((state.catalog.bloodTypes?.observations || []).map(item => item.bloodType).filter(specifiedBloodType))].sort();
     $("#filterControls").innerHTML = controlSelect("bloodType", "Blood type / Rh", [{ value: "all", label: "All mentions" }, ...types.map(value => ({ value, label: value }))])
       + `<div class="control"><label for="bloodSearch">Search evidence</label><input id="bloodSearch" class="text-input" type="search" value="${escapeHTML(state.config.bloodSearch)}" placeholder="Search excerpt, title, or collection" data-blood-search></div><div class="control"><div class="control-title">Collections <span data-source-count>${selectedSourceCount} / ${sourceNames.length} selected</span></div><div class="check-grid">${sourceChecks}</div></div><button class="button" type="button" data-blood-reset>Reset filters</button>`;
+  }
+  if (state.config.type === "angles") {
+    $("#filterControls").innerHTML = `<div class="control"><div class="control-title">Collections</div><div class="check-grid">${sourceChecks}</div></div>`;
   }
   if (state.config.type === "clock") {
     const clockSources = [...new Set([...(state.clockCatalog?.documents || []).map(doc => doc.source), "starpeople.ai Field Station"])].sort();
@@ -4832,6 +4841,60 @@ function inspectClockGroup(group) {
   heading.setAttribute("tabindex", "-1"); heading.focus({ preventScroll: true });
 }
 
+function renderSightingAngles() {
+  const { svg, width, height } = clearChart();
+  const fieldSource = "starpeople.ai Field Station";
+  const field = state.config.fieldEvidence === "documents" || !sourceMatches(fieldSource)
+    ? [] : state.catalog.fieldObservations?.observations || [];
+  const documents = state.config.fieldEvidence === "field" ? [] :
+    (state.catalog.sightingAngles?.observations || []).filter(row => sourceMatches(row.source));
+  const rows = documents.map(row => ({ ...row, sourceURL: machineDataPathURL(row.path),
+    sourceLabel: `${row.source} · segment ${row.segment} · ${row.basis}` }));
+  for (const item of field) {
+    if (!item.cameraPointing) continue;
+    const pose = item.cameraPointing;
+    rows.push({ ...pose, field: true, sourceLabel: fieldSource,
+      sourceURL: machineDataPathURL(item.provenance.sourcePath),
+      excerpt: `Camera pointing at detection · ${new Date(pose.detectedEpoch * 1000).toISOString()} · ${item.id}` });
+  }
+  const missing = field.filter(item => !item.cameraPointing).length;
+  const left = 65, right = width - 24, top = 32, bottom = height - 70;
+  const x = az => az == null ? left - 29 : left + az / 360 * (right - left);
+  const y = elv => elv == null ? bottom + 28 : top + (90 - elv) / 180 * (bottom - top);
+  const line = (x1,y1,x2,y2) => svg.append(el("line",{x1,y1,x2,y2,stroke:"var(--line)"}));
+  const text = (tx,ty,value,anchor="middle") => svg.append(el("text",{x:tx,y:ty,"text-anchor":anchor,class:"axis-label"},value));
+  for (const [angle, name] of [[0,"N"],[90,"E"],[180,"S"],[270,"W"],[360,"N"]]) {
+    line(x(angle),top,x(angle),bottom); text(x(angle),bottom+15,`${name} ${angle}°`);
+  }
+  for (const angle of [-90,-45,0,45,90]) {
+    line(left,y(angle),right,y(angle)); text(left-4,y(angle)+4,`${angle}°`,"end");
+  }
+  text(left,top-13,"Elevation","start");
+  text((left+right)/2,height-7,"Azimuth · clockwise from north");
+  text(x(null),top-13,"?"); text(left-5,y(null)+4,"?","end");
+  const groups = new Map();
+  for (const row of rows) {
+    const key = JSON.stringify([row.azimuth,row.elevation,!!row.field]);
+    if (!groups.has(key)) groups.set(key,[]);
+    groups.get(key).push(row);
+  }
+  for (const entries of groups.values()) {
+    const row = entries[0], cx = x(row.azimuth), cy = y(row.elevation);
+    const r = Math.min(9, 4 + Math.log2(entries.length));
+    const mark = row.field ? el("path",{d:`M${cx} ${cy-r-2}l${r+2} ${r+2}l${-r-2} ${r+2}l${-r-2} ${-r-2}z`,fill:"none",stroke:"var(--ink)","stroke-width":2})
+      : el("circle",{cx,cy,r,fill:"var(--ink)","fill-opacity":0.65});
+    const title = `${row.azimuth == null ? "Unknown azimuth" : row.azimuth+"° azimuth"} · ${row.elevation == null ? "unknown elevation" : row.elevation+"° elevation"} · ${entries.length} ${row.field ? "field detections" : "reported sightings"}`;
+    mark.setAttribute("tabindex","0"); mark.setAttribute("role","button"); mark.setAttribute("aria-label",title); addTitle(mark,title);
+    const inspect = () => showInspector("direction",title,[[entries.length,"records"]],entries);
+    mark.addEventListener("click",inspect);
+    mark.addEventListener("keydown",event => { if (["Enter"," "].includes(event.key)) {event.preventDefault(); inspect();} });
+    svg.append(mark);
+  }
+  $("#legend").textContent = "● Reported sighting   ◇ Field camera pointing   ? Angle unreported";
+  setSummary(`${formatNumber(documents.length)} reported directions · ${field.length - missing} field detections with pointing · ${missing} without pointing`, "angles");
+  if (!rows.length) text((left+right)/2,(top+bottom)/2-10,"No recorded angles for this selection");
+}
+
 function renderClock() {
   const { svg, width, height } = clearChart();
   const observations = state.config.fieldEvidence === "field" ? [] : filteredClockMentions();
@@ -5993,6 +6056,7 @@ function setSummary(text, type) {
     : ["clock", "drugs", "technologies"].includes(type) ? ""
     : type === "blood" ? ""
     : type === "bars" && state.config.aggregation === "source" ? "Records count transcript files for documentary collections and published observations for starpeople.ai Field Station. These are different evidence types, not equally weighted corroboration. N/A means the measure does not apply."
+    : type === "angles" ? "Compass sectors use their central bearing. Camera pointing describes the center of the field of view."
     : type === "signals" ? "Frequency observations from documents and recorded RF spectra."
     : type === "coverage" ? "Corpus gaps are not evidence that real-world events did not occur · unknown metadata remains explicit"
     : type === "timeline" ? "Correlative dates are human-curated context · Codex suggested The X-Files premiere"
@@ -6084,7 +6148,7 @@ function renderGraph() {
     : ["drugs", "technologies"].includes(state.config.type) ? `${formatNumber(state.topicCatalogs[state.config.type]?.counts.scannedDocuments || 0)} source documents`
     : state.config.type === "clock" ? `${formatNumber(state.clockCatalog?.counts?.scannedDocuments || 0)} source documents`
     : state.config.type === "whitepaper" ? "" : graphDocumentCountSubtitle(state.catalog);
-  ({ whitepaper: renderWhitepaperView, network: renderNetwork, map: renderMap, solar: renderSolar, book: renderBook, document: renderDocument, scatter: renderScatter, bars: renderBars, timeline: renderTimeline, programs: renderPrograms, matrix: renderMatrix, coverage: renderCoverage, table: renderTable, triage: renderTriage, claims: renderClaims, craft: renderCraft, species: renderSpecies, signals: renderSignals, blood: renderBloodTypes, drugs: renderTopicMentions, technologies: renderTopicMentions, clock: renderClock })[state.config.type]();
+  ({ whitepaper: renderWhitepaperView, network: renderNetwork, map: renderMap, solar: renderSolar, book: renderBook, document: renderDocument, scatter: renderScatter, bars: renderBars, timeline: renderTimeline, programs: renderPrograms, matrix: renderMatrix, coverage: renderCoverage, table: renderTable, triage: renderTriage, claims: renderClaims, craft: renderCraft, species: renderSpecies, signals: renderSignals, blood: renderBloodTypes, drugs: renderTopicMentions, technologies: renderTopicMentions, angles: renderSightingAngles, clock: renderClock })[state.config.type]();
 }
 
 function evidenceHTML(evidence = []) {

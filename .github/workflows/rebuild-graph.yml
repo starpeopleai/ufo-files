@@ -118,6 +118,7 @@ jobs:
           if ! git diff --quiet "$base_sha" "$head_sha" -- \
             .machine-data-revision \
             scripts/build_catalog.py \
+            scripts/sighting_angles.py \
             scripts/field_observations.py \
             scripts/extraction_runtime.py \
             .github/workflows/rebuild-graph.yml \

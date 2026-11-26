@@ -221,7 +221,16 @@ def load_field_observations(input_root: Path, *, review_data_dir: Path | None = 
         if "observed_overlap_seconds" in context:
             require(finite(context["observed_overlap_seconds"]), "Invalid playback overlap")
             playback["observedOverlapSeconds"] = context["observed_overlap_seconds"]
-        observations.append({"id": oid, "provenance": provenance, "reviewedObjectIds": annotation_ids,
+        pose = record.get("camera_pointing")
+        pointing = {}
+        if pose is not None:
+            require(isinstance(pose, dict) and finite(pose.get("azimuth_deg")) and pose["azimuth_deg"] < 360
+                    and finite(pose.get("elevation_deg"), -90) and pose["elevation_deg"] <= 90
+                    and finite(pose.get("settings_epoch"), 1) and finite(pose.get("detected_epoch"), pose["settings_epoch"]),
+                    "Invalid capture-time camera pointing")
+            pointing = {"cameraPointing": {"azimuth": pose["azimuth_deg"], "elevation": pose["elevation_deg"],
+                                          "detectedEpoch": pose["detected_epoch"]}}
+        observations.append({**pointing, "id": oid, "provenance": provenance, "reviewedObjectIds": annotation_ids,
                              "recordingIds": sorted(recording_ids.values()), "evidence": bundles,
                              "ce5Playback": playback})
     regions_path = data_dir / "field_regions.json"
