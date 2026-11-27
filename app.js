@@ -4887,6 +4887,8 @@ function renderSightingAngles() {
   const peakCount = Math.max(1, ...panels.map(panel => panel.groups[0]?.entries.length || 0));
   for (const { axis, groups, unreported } of panels) {
     const side = axis === "elevation";
+    const minRadius = 4;
+    const maxRadius = side ? Math.max(minRadius, radius * 0.26) : Math.min(17, Math.max(9, radius * 0.11));
     const center = panelWidth * (side ? 0.5 : 1.5);
     const cx = side ? center - radius / 2 : center;
     const panel = draw(svg, "g", { role: "group", "aria-label": side ? "Side view" : "Compass" });
@@ -4906,7 +4908,7 @@ function renderSightingAngles() {
       line(panel, cx, cy, x, y);
       const caption = side ? (angle % 90 === 0 ? `${angle}°` : "") : ["N", "", "E", "", "S", "", "W", ""][angle / 45];
       if (caption) {
-        const [tx, ty] = point(angle, radius + (side ? 13 : Math.min(17, radius * 0.11) + 9));
+        const [tx, ty] = point(angle, radius + (side ? 13 : maxRadius + 9));
         labelAt(panel, tx, ty + 4, caption);
       }
     }
@@ -4916,15 +4918,15 @@ function renderSightingAngles() {
       const track = side ? (field ? 0.35 : 0.74) : (field ? 0.73 : 1);
       const [x, y] = point(angle, radius * track);
       // Keep rare readings visible and leave clearance for compass labels.
-      const maxRadius = side ? radius * 0.26 : Math.min(17, radius * 0.11);
-      const circleRadius = Math.max(1.2, maxRadius * Math.sqrt(entries.length / peakCount));
+      const countFraction = (entries.length - 1) / Math.max(1, peakCount - 1);
+      const circleRadius = minRadius + (maxRadius - minRadius) * Math.sqrt(countFraction);
       const r = field ? circleRadius * Math.sqrt(Math.PI / 2) : circleRadius;
       const title = `${angle}° ${axis} · ${entries.length.toLocaleString("en-US")} ${field ? "field detections" : "reported sightings"}`;
       const attrs = { tabindex: 0, role: "button", "aria-label": title, style: "cursor:pointer" };
       const mark = field
         ? draw(panel, "path", { ...attrs, d: `M${x} ${y-r}l${r} ${r}l${-r} ${r}l${-r} ${-r}z`, stroke: "var(--ink)", fill: "var(--paper)" })
         : draw(panel, "circle", { ...attrs, cx: x, cy: y, r, fill: "var(--ink)", "fill-opacity": 0.7,
-          stroke: side ? "none" : "var(--paper)", "stroke-width": 1.4, "paint-order": "stroke fill" });
+          stroke: "var(--paper)", "stroke-width": 1.4, "paint-order": "stroke fill" });
       addTitle(mark, title);
       const inspect = () => showInspector("direction", title, [[entries.length, "records"]], entries);
       mark.addEventListener("click", inspect);
