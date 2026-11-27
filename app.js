@@ -4891,10 +4891,13 @@ function renderSightingAngles() {
     mark.addEventListener("keydown",event => { if (["Enter"," "].includes(event.key)) {event.preventDefault(); inspect();} });
     svg.append(mark);
   }
-  $("#graphSubtitle").textContent = `${formatNumber(documents.length)} reported directions · ${field.length - missing} field detections with pointing · ${missing} without pointing`;
-  text((left+right)/2,height-25,"● Reported sighting   ◇ Camera pointing");
+  const summary = blueBook
+    ? `${formatNumber(documents.length)} reported directions · ${formatNumber(new Set(documents.map(row => row.documentId)).size)} Project Blue Book case-file transcripts`
+    : `${formatNumber(documents.length)} reported directions · ${field.length - missing} field detections with pointing · ${missing} without pointing`;
+  $("#graphSubtitle").textContent = summary;
+  text((left+right)/2,height-25,blueBook ? "● Reported sighting" : "● Reported sighting   ◇ Camera pointing");
   $("#legend").textContent = "● Reported sighting   ◇ Field camera pointing   ? Angle unreported";
-  setSummary(`${formatNumber(documents.length)} reported directions · ${field.length - missing} field detections with pointing · ${missing} without pointing`, "angles");
+  setSummary(summary, "angles");
   if (!rows.length) text((left+right)/2,(top+bottom)/2-10,"No recorded angles for this selection");
 }
 
