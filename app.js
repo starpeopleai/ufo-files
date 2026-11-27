@@ -4846,6 +4846,19 @@ function inspectClockGroup(group) {
   heading.setAttribute("tabindex", "-1"); heading.focus({ preventScroll: true });
 }
 
+function sightingNodeMean(groups, axis) {
+  if (!groups.length) return null;
+  if (axis === "elevation") return groups.reduce((sum, node) => sum + node.angle, 0) / groups.length;
+  let east = 0, north = 0;
+  for (const { angle } of groups) {
+    const radians = angle * Math.PI / 180;
+    east += Math.sin(radians);
+    north += Math.cos(radians);
+  }
+  if (Math.hypot(east, north) <= groups.length * 1e-12) return null;
+  return (Math.atan2(east, north) * 180 / Math.PI + 360) % 360;
+}
+
 function renderSightingAngles() {
   const { svg, width, height } = clearChart();
   const fieldSource = "starpeople.ai Field Station";
@@ -4921,6 +4934,18 @@ function renderSightingAngles() {
         labelAt(panel, tx, ty + 4, caption);
       }
     }
+    const mean = sightingNodeMean(groups, axis);
+    let meanLabel;
+    if (mean !== null) {
+      const rounded = Math.round(mean * 10) / 10;
+      const degrees = side ? rounded : rounded % 360;
+      meanLabel = `${side ? "Optimal angle" : "Optimal bearing"} ${side && degrees > 0 ? "+" : ""}${degrees.toFixed(1)}°`;
+      const ray = line(panel, cx, cy, ...point(mean, radius), {
+        stroke: "var(--ink)", "stroke-width": 1.5, "stroke-dasharray": "5 4",
+        "pointer-events": "none", "aria-label": meanLabel, class: "sighting-mean-line"
+      });
+      addTitle(ray, meanLabel);
+    }
     draw(panel, "circle", { cx, cy, r: 2.5, fill: "var(--ink)" });
     for (const { angle, field, entries } of groups) {
       // Separate tracks keep station and document evidence selectable at the same angle.
@@ -4959,7 +4984,7 @@ function renderSightingAngles() {
         });
       }
     }
-    labelAt(panel, center, cy + radius + 42, side ? "Elevation from horizon" : "Bearing from north");
+    labelAt(panel, center, cy + radius + 42, meanLabel || (groups.length ? "No mean direction" : side ? "Elevation from horizon" : "Bearing from north"));
     if (groups.length) labelAt(panel, center, cy + radius + 58, `Peak · ${peakCount.toLocaleString("en-US")}`);
     if (unreported) labelAt(panel, center, cy + radius + (groups.length ? 74 : 58), `${formatNumber(unreported)} unreported`);
   }

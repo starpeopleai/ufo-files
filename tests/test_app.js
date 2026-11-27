@@ -5364,3 +5364,15 @@ test("sighting panels share marker styling and scale to their own peaks", () => 
   assert.equal(radii[0][0], radii[1][0]);
   assert.equal(radii[1].length, 2);
 });
+
+test("sighting means use each plotted node once and respect angular wraparound", () => {
+  const src = fs.readFileSync("app.js", "utf8");
+  const context = vm.createContext({});
+  vm.runInContext(src.slice(src.indexOf("function sightingNodeMean("), src.indexOf("function renderSightingAngles(")), context);
+  const mean = context.sightingNodeMean;
+  assert.equal(mean([{angle: -10, entries: [1,2,3]}, {angle: 30, entries: [1]}], "elevation"), 10);
+  assert.equal(mean([], "elevation"), null);
+  assert.equal(mean([{angle: 90}, {angle: 270}], "azimuth"), null);
+  assert.ok(Math.abs(mean([{angle: 359}, {angle: 1}], "azimuth")) < 1e-8);
+  assert.equal(mean([{angle: 270}], "azimuth"), 270);
+});
