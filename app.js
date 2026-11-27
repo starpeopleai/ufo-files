@@ -4890,10 +4890,10 @@ function renderSightingAngles() {
     return { axis, unreported, groups: [...groups.values()].sort((a, b) => b.entries.length - a.entries.length) };
   });
   const peakCount = Math.max(1, ...panels.map(panel => panel.groups[0]?.entries.length || 0));
+  const minRadius = 4;
+  const maxRadius = Math.min(17, Math.max(9, radius * 0.11));
   for (const { axis, groups, unreported } of panels) {
     const side = axis === "elevation";
-    const minRadius = 4;
-    const maxRadius = side ? Math.max(minRadius, radius * 0.26) : Math.min(17, Math.max(9, radius * 0.11));
     const center = panelWidth * (side ? 0.5 : 1.5);
     const cx = side ? center - radius / 2 : center;
     const panel = draw(svg, "g", { role: "group", "aria-label": side ? "Side view" : "Compass" });
@@ -4914,14 +4914,14 @@ function renderSightingAngles() {
       }
       const caption = side ? (angle % 90 === 0 ? `${angle}°` : "") : ["N", "", "E", "", "S", "", "W", ""][angle / 45];
       if (caption) {
-        const [tx, ty] = point(angle, radius + (side ? 13 : maxRadius + 9));
+        const [tx, ty] = point(angle, radius + maxRadius + 9);
         labelAt(panel, tx, ty + 4, caption);
       }
     }
     draw(panel, "circle", { cx, cy, r: 2.5, fill: "var(--ink)" });
     for (const { angle, field, entries } of groups) {
       // Separate tracks keep station and document evidence selectable at the same angle.
-      const track = side ? (field ? 0.35 : 0.74) : (field ? 0.73 : 1);
+      const track = field ? 0.73 : 1;
       const [x, y] = point(angle, radius * track);
       // Keep rare readings visible and leave clearance for compass labels.
       const countFraction = (entries.length - 1) / Math.max(1, peakCount - 1);
@@ -4931,7 +4931,7 @@ function renderSightingAngles() {
       const mark = field
         ? el("path", { d: `M${x} ${y-r}l${r} ${r}l${-r} ${r}l${-r} ${-r}z`, stroke: "var(--ink)", fill: "var(--paper)", class: "mark" })
         : scatterPointMark(x, y, entries.length, [1, peakCount], false, circleRadius);
-      if (side && !field) {
+      if (!field) {
         mark.setAttribute("stroke", "none");
         mark.setAttribute("fill-opacity", scale(entries.length, [1, peakCount], [.55, .96]));
       }
@@ -4957,8 +4957,8 @@ function renderSightingAngles() {
         });
       }
     }
-    labelAt(panel, center, cy + radius + (side ? 34 : 42), side ? "Elevation from horizon" : "Size + shade · count");
-    if (unreported) labelAt(panel, center, cy + radius + (side ? 50 : 58), `${formatNumber(unreported)} unreported`);
+    labelAt(panel, center, cy + radius + 42, side ? "Elevation from horizon" : "Bearing from north");
+    if (unreported) labelAt(panel, center, cy + radius + 58, `${formatNumber(unreported)} unreported`);
   }
   const summary = blueBook
     ? `${formatNumber(documents.length)} reported directions · ${formatNumber(new Set(documents.map(row => row.documentId)).size)} Project Blue Book case-file transcripts`

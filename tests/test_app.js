@@ -5323,3 +5323,27 @@ test("Signals merges matching measured and cited frequencies and counts a record
   `, context);
   assert.deepEqual(Array.from(result),[1,45,3,1]);
 });
+
+test("matching sighting counts render with identical marks on both axes", () => {
+  const svg = new FakeElement();
+  const document = { createElementNS: () => new FakeElement(), querySelector: () => new FakeElement() };
+  const context = vm.createContext({ document, location: { hash: "" }, URLSearchParams, svg });
+  vm.runInContext(fs.readFileSync("app.js", "utf8").split("$$('.step-heading')")[0], context);
+  vm.runInContext(`
+    clearChart = () => ({ svg, width: 390, height: 440 });
+    setSummary = () => {};
+    state.config = { type: "angles", fieldEvidence: "documents", allSources: true };
+    state.catalog = { sightingAngles: { observations: [10, 10, 20].map(angle => ({
+      elevation: angle, azimuth: angle, path: "document.txt", source: "Archive"
+    })) } };
+    renderSightingAngles();
+  `, context);
+  const panels = svg.children.filter(node => node.attributes.role === "group");
+  assert.equal(panels.length, 2);
+  const styles = panels.map(panel => panel.children.filter(node => node.attributes.role === "button")
+    .map(({ attributes: a }) => [a.r, a.fill, a.stroke, a["fill-opacity"], a["stroke-width"], a.class]));
+  assert.equal(styles[0].length, 2);
+  assert.deepEqual(styles[0], styles[1]);
+  assert.ok(Number(styles[0][0][0]) > Number(styles[0][1][0]));
+  assert.equal(Number(styles[0][1][0]), 4);
+});
