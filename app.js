@@ -4811,6 +4811,11 @@ function clockPosition(minute, radius, cx, cy) {
   return { x: cx + Math.cos(angle) * radius, y: cy + Math.sin(angle) * radius };
 }
 
+function drawDialTick(svg, outer, inner, major) {
+  svg.append(el("line", { x1: inner.x, y1: inner.y, x2: outer.x, y2: outer.y,
+    stroke: "var(--ink)", "stroke-width": 1, "stroke-opacity": major ? .6 : .25, class: "clock-tick" }));
+}
+
 function inspectClockGroup(group) {
   const documents = new Map(state.clockCatalog.documents.map(doc => [doc.id, doc]));
   const evidence = group.observations.map(item => {
@@ -4839,11 +4844,6 @@ function inspectClockGroup(group) {
   }
   const heading = $("#inspectorContent h3");
   heading.setAttribute("tabindex", "-1"); heading.focus({ preventScroll: true });
-}
-
-function drawDialTick(svg, outer, inner, major) {
-  svg.append(el("line", { x1: inner.x, y1: inner.y, x2: outer.x, y2: outer.y,
-    stroke: "var(--ink)", "stroke-width": 1, "stroke-opacity": major ? .6 : .25, class: "clock-tick" }));
 }
 
 function renderSightingAngles() {
