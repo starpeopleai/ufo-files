@@ -5324,7 +5324,7 @@ test("Signals merges matching measured and cited frequencies and counts a record
   assert.deepEqual(Array.from(result),[1,45,3,1]);
 });
 
-test("matching sighting counts render with identical marks on both axes", () => {
+test("sighting panels share marker styling and scale to their own peaks", () => {
   const svg = new FakeElement();
   const document = { createElementNS: () => new FakeElement(), querySelector: () => new FakeElement() };
   const context = vm.createContext({ document, location: { hash: "" }, URLSearchParams, svg });
@@ -5350,4 +5350,17 @@ test("matching sighting counts render with identical marks on both axes", () => 
   assert.deepEqual(styles[0], styles[1]);
   assert.ok(Number(styles[0][0][0]) > Number(styles[0][1][0]));
   assert.equal(Number(styles[0][1][0]), 4);
+
+  // Changing only the azimuth distribution must leave elevation sizes unchanged.
+  svg.replaceChildren();
+  vm.runInContext(`
+    state.catalog.sightingAngles.observations[2].azimuth = 10;
+    renderSightingAngles();
+  `, context);
+  const updated = svg.children.filter(node => node.attributes.role === "group");
+  const radii = updated.map(panel => panel.children.filter(node => node.attributes.role === "button")
+    .map(node => node.attributes.r));
+  assert.deepEqual(radii[0], styles[0].map(style => style[0]));
+  assert.equal(radii[0][0], radii[1][0]);
+  assert.equal(radii[1].length, 2);
 });
