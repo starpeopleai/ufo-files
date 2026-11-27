@@ -4870,7 +4870,7 @@ function renderSightingAngles() {
     draw(panel, "line", { x1, y1, x2, y2, stroke: "var(--line)", ...attrs });
   const labelAt = (panel, x, y, value, anchor = "middle", attrs = {}) =>
     draw(panel, "text", { x, y, "text-anchor": anchor, class: "axis-label", ...attrs }, value);
-  line(svg, panelWidth, cy - radius - 45, panelWidth, cy + radius + 44);
+  line(svg, panelWidth, cy - radius - 16, panelWidth, cy + radius + 44);
   const panels = ["elevation", "azimuth"].map(axis => {
     const groups = new Map();
     let unreported = 0;
@@ -4894,8 +4894,7 @@ function renderSightingAngles() {
       const radians = (side ? -angle : angle - 90) * Math.PI / 180;
       return [cx + distance * Math.cos(radians), cy + distance * Math.sin(radians)];
     };
-    labelAt(panel, center, cy - radius - 30, side ? "Side view" : "Compass", "middle",
-      { style: "font-size:15px;font-weight:600;fill:var(--ink)" });
+    labelAt(panel, center + radius, cy - radius - 8, side ? "Side view" : "Compass", "end");
     for (const scale of [0.5, 1]) {
       const r = radius * scale;
       if (side) draw(panel, "path", { d: `M ${cx} ${cy-r} a ${r} ${r} 0 0 1 0 ${2*r}`, fill: "none", stroke: "var(--line)" });
