@@ -4889,10 +4889,13 @@ function renderSightingAngles() {
     // Paint the smaller groups last so a busy direction cannot hide its neighbors.
     return { axis, unreported, groups: [...groups.values()].sort((a, b) => b.entries.length - a.entries.length) };
   });
-  const peakCount = Math.max(1, ...panels.map(panel => panel.groups[0]?.entries.length || 0));
+  // A logarithmic count scale lets tens and hundreds remain distinguishable alongside thousands.
+  const countScale = count => Math.log1p((count - 1) / 10);
   const minRadius = 4;
   const maxRadius = Math.min(17, Math.max(9, radius * 0.11));
   for (const { axis, groups, unreported } of panels) {
+    const peakCount = groups[0]?.entries.length || 1;
+    const peakScale = countScale(peakCount) || 1;
     const side = axis === "elevation";
     const center = panelWidth * (side ? 0.5 : 1.5);
     const cx = side ? center - radius / 2 : center;
@@ -4924,17 +4927,16 @@ function renderSightingAngles() {
       const track = field ? 0.73 : 1;
       const [x, y] = point(angle, radius * track);
       // Keep rare readings visible and leave clearance for compass labels.
-      const countFraction = (entries.length - 1) / Math.max(1, peakCount - 1);
-      const circleRadius = minRadius + (maxRadius - minRadius) * Math.sqrt(countFraction);
+      const countFraction = countScale(entries.length) / peakScale;
+      const circleRadius = minRadius + (maxRadius - minRadius) * countFraction;
       const r = field ? circleRadius * Math.sqrt(Math.PI / 2) : circleRadius;
       const title = `${angle}° ${axis} · ${entries.length.toLocaleString("en-US")} ${field ? "field detections" : "reported sightings"}`;
       const mark = field
-        ? el("path", { d: `M${x} ${y-r}l${r} ${r}l${-r} ${r}l${-r} ${-r}z`, stroke: "var(--ink)", fill: "var(--paper)", class: "mark" })
+        ? el("path", { d: `M${x} ${y-r}l${r} ${r}l${-r} ${r}l${-r} ${-r}z`, fill: "#111", class: "mark" })
         : scatterPointMark(x, y, entries.length, [1, peakCount], false, circleRadius);
-      if (!field) {
-        mark.setAttribute("stroke", "none");
-        mark.setAttribute("fill-opacity", scale(entries.length, [1, peakCount], [.55, .96]));
-      }
+      mark.setAttribute("stroke", "none");
+      mark.setAttribute("stroke-width", "0");
+      mark.setAttribute("fill-opacity", scale(countFraction, [0, 1], [.55, .96]));
       mark.setAttribute("tabindex", "0");
       mark.setAttribute("role", "button");
       mark.setAttribute("aria-label", title);
@@ -4958,13 +4960,14 @@ function renderSightingAngles() {
       }
     }
     labelAt(panel, center, cy + radius + 42, side ? "Elevation from horizon" : "Bearing from north");
-    if (unreported) labelAt(panel, center, cy + radius + 58, `${formatNumber(unreported)} unreported`);
+    if (groups.length) labelAt(panel, center, cy + radius + 58, `Peak · ${peakCount.toLocaleString("en-US")}`);
+    if (unreported) labelAt(panel, center, cy + radius + (groups.length ? 74 : 58), `${formatNumber(unreported)} unreported`);
   }
   const summary = blueBook
     ? `${formatNumber(documents.length)} reported directions · ${formatNumber(new Set(documents.map(row => row.documentId)).size)} Project Blue Book case-file transcripts`
     : `${formatNumber(documents.length)} reported directions`;
   $("#graphSubtitle").textContent = summary;
-  $("#legend").textContent = `Node size + shade show count · ● Reported sighting${blueBook ? "" : "   ◇ Field camera pointing"}`;
+  $("#legend").textContent = `Node size + shade show count relative to each chart’s peak (log scale) · ● Reported sighting${blueBook ? "" : "   ◆ Field camera pointing"}`;
   setSummary(summary, "angles");
   if (!rows.length) labelAt(svg, width / 2, cy + radius + 52, "No recorded angles for this selection");
 }

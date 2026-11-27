@@ -5324,7 +5324,7 @@ test("Signals merges matching measured and cited frequencies and counts a record
   assert.deepEqual(Array.from(result),[1,45,3,1]);
 });
 
-test("matching sighting counts render with identical marks on both axes", () => {
+test("sighting panels share marker styling and scale to their own peaks", () => {
   const svg = new FakeElement();
   const document = { createElementNS: () => new FakeElement(), querySelector: () => new FakeElement() };
   const context = vm.createContext({ document, location: { hash: "" }, URLSearchParams, svg });
@@ -5332,18 +5332,35 @@ test("matching sighting counts render with identical marks on both axes", () => 
   vm.runInContext(`
     clearChart = () => ({ svg, width: 390, height: 440 });
     setSummary = () => {};
-    state.config = { type: "angles", fieldEvidence: "documents", allSources: true };
+    state.config = { type: "angles", fieldEvidence: "all", allSources: true };
     state.catalog = { sightingAngles: { observations: [10, 10, 20].map(angle => ({
       elevation: angle, azimuth: angle, path: "document.txt", source: "Archive"
-    })) } };
+    })) }, fieldObservations: { observations: [{ id: "station-test",
+      cameraPointing: { azimuth: 30, elevation: 30, detectedEpoch: 100 },
+      provenance: { sourcePath: "field.json" }
+    }] } };
     renderSightingAngles();
   `, context);
   const panels = svg.children.filter(node => node.attributes.role === "group");
   assert.equal(panels.length, 2);
   const styles = panels.map(panel => panel.children.filter(node => node.attributes.role === "button")
     .map(({ attributes: a }) => [a.r, a.fill, a.stroke, a["fill-opacity"], a["stroke-width"], a.class]));
-  assert.equal(styles[0].length, 2);
+  assert.equal(styles[0].length, 3);
+  assert.ok(styles.flat().every(mark => mark[2] === "none" && mark[4] === "0"));
   assert.deepEqual(styles[0], styles[1]);
   assert.ok(Number(styles[0][0][0]) > Number(styles[0][1][0]));
   assert.equal(Number(styles[0][1][0]), 4);
+
+  // Changing only the azimuth distribution must leave elevation sizes unchanged.
+  svg.replaceChildren();
+  vm.runInContext(`
+    state.catalog.sightingAngles.observations[2].azimuth = 10;
+    renderSightingAngles();
+  `, context);
+  const updated = svg.children.filter(node => node.attributes.role === "group");
+  const radii = updated.map(panel => panel.children.filter(node => node.attributes.role === "button")
+    .map(node => node.attributes.r));
+  assert.deepEqual(radii[0], styles[0].map(style => style[0]));
+  assert.equal(radii[0][0], radii[1][0]);
+  assert.equal(radii[1].length, 2);
 });
