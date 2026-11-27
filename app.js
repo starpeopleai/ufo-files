@@ -4858,7 +4858,6 @@ function renderSightingAngles() {
       sourceURL: machineDataPathURL(item.provenance.sourcePath),
       excerpt: `Camera pointing at detection · ${new Date(pose.detectedEpoch * 1000).toISOString()} · ${item.id}` });
   }
-  const missing = field.filter(item => !item.cameraPointing).length;
   const panelWidth = width / 2;
   const radius = Math.max(12, Math.min(panelWidth / 2 - 22, height / 2 - 68, 190));
   const cy = height / 2;
@@ -4929,7 +4928,7 @@ function renderSightingAngles() {
   }
   const summary = blueBook
     ? `${formatNumber(documents.length)} reported directions · ${formatNumber(new Set(documents.map(row => row.documentId)).size)} Project Blue Book case-file transcripts`
-    : `${formatNumber(documents.length)} reported directions · ${field.length - missing} field detections with pointing · ${missing} without pointing`;
+    : `${formatNumber(documents.length)} reported directions`;
   $("#graphSubtitle").textContent = summary;
   $("#legend").textContent = blueBook ? "● Reported sighting" : "● Reported sighting   ◇ Field camera pointing";
   setSummary(summary, "angles");
