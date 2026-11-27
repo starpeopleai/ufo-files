@@ -1315,7 +1315,7 @@ function renderControls() {
     const columnChecks = fields.map(field => `<label class="check-chip"><input type="checkbox" data-table-column="${field}" ${state.config.tableColumns.includes(field) ? "checked" : ""}><span>${escapeHTML(label(field))}</span></label>`).join("");
     roles = controlSelect("tableRole", "Rows", [{ value: "entity", label: "Entities" }, { value: "document", label: "Transcript files" }, { value: "case", label: "UAP cases" }, { value: "source", label: "Collections" }]) + `<div class="control"><div class="control-title">Columns <span>${state.config.tableColumns.length}</span></div><div class="check-grid">${columnChecks}</div></div>`;
   }
-  $("#roleControls").innerHTML = roles + (["clock", "signals", "map", "angles"].includes(state.config.type) ? controlSelect("fieldEvidence", "Evidence", [{value:"all",label:"All evidence"},{value:"documents",label:"Documents"},{value:"field",label:"starpeople.ai Field Station"}]) : "");
+  $("#roleControls").innerHTML = roles + (["clock", "signals", "map", "angles"].includes(state.config.type) ? controlSelect("fieldEvidence", "Evidence", [{value:"all",label:"All evidence"},{value:"documents",label:"Documents"}, ...(state.config.type === "angles" ? [{value:"blueBook",label:"Project Blue Book case files (PDFs)"}] : []), {value:"field",label:"starpeople.ai Field Station"}]) : "");
 
   const sizeOptions = state.config.type === "timeline" && state.config.timelineRole === "event"
     ? [...(state.config.timelineGrouping ? ["eventCount"] : []), "independentSourceFamilyCount", "documentCount", "confidence"]
@@ -4844,12 +4844,13 @@ function inspectClockGroup(group) {
 function renderSightingAngles() {
   const { svg, width, height } = clearChart();
   const fieldSource = "starpeople.ai Field Station";
-  const field = state.config.fieldEvidence === "documents" || !sourceMatches(fieldSource)
+  const blueBook = state.config.fieldEvidence === "blueBook";
+  const field = blueBook || state.config.fieldEvidence === "documents" || !sourceMatches(fieldSource)
     ? [] : state.catalog.fieldObservations?.observations || [];
   const documents = state.config.fieldEvidence === "field" ? [] :
-    (state.catalog.sightingAngles?.observations || []).filter(row => sourceMatches(row.source));
+    (state.catalog.sightingAngles?.observations || []).filter(row => sourceMatches(row.source) && (!blueBook || row.series === "597821"));
   const rows = documents.map(row => ({ ...row, sourceURL: machineDataPathURL(row.path),
-    sourceLabel: `${row.source} · segment ${row.segment} · ${row.basis}` }));
+    sourceLabel: `${row.series === "597821" ? "Project Blue Book · " : ""}${row.source} · segment ${row.segment} · ${row.basis}` }));
   for (const item of field) {
     if (!item.cameraPointing) continue;
     const pose = item.cameraPointing;

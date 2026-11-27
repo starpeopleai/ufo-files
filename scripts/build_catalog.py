@@ -31,13 +31,13 @@ from typing import Iterable
 
 try:
     from .field_observations import load_field_observations
-    from .sighting_angles import reported_angles
+    from .sighting_angles import blue_book_case_pdf, reported_angles
     from .extraction_runtime import extraction_fingerprint, iter_extracted_documents
     from .time_mentions import time_observations_for_segment
     from .topic_mentions import TOPICS, topic_observations_for_segment, write_topic_catalogs
 except ImportError:
     from field_observations import load_field_observations
-    from sighting_angles import reported_angles
+    from sighting_angles import blue_book_case_pdf, reported_angles
     from extraction_runtime import extraction_fingerprint, iter_extracted_documents
     from time_mentions import time_observations_for_segment
     from topic_mentions import TOPICS, topic_observations_for_segment, write_topic_catalogs
@@ -4092,10 +4092,13 @@ def build(
                 confidence,
             )
         document_qualifiers = []
+        blue_book = blue_book_case_pdf(relative)
         for number, segment in enumerate(segments):
             sid = f"{doc_id}:{segment_ids[number]}" if segment_ids else f"{doc_id}:{number}"
             signal_segment = segment_ids[number] if segment_ids else number
-            for angle in reported_angles(segment):
+            for angle in reported_angles(segment, blue_book=blue_book):
+                if blue_book:
+                    angle["series"] = "597821"
                 sighting_angles.append(dict(angle, documentId=doc_id, source=source, segment=signal_segment, path=relative))
             evidence = extracted["evidence"][number]
             detected_qualifiers = evidence["qualifiers"]

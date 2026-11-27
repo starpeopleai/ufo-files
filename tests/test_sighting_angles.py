@@ -17,6 +17,15 @@ class SightingAnglesTests(unittest.TestCase):
         self.assertEqual([(r['azimuth'], r['elevation']) for r in rows], [(120, 75)])
         self.assertFalse(reported_angles("The lights were 15-20 degrees of elevation and 245 to 260 degrees of azimuth."))
 
+    def test_blue_book_telegram_and_disappearance(self):
+        rows = reported_angles("Unidentified flying object bearing 120 altitude 10 degrees.", blue_book=True)
+        self.assertEqual([(r['azimuth'], r['elevation']) for r in rows], [(120, 10)])
+        rows = reported_angles("Disappeared bearing 133 degrees true.", blue_book=True)
+        self.assertEqual(rows[0]['azimuth'], 133)
+        self.assertFalse(reported_angles("Object seemed to be traveling on an azimuth of 315 degrees.", blue_book=True))
+        self.assertIsNone(reported_angles("Object bearing 120 altitude 1000 feet.", blue_book=True)[0]['elevation'])
+        self.assertFalse(reported_angles("VINUS was at 80 deg azimuth and 13 deg elevation at time of sighting.", blue_book=True))
+
     def test_partial_and_ambiguous_directions(self):
         rows = reported_angles("I saw an object looking southwest. I saw lights at bearing 20 and bearing 40.")
         self.assertEqual([r["azimuth"] for r in rows], [225, 20, 40])
