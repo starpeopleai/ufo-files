@@ -4870,8 +4870,22 @@ function renderSightingAngles() {
     draw(panel, "line", { x1, y1, x2, y2, stroke: "var(--line)", ...attrs });
   const labelAt = (panel, x, y, value, anchor = "middle", attrs = {}) =>
     draw(panel, "text", { x, y, "text-anchor": anchor, class: "axis-label", ...attrs }, value);
-  line(svg, panelWidth, cy - radius - 45, panelWidth, cy + radius + 44);
-  for (const axis of ["elevation", "azimuth"]) {
+  line(svg, panelWidth, cy - radius - 16, panelWidth, cy + radius + 44);
+  const panels = ["elevation", "azimuth"].map(axis => {
+    const groups = new Map();
+    let unreported = 0;
+    for (const row of rows) {
+      if (!Number.isFinite(row[axis])) { unreported++; continue; }
+      const angle = axis === "elevation" ? row[axis] : row[axis] % 360;
+      const key = `${angle}/${!!row.field}`;
+      if (!groups.has(key)) groups.set(key, { angle, field: !!row.field, entries: [] });
+      groups.get(key).entries.push(row);
+    }
+    // Paint the smaller groups last so a busy direction cannot hide its neighbors.
+    return { axis, unreported, groups: [...groups.values()].sort((a, b) => b.entries.length - a.entries.length) };
+  });
+  const peakCount = Math.max(1, ...panels.map(panel => panel.groups[0]?.entries.length || 0));
+  for (const { axis, groups, unreported } of panels) {
     const side = axis === "elevation";
     const center = panelWidth * (side ? 0.5 : 1.5);
     const cx = side ? center - radius / 2 : center;
@@ -4880,8 +4894,7 @@ function renderSightingAngles() {
       const radians = (side ? -angle : angle - 90) * Math.PI / 180;
       return [cx + distance * Math.cos(radians), cy + distance * Math.sin(radians)];
     };
-    labelAt(panel, center, cy - radius - 30, side ? "Side view" : "Compass", "middle",
-      { style: "font-size:15px;font-weight:600;fill:var(--ink)" });
+    labelAt(panel, center + radius, cy - radius - 8, side ? "Side view" : "Compass", "end");
     for (const scale of [0.5, 1]) {
       const r = radius * scale;
       if (side) draw(panel, "path", { d: `M ${cx} ${cy-r} a ${r} ${r} 0 0 1 0 ${2*r}`, fill: "none", stroke: "var(--line)" });
@@ -4898,20 +4911,13 @@ function renderSightingAngles() {
       }
     }
     draw(panel, "circle", { cx, cy, r: 2.5, fill: "var(--ink)" });
-    const groups = new Map();
-    let unreported = 0;
-    for (const row of rows) {
-      if (!Number.isFinite(row[axis])) { unreported++; continue; }
-      const angle = side ? row[axis] : row[axis] % 360;
-      const key = `${angle}/${!!row.field}`;
-      if (!groups.has(key)) groups.set(key, { angle, field: !!row.field, entries: [] });
-      groups.get(key).entries.push(row);
-    }
-    for (const { angle, field, entries } of groups.values()) {
+    for (const { angle, field, entries } of groups) {
       // Separate tracks keep station and document evidence selectable at the same angle.
-      const [x, y] = point(angle, radius * (field ? 0.62 : 0.87));
-      const r = Math.min(radius * 0.075, 2 + Math.log2(entries.length + 1) / 2);
-      const title = `${angle}° ${axis} · ${formatNumber(entries.length)} ${field ? "field detections" : "reported sightings"}`;
+      const [x, y] = point(angle, radius * (field ? 0.35 : 0.74));
+      // Circle area encodes count on one scale across both panels. Keep rare readings visible.
+      const circleRadius = Math.max(1.2, radius * 0.26 * Math.sqrt(entries.length / peakCount));
+      const r = field ? circleRadius * Math.sqrt(Math.PI / 2) : circleRadius;
+      const title = `${angle}° ${axis} · ${entries.length.toLocaleString("en-US")} ${field ? "field detections" : "reported sightings"}`;
       const attrs = { tabindex: 0, role: "button", "aria-label": title, style: "cursor:pointer" };
       const mark = field
         ? draw(panel, "path", { ...attrs, d: `M${x} ${y-r}l${r} ${r}l${-r} ${r}l${-r} ${-r}z`, stroke: "var(--ink)", fill: "var(--paper)" })
@@ -4930,7 +4936,7 @@ function renderSightingAngles() {
     ? `${formatNumber(documents.length)} reported directions · ${formatNumber(new Set(documents.map(row => row.documentId)).size)} Project Blue Book case-file transcripts`
     : `${formatNumber(documents.length)} reported directions`;
   $("#graphSubtitle").textContent = summary;
-  $("#legend").textContent = blueBook ? "● Reported sighting" : "● Reported sighting   ◇ Field camera pointing";
+  $("#legend").textContent = `Marker area shows count · ● Reported sighting${blueBook ? "" : "   ◇ Field camera pointing"}`;
   setSummary(summary, "angles");
   if (!rows.length) labelAt(svg, width / 2, cy + radius + 52, "No recorded angles for this selection");
 }
