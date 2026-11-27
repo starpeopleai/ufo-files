@@ -4881,7 +4881,7 @@ function renderSightingAngles() {
       if (!groups.has(key)) groups.set(key, { angle, field: !!row.field, entries: [] });
       groups.get(key).entries.push(row);
     }
-    // Draw larger elevation marks first and keep the peak count available for both scales.
+    // Paint the smaller groups last so a busy direction cannot hide its neighbors.
     return { axis, unreported, groups: [...groups.values()].sort((a, b) => b.entries.length - a.entries.length) };
   });
   const peakCount = Math.max(1, ...panels.map(panel => panel.groups[0]?.entries.length || 0));
@@ -4895,12 +4895,8 @@ function renderSightingAngles() {
       return [cx + distance * Math.cos(radians), cy + distance * Math.sin(radians)];
     };
     labelAt(panel, center + radius, cy - radius - 8, side ? "Side view" : "Compass", "end");
-    // Give single readings their own ring, so their bearing is visible at count one.
-    const decades = Math.max(1, Math.ceil(Math.log10(groups[0]?.entries.length || 1)));
-    const countRadius = count => radius * (0.24 + 0.76 * Math.log10(count) / decades);
-    const ringCounts = Array.from({ length: decades + 1 }, (_, i) => 10 ** i);
-    const ringRadii = side ? [radius / 2, radius] : ringCounts.map(countRadius);
-    for (const r of ringRadii) {
+    for (const scale of [0.5, 1]) {
+      const r = radius * scale;
       if (side) draw(panel, "path", { d: `M ${cx} ${cy-r} a ${r} ${r} 0 0 1 0 ${2*r}`, fill: "none", stroke: "var(--line)" });
       else draw(panel, "circle", { cx, cy, r, fill: "none", stroke: "var(--line)" });
     }
@@ -4910,29 +4906,25 @@ function renderSightingAngles() {
       line(panel, cx, cy, x, y);
       const caption = side ? (angle % 90 === 0 ? `${angle}°` : "") : ["N", "", "E", "", "S", "", "W", ""][angle / 45];
       if (caption) {
-        const [tx, ty] = point(angle, radius + 13);
+        const [tx, ty] = point(angle, radius + (side ? 13 : Math.min(17, radius * 0.11) + 9));
         labelAt(panel, tx, ty + 4, caption);
-      }
-    }
-    if (!side) {
-      for (const { angle, entries } of groups) {
-        const tip = point(angle, countRadius(entries.length));
-        line(panel, ...point(angle, countRadius(1)), ...tip, { stroke: "var(--ink)", "stroke-opacity": 0.38 });
       }
     }
     draw(panel, "circle", { cx, cy, r: 2.5, fill: "var(--ink)" });
     for (const { angle, field, entries } of groups) {
       // Separate tracks keep station and document evidence selectable at the same angle.
-      const distance = side ? radius * (field ? 0.35 : 0.74) : countRadius(entries.length);
-      const [x, y] = point(angle, distance);
-      // Elevation encodes count by area. On the compass, radius already encodes count.
-      const circleRadius = side ? Math.max(1.2, radius * 0.26 * Math.sqrt(entries.length / peakCount)) : Math.max(1.5, Math.min(3, radius / 50));
+      const track = side ? (field ? 0.35 : 0.74) : (field ? 0.73 : 1);
+      const [x, y] = point(angle, radius * track);
+      // Keep rare readings visible and leave clearance for compass labels.
+      const maxRadius = side ? radius * 0.26 : Math.min(17, radius * 0.11);
+      const circleRadius = Math.max(1.2, maxRadius * Math.sqrt(entries.length / peakCount));
       const r = field ? circleRadius * Math.sqrt(Math.PI / 2) : circleRadius;
       const title = `${angle}° ${axis} · ${entries.length.toLocaleString("en-US")} ${field ? "field detections" : "reported sightings"}`;
       const attrs = { tabindex: 0, role: "button", "aria-label": title, style: "cursor:pointer" };
       const mark = field
         ? draw(panel, "path", { ...attrs, d: `M${x} ${y-r}l${r} ${r}l${-r} ${r}l${-r} ${-r}z`, stroke: "var(--ink)", fill: "var(--paper)" })
-        : draw(panel, "circle", { ...attrs, cx: x, cy: y, r, fill: "var(--ink)", "fill-opacity": 0.7 });
+        : draw(panel, "circle", { ...attrs, cx: x, cy: y, r, fill: "var(--ink)", "fill-opacity": 0.7,
+          stroke: side ? "none" : "var(--paper)", "stroke-width": 1.4, "paint-order": "stroke fill" });
       addTitle(mark, title);
       const inspect = () => showInspector("direction", title, [[entries.length, "records"]], entries);
       mark.addEventListener("click", inspect);
@@ -4940,15 +4932,14 @@ function renderSightingAngles() {
         if (["Enter", " "].includes(event.key)) { event.preventDefault(); inspect(); }
       });
     }
-    labelAt(panel, center, cy + radius + 34, side ? "Elevation from horizon" : "Reports per ring →");
-    if (!side) labelAt(panel, center, cy + radius + 50, ringCounts.map(count => count >= 1000 ? `${count / 1000}k` : String(count)).join(" · "));
-    if (unreported) labelAt(panel, center, cy + radius + (side ? 50 : 66), `${formatNumber(unreported)} unreported`);
+    labelAt(panel, center, cy + radius + (side ? 34 : 42), side ? "Elevation from horizon" : "Dot size · report count");
+    if (unreported) labelAt(panel, center, cy + radius + (side ? 50 : 58), `${formatNumber(unreported)} unreported`);
   }
   const summary = blueBook
     ? `${formatNumber(documents.length)} reported directions · ${formatNumber(new Set(documents.map(row => row.documentId)).size)} Project Blue Book case-file transcripts`
     : `${formatNumber(documents.length)} reported directions`;
   $("#graphSubtitle").textContent = summary;
-  $("#legend").textContent = `● Reported sighting${blueBook ? "" : "   ◇ Field camera pointing"}`;
+  $("#legend").textContent = `Marker area shows count · ● Reported sighting${blueBook ? "" : "   ◇ Field camera pointing"}`;
   setSummary(summary, "angles");
   if (!rows.length) labelAt(svg, width / 2, cy + radius + 52, "No recorded angles for this selection");
 }
