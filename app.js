@@ -4859,46 +4859,81 @@ function renderSightingAngles() {
       excerpt: `Camera pointing at detection · ${new Date(pose.detectedEpoch * 1000).toISOString()} · ${item.id}` });
   }
   const missing = field.filter(item => !item.cameraPointing).length;
-  const left = 65, right = width - 24, top = 32, bottom = height - 70;
-  const x = az => az == null ? left - 43 : left + az / 360 * (right - left);
-  const y = elv => elv == null ? bottom + 28 : top + (90 - elv) / 180 * (bottom - top);
-  const line = (x1,y1,x2,y2) => svg.append(el("line",{x1,y1,x2,y2,stroke:"var(--line)"}));
-  const text = (tx,ty,value,anchor="middle") => svg.append(el("text",{x:tx,y:ty,"text-anchor":anchor,class:"axis-label"},value));
-  for (const [angle, name] of [[0,"N"],[90,"E"],[180,"S"],[270,"W"],[360,"N"]]) {
-    line(x(angle),top,x(angle),bottom); text(x(angle),bottom+15,`${name} ${angle}°`);
-  }
-  for (const angle of [-90,-45,0,45,90]) {
-    line(left,y(angle),right,y(angle)); text(left-4,y(angle)+4,`${angle}°`,"end");
-  }
-  text(left,top-13,"Elevation","start");
-  text((left+right)/2,height-7,"Azimuth · clockwise from north");
-  text(x(null),top-13,"? Az"); text(left-13,y(null)+4,"? El","end");
-  const groups = new Map();
-  for (const row of rows) {
-    const key = JSON.stringify([row.azimuth,row.elevation,!!row.field]);
-    if (!groups.has(key)) groups.set(key,[]);
-    groups.get(key).push(row);
-  }
-  for (const entries of groups.values()) {
-    const row = entries[0], cx = x(row.azimuth), cy = y(row.elevation);
-    const r = Math.min(9, 4 + Math.log2(entries.length));
-    const mark = row.field ? el("path",{d:`M${cx} ${cy-r-2}l${r+2} ${r+2}l${-r-2} ${r+2}l${-r-2} ${-r-2}z`,fill:"none",stroke:"var(--ink)","stroke-width":2})
-      : el("circle",{cx,cy,r,fill:"var(--ink)","fill-opacity":0.65});
-    const title = `${row.azimuth == null ? "Unknown azimuth" : row.azimuth+"° azimuth"} · ${row.elevation == null ? "unknown elevation" : row.elevation+"° elevation"} · ${entries.length} ${row.field ? "field detections" : "reported sightings"}`;
-    mark.setAttribute("tabindex","0"); mark.setAttribute("role","button"); mark.setAttribute("aria-label",title); addTitle(mark,title);
-    const inspect = () => showInspector("direction",title,[[entries.length,"records"]],entries);
-    mark.addEventListener("click",inspect);
-    mark.addEventListener("keydown",event => { if (["Enter"," "].includes(event.key)) {event.preventDefault(); inspect();} });
-    svg.append(mark);
+  const panelWidth = width / 2;
+  const radius = Math.max(12, Math.min(panelWidth / 2 - 22, height / 2 - 68, 190));
+  const cy = height / 2;
+  const draw = (parent, tag, attrs, value) => {
+    const node = el(tag, attrs, value);
+    parent.append(node);
+    return node;
+  };
+  const line = (panel, x1, y1, x2, y2, attrs = {}) =>
+    draw(panel, "line", { x1, y1, x2, y2, stroke: "var(--line)", ...attrs });
+  const labelAt = (panel, x, y, value, anchor = "middle", attrs = {}) =>
+    draw(panel, "text", { x, y, "text-anchor": anchor, class: "axis-label", ...attrs }, value);
+  line(svg, panelWidth, cy - radius - 45, panelWidth, cy + radius + 44);
+  for (const axis of ["elevation", "azimuth"]) {
+    const side = axis === "elevation";
+    const center = panelWidth * (side ? 0.5 : 1.5);
+    const cx = side ? center - radius / 2 : center;
+    const panel = draw(svg, "g", { role: "group", "aria-label": side ? "Side view" : "Compass" });
+    const point = (angle, distance) => {
+      const radians = (side ? -angle : angle - 90) * Math.PI / 180;
+      return [cx + distance * Math.cos(radians), cy + distance * Math.sin(radians)];
+    };
+    labelAt(panel, center, cy - radius - 30, side ? "Side view" : "Compass", "middle",
+      { style: "font-size:15px;font-weight:600;fill:var(--ink)" });
+    for (const scale of [0.5, 1]) {
+      const r = radius * scale;
+      if (side) draw(panel, "path", { d: `M ${cx} ${cy-r} a ${r} ${r} 0 0 1 0 ${2*r}`, fill: "none", stroke: "var(--line)" });
+      else draw(panel, "circle", { cx, cy, r, fill: "none", stroke: "var(--line)" });
+    }
+    const ticks = side ? [-90, -45, 0, 45, 90] : [0, 45, 90, 135, 180, 225, 270, 315];
+    for (const angle of ticks) {
+      const [x, y] = point(angle, radius);
+      line(panel, cx, cy, x, y);
+      const caption = side ? (angle % 90 === 0 ? `${angle}°` : "") : ["N", "", "E", "", "S", "", "W", ""][angle / 45];
+      if (caption) {
+        const [tx, ty] = point(angle, radius + 13);
+        labelAt(panel, tx, ty + 4, caption);
+      }
+    }
+    draw(panel, "circle", { cx, cy, r: 2.5, fill: "var(--ink)" });
+    const groups = new Map();
+    let unreported = 0;
+    for (const row of rows) {
+      if (!Number.isFinite(row[axis])) { unreported++; continue; }
+      const angle = side ? row[axis] : row[axis] % 360;
+      const key = `${angle}/${!!row.field}`;
+      if (!groups.has(key)) groups.set(key, { angle, field: !!row.field, entries: [] });
+      groups.get(key).entries.push(row);
+    }
+    for (const { angle, field, entries } of groups.values()) {
+      // Separate tracks keep station and document evidence selectable at the same angle.
+      const [x, y] = point(angle, radius * (field ? 0.62 : 0.87));
+      const r = Math.min(radius * 0.075, 2 + Math.log2(entries.length + 1) / 2);
+      const title = `${angle}° ${axis} · ${formatNumber(entries.length)} ${field ? "field detections" : "reported sightings"}`;
+      const attrs = { tabindex: 0, role: "button", "aria-label": title, style: "cursor:pointer" };
+      const mark = field
+        ? draw(panel, "path", { ...attrs, d: `M${x} ${y-r}l${r} ${r}l${-r} ${r}l${-r} ${-r}z`, stroke: "var(--ink)", fill: "var(--paper)" })
+        : draw(panel, "circle", { ...attrs, cx: x, cy: y, r, fill: "var(--ink)", "fill-opacity": 0.7 });
+      addTitle(mark, title);
+      const inspect = () => showInspector("direction", title, [[entries.length, "records"]], entries);
+      mark.addEventListener("click", inspect);
+      mark.addEventListener("keydown", event => {
+        if (["Enter", " "].includes(event.key)) { event.preventDefault(); inspect(); }
+      });
+    }
+    labelAt(panel, center, cy + radius + 34, side ? "Elevation from horizon" : "Bearing from north");
+    if (unreported) labelAt(panel, center, cy + radius + 50, `${formatNumber(unreported)} unreported`);
   }
   const summary = blueBook
     ? `${formatNumber(documents.length)} reported directions · ${formatNumber(new Set(documents.map(row => row.documentId)).size)} Project Blue Book case-file transcripts`
     : `${formatNumber(documents.length)} reported directions · ${field.length - missing} field detections with pointing · ${missing} without pointing`;
   $("#graphSubtitle").textContent = summary;
-  text((left+right)/2,height-25,blueBook ? "● Reported sighting" : "● Reported sighting   ◇ Camera pointing");
-  $("#legend").textContent = "● Reported sighting   ◇ Field camera pointing   ? Angle unreported";
+  $("#legend").textContent = blueBook ? "● Reported sighting" : "● Reported sighting   ◇ Field camera pointing";
   setSummary(summary, "angles");
-  if (!rows.length) text((left+right)/2,(top+bottom)/2-10,"No recorded angles for this selection");
+  if (!rows.length) labelAt(svg, width / 2, cy + radius + 52, "No recorded angles for this selection");
 }
 
 function renderClock() {
