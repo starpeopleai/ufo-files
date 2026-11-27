@@ -4934,6 +4934,17 @@ function renderSightingAngles() {
         if (["Enter", " "].includes(event.key)) { event.preventDefault(); inspect(); }
       });
     }
+    if (!side && groups.length) {
+      for (const bearing of [0, 90, 180, 270]) {
+        const count = groups.reduce((sum, group) => sum + (group.angle === bearing ? group.entries.length : 0), 0);
+        const [x, y] = point(bearing, radius - maxRadius - 8);
+        const anchor = bearing === 90 ? "end" : bearing === 270 ? "start" : "middle";
+        labelAt(panel, x, y + 4, count.toLocaleString("en-US"), anchor, {
+          "data-cardinal-bearing": bearing, "pointer-events": "none", stroke: "var(--paper)",
+          "stroke-width": 3, "paint-order": "stroke fill"
+        });
+      }
+    }
     labelAt(panel, center, cy + radius + (side ? 34 : 42), side ? "Elevation from horizon" : "Dot size · report count");
     if (unreported) labelAt(panel, center, cy + radius + (side ? 50 : 58), `${formatNumber(unreported)} unreported`);
   }
