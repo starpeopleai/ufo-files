@@ -2347,9 +2347,9 @@ function renderNetwork() {
   setSummary(`${nodes.length} ${collectionMode ? "collections" : "entities"} · ${edges.length} relationships`, "network");
 }
 
-function scatterPointMark(x, y, value, extent, isOutlier = false) {
+function scatterPointMark(x, y, value, extent, isOutlier = false, radius = scale(value, extent, [4, 15])) {
   return el("circle", {
-    cx: x, cy: y, r: scale(value, extent, [4, 15]),
+    cx: x, cy: y, r: radius,
     fill: "#111", "fill-opacity": scale(value, extent, [.18, .96]),
     stroke: "#111", "stroke-width": isOutlier ? 3 : 1,
     class: `mark${isOutlier ? " outlier-mark" : ""}`
@@ -4841,6 +4841,11 @@ function inspectClockGroup(group) {
   heading.setAttribute("tabindex", "-1"); heading.focus({ preventScroll: true });
 }
 
+function drawDialTick(svg, outer, inner, major) {
+  svg.append(el("line", { x1: inner.x, y1: inner.y, x2: outer.x, y2: outer.y,
+    stroke: "var(--ink)", "stroke-width": 1, "stroke-opacity": major ? .6 : .25, class: "clock-tick" }));
+}
+
 function renderSightingAngles() {
   const { svg, width, height } = clearChart();
   const fieldSource = "starpeople.ai Field Station";
@@ -4901,7 +4906,12 @@ function renderSightingAngles() {
     const ticks = side ? [-90, -45, 0, 45, 90] : [0, 45, 90, 135, 180, 225, 270, 315];
     for (const angle of ticks) {
       const [x, y] = point(angle, radius);
-      line(panel, cx, cy, x, y);
+      if (side) line(panel, cx, cy, x, y, { class: "grid-line" });
+      else {
+        const major = angle % 90 === 0;
+        const [ix, iy] = point(angle, radius - (major ? 10 : 4));
+        drawDialTick(panel, { x, y }, { x: ix, y: iy }, major);
+      }
       const caption = side ? (angle % 90 === 0 ? `${angle}°` : "") : ["N", "", "E", "", "S", "", "W", ""][angle / 45];
       if (caption) {
         const [tx, ty] = point(angle, radius + (side ? 13 : maxRadius + 9));
@@ -4918,11 +4928,17 @@ function renderSightingAngles() {
       const circleRadius = minRadius + (maxRadius - minRadius) * Math.sqrt(countFraction);
       const r = field ? circleRadius * Math.sqrt(Math.PI / 2) : circleRadius;
       const title = `${angle}° ${axis} · ${entries.length.toLocaleString("en-US")} ${field ? "field detections" : "reported sightings"}`;
-      const attrs = { tabindex: 0, role: "button", "aria-label": title, style: "cursor:pointer" };
       const mark = field
-        ? draw(panel, "path", { ...attrs, d: `M${x} ${y-r}l${r} ${r}l${-r} ${r}l${-r} ${-r}z`, stroke: "var(--ink)", fill: "var(--paper)" })
-        : draw(panel, "circle", { ...attrs, cx: x, cy: y, r, fill: "var(--ink)", "fill-opacity": 0.7,
-          stroke: side ? "none" : "var(--paper)", "stroke-width": 1.4, "paint-order": "stroke fill" });
+        ? el("path", { d: `M${x} ${y-r}l${r} ${r}l${-r} ${r}l${-r} ${-r}z`, stroke: "var(--ink)", fill: "var(--paper)", class: "mark" })
+        : scatterPointMark(x, y, entries.length, [1, peakCount], false, circleRadius);
+      if (side && !field) {
+        mark.setAttribute("stroke", "none");
+        mark.setAttribute("fill-opacity", scale(entries.length, [1, peakCount], [.55, .96]));
+      }
+      mark.setAttribute("tabindex", "0");
+      mark.setAttribute("role", "button");
+      mark.setAttribute("aria-label", title);
+      panel.append(mark);
       addTitle(mark, title);
       const inspect = () => showInspector("direction", title, [[entries.length, "records"]], entries);
       mark.addEventListener("click", inspect);
@@ -4941,14 +4957,14 @@ function renderSightingAngles() {
         });
       }
     }
-    labelAt(panel, center, cy + radius + (side ? 34 : 42), side ? "Elevation from horizon" : "Dot size · report count");
+    labelAt(panel, center, cy + radius + (side ? 34 : 42), side ? "Elevation from horizon" : "Size + shade · count");
     if (unreported) labelAt(panel, center, cy + radius + (side ? 50 : 58), `${formatNumber(unreported)} unreported`);
   }
   const summary = blueBook
     ? `${formatNumber(documents.length)} reported directions · ${formatNumber(new Set(documents.map(row => row.documentId)).size)} Project Blue Book case-file transcripts`
     : `${formatNumber(documents.length)} reported directions`;
   $("#graphSubtitle").textContent = summary;
-  $("#legend").textContent = `Marker area shows count · ● Reported sighting${blueBook ? "" : "   ◇ Field camera pointing"}`;
+  $("#legend").textContent = `Node size + shade show count · ● Reported sighting${blueBook ? "" : "   ◇ Field camera pointing"}`;
   setSummary(summary, "angles");
   if (!rows.length) labelAt(svg, width / 2, cy + radius + 52, "No recorded angles for this selection");
 }
@@ -4965,7 +4981,7 @@ function renderClock() {
   for (let tick = 0; tick < 60; tick++) {
     const outer = clockPosition(tick * 12, radius, cx, cy);
     const inner = clockPosition(tick * 12, radius - (tick % 5 ? 4 : 10), cx, cy);
-    svg.append(el("line", { x1: inner.x, y1: inner.y, x2: outer.x, y2: outer.y, stroke: "var(--ink)", "stroke-width": 1, "stroke-opacity": tick % 5 ? .25 : .6, class: "clock-tick" }));
+    drawDialTick(svg, outer, inner, tick % 5 === 0);
   }
   for (let hour = 0; hour < 12; hour++) {
     const point = clockPosition(hour * 60, radius + 20, cx, cy);
