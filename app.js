@@ -4897,11 +4897,7 @@ function renderSightingAngles() {
       return [cx + distance * Math.cos(radians), cy + distance * Math.sin(radians)];
     };
     labelAt(panel, center + radius, cy - radius - 8, side ? "Side view" : "Compass", "end");
-    for (const scale of [0.5, 1]) {
-      const r = radius * scale;
-      if (side) draw(panel, "path", { d: `M ${cx} ${cy-r} a ${r} ${r} 0 0 1 0 ${2*r}`, fill: "none", stroke: "var(--line)" });
-      else draw(panel, "circle", { cx, cy, r, fill: "none", stroke: "var(--line)" });
-    }
+    if (!side) draw(panel, "circle", { cx, cy, r: radius, fill: "none", stroke: "var(--line)" });
     const ticks = side ? [-90, -45, 0, 45, 90] : [0, 45, 90, 135, 180, 225, 270, 315];
     for (const angle of ticks) {
       const [x, y] = point(angle, radius);
@@ -4926,7 +4922,7 @@ function renderSightingAngles() {
       const mark = field
         ? draw(panel, "path", { ...attrs, d: `M${x} ${y-r}l${r} ${r}l${-r} ${r}l${-r} ${-r}z`, stroke: "var(--ink)", fill: "var(--paper)" })
         : draw(panel, "circle", { ...attrs, cx: x, cy: y, r, fill: "var(--ink)", "fill-opacity": 0.7,
-          stroke: "var(--paper)", "stroke-width": 1.4, "paint-order": "stroke fill" });
+          stroke: side ? "none" : "var(--paper)", "stroke-width": 1.4, "paint-order": "stroke fill" });
       addTitle(mark, title);
       const inspect = () => showInspector("direction", title, [[entries.length, "records"]], entries);
       mark.addEventListener("click", inspect);
