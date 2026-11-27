@@ -211,7 +211,7 @@ try {
     });
   }
 
-  await page.locator('[data-type="map"]').click();
+  await page.evaluate(() => setType("map"));
   await page.waitForFunction(() => Boolean(window.ufoGlobe));
   await page.evaluate(() => {
     const farSideName = "Far Side of the Moon";
@@ -220,8 +220,11 @@ try {
     const current = window.pendingGlobeRender || { items: [], labelSize: 14, moonTransitSeconds: 5 };
     prepareMapView();
     document.querySelector("#emptyState").hidden = true;
-    if (!window.ufoGlobe.nodes.some(node => node.userData.name === farSideName)) {
-      const items = current.items.filter(item => item.name !== farSideName);
+    const items = [...current.items];
+    const index = items.findIndex(item => item.name === farSideName);
+    if (index >= 0) {
+      items[index] = { ...items[index], showLabel: true };
+    } else {
       items.splice(1, 0, {
         id: "far-side-moon-preview",
         name: farSideName,
@@ -234,8 +237,8 @@ try {
         secondary: false,
         showLabel: true
       });
-      window.dispatchEvent(new CustomEvent("ufo-map-render", { detail: { ...current, items } }));
     }
+    window.dispatchEvent(new CustomEvent("ufo-map-render", { detail: { ...current, items } }));
     window.ufoGlobe.moonOrbit.rotation.y = Math.PI * 3 / 2;
     window.ufoGlobe.draw();
   });
