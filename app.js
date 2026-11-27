@@ -4859,7 +4859,7 @@ function renderSightingAngles() {
   }
   const missing = field.filter(item => !item.cameraPointing).length;
   const left = 65, right = width - 24, top = 32, bottom = height - 70;
-  const x = az => az == null ? left - 29 : left + az / 360 * (right - left);
+  const x = az => az == null ? left - 43 : left + az / 360 * (right - left);
   const y = elv => elv == null ? bottom + 28 : top + (90 - elv) / 180 * (bottom - top);
   const line = (x1,y1,x2,y2) => svg.append(el("line",{x1,y1,x2,y2,stroke:"var(--line)"}));
   const text = (tx,ty,value,anchor="middle") => svg.append(el("text",{x:tx,y:ty,"text-anchor":anchor,class:"axis-label"},value));
@@ -4871,7 +4871,7 @@ function renderSightingAngles() {
   }
   text(left,top-13,"Elevation","start");
   text((left+right)/2,height-7,"Azimuth · clockwise from north");
-  text(x(null),top-13,"?"); text(left-5,y(null)+4,"?","end");
+  text(x(null),top-13,"? Az"); text(left-13,y(null)+4,"? El","end");
   const groups = new Map();
   for (const row of rows) {
     const key = JSON.stringify([row.azimuth,row.elevation,!!row.field]);
@@ -4890,6 +4890,8 @@ function renderSightingAngles() {
     mark.addEventListener("keydown",event => { if (["Enter"," "].includes(event.key)) {event.preventDefault(); inspect();} });
     svg.append(mark);
   }
+  $("#graphSubtitle").textContent = `${formatNumber(documents.length)} reported directions · ${field.length - missing} field detections with pointing · ${missing} without pointing`;
+  text((left+right)/2,height-25,"● Reported sighting   ◇ Camera pointing");
   $("#legend").textContent = "● Reported sighting   ◇ Field camera pointing   ? Angle unreported";
   setSummary(`${formatNumber(documents.length)} reported directions · ${field.length - missing} field detections with pointing · ${missing} without pointing`, "angles");
   if (!rows.length) text((left+right)/2,(top+bottom)/2-10,"No recorded angles for this selection");
