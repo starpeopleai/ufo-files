@@ -3097,7 +3097,24 @@ function timelineEventCandidates() {
     .filter(document => sourceMatches(document.source))
     .map(historicalTimelineCandidate)
     .filter(Boolean) : [];
-  return [...published, ...reported, ...historical];
+  const fieldSource = "starpeople.ai Field Station";
+  const recordings = state.catalog.fieldObservations && sourceMatches(fieldSource) ? fieldIndex().recordings : [];
+  const fieldEvents = recordings.filter(recording => Number.isFinite(recording.startedEpoch)).map(recording => ({
+    id: recording.id,
+    title: `Field recording · ${fieldTime(recording)}`,
+    eventType: "field_recording",
+    fieldRecording: recording,
+    startDate: new Date(recording.startedEpoch * 1000).toISOString().slice(0, 10),
+    datePrecision: "day",
+    mentionCount: recording.observations.size,
+    source: fieldSource,
+    sourceFamilyIds: [recording.sourceFamilyId || recording.id],
+    independentSourceFamilyCount: 1,
+    documentCount: 0,
+    documentIds: [],
+    entityIds: []
+  }));
+  return [...published, ...reported, ...historical, ...fieldEvents];
 }
 
 function timelineDateLabel(value, precision = "day") {
@@ -3144,6 +3161,7 @@ function groupTimelineEvents(events, period = "year") {
       eventCount: 0,
       reportedEventCount: 0,
       publishedEventCount: 0,
+      fieldRecordingCount: 0,
       historicalCandidateCount: 0,
       historicalCandidateGroup,
       mentionCount: 0,
@@ -3159,7 +3177,8 @@ function groupTimelineEvents(events, period = "year") {
     group.eventCount += 1;
     group.historicalCandidateCount += event.historicalCandidateDocument ? 1 : 0;
     group.reportedEventCount += event.reportedDocument ? 1 : 0;
-    group.publishedEventCount += event.reportedDocument || event.historicalCandidateDocument ? 0 : 1;
+    group.fieldRecordingCount += event.fieldRecording ? 1 : 0;
+    group.publishedEventCount += event.fieldRecording || event.reportedDocument || event.historicalCandidateDocument ? 0 : 1;
     group.mentionCount += event.mentionCount || 1;
     group.confidenceTotal += event.confidence || 0;
     group.events.push(event);
@@ -3171,7 +3190,7 @@ function groupTimelineEvents(events, period = "year") {
   });
   return [...groups.values()].map(group => ({
     ...group,
-    confidence: group.confidenceTotal / Math.max(1, group.eventCount),
+    confidence: group.fieldRecordingCount === group.eventCount ? null : group.confidenceTotal / (group.eventCount - group.fieldRecordingCount),
     documentIds: [...group.documentIds],
     documentCount: group.documentIds.size,
     entityIds: [...group.entityIds],
@@ -3205,7 +3224,13 @@ function timeBalancedTimelineEvents(items, requestedLimit, requestedRelevantLimi
   const decadeFor = item => Math.floor(Number((item.startDate || "").slice(0, 4)) / 10) * 10;
   const decades = new Set(ordered.map(decadeFor).filter(Number.isFinite));
   const selected = new Set();
-  const relevantLimit = Math.min(limit - 1, Math.max(0, Math.round(Number(requestedRelevantLimit) || 0)));
+  // Keep the most recent field recording (or its date group) visible in a capped timeline.
+  const recentField = ordered.reduce((latest, item) => {
+    if (!(item.fieldRecording || item.fieldRecordingCount)) return latest;
+    return !latest || item.startDate > latest.startDate ? item : latest;
+  }, null);
+  if (recentField) selected.add(recentField.id);
+  const relevantLimit = Math.min(Math.max(0, limit - selected.size - 1), Math.max(0, Math.round(Number(requestedRelevantLimit) || 0)));
   ordered.slice(0, relevantLimit).forEach(item => selected.add(item.id));
   if (priorityPredicate) {
     ordered.filter(priorityPredicate).forEach(item => {
@@ -3214,7 +3239,7 @@ function timeBalancedTimelineEvents(items, requestedLimit, requestedRelevantLimi
   }
   const earliest = [...ordered].sort((left, right) => String(left.startDate || "").localeCompare(String(right.startDate || "")))[0];
   const decadeCounts = new Map();
-  if (earliest && !selected.has(earliest.id)) {
+  if (earliest && selected.size < limit && !selected.has(earliest.id)) {
     selected.add(earliest.id);
     const decade = decadeFor(earliest);
     if (Number.isFinite(decade)) decadeCounts.set(decade, 1);
@@ -3340,7 +3365,7 @@ function drawTimelineGuideLabels(svg, relevancePlacement, recencyPlacement) {
 function timelineEventProvenance(item) {
   const candidate = item.groupPeriod ? item.historicalCandidateCount : item.historicalCandidateDocument ? 1 : 0;
   const reported = item.groupPeriod ? item.reportedEventCount : item.reportedDocument ? 1 : 0;
-  const reviewed = item.groupPeriod ? item.publishedEventCount : item.reportedDocument || item.historicalCandidateDocument ? 0 : 1;
+  const reviewed = item.groupPeriod ? item.publishedEventCount + (item.fieldRecordingCount || 0) : item.reportedDocument || item.historicalCandidateDocument ? 0 : 1;
   if (candidate && !reported && !reviewed) return "candidate";
   return candidate || reported && reviewed ? "mixed" : reported ? "reported" : "reviewed";
 }
@@ -3451,6 +3476,9 @@ function drawTimelineHistoricalMarkerLabels(svg, placements) {
 function renderTimeline() {
   const { svg, width, height } = clearChart();
   const rawEventCandidates = state.config.timelineRole === "event" ? timelineEventCandidates() : [];
+  if (state.config.timelineRole === "event" && !state.config.allSources && state.config.sources.length === 1 && state.config.sources[0] === "starpeople.ai Field Station") {
+    $("#graphSubtitle").textContent = `${formatNumber(rawEventCandidates.length)} field recordings · UTC recording start dates`;
+  }
   const candidates = (state.config.timelineRole === "event"
     ? state.config.timelineGrouping ? groupTimelineEvents(rawEventCandidates, state.config.timelineGroupPeriod) : rawEventCandidates
     : state.config.timelineRole === "entity"
@@ -3602,7 +3630,7 @@ function renderTimeline() {
     const provenance = state.config.timelineRole === "event" ? timelineEventProvenance(item) : "";
     const hasHistoricalCandidate = state.config.timelineRole === "event" && (item.groupPeriod ? item.historicalCandidateCount : item.historicalCandidateDocument);
     const dot = el("circle", { cx: x, cy: y, r: radius, fill: "#111", "fill-opacity": shade, stroke: "#111", "stroke-width": 1, class: `mark${provenance ? ` timeline-event-node timeline-${provenance}${hasHistoricalCandidate ? " timeline-has-candidate" : ""}` : ""}` });
-    const groupBreakdown = item.groupPeriod ? ` · ${formatNumber(item.historicalCandidateCount)} historical dates awaiting review · ${formatNumber(item.reportedEventCount)} published database reports · ${formatNumber(item.publishedEventCount)} reviewed events` : "";
+    const groupBreakdown = item.groupPeriod ? ` · ${formatNumber(item.historicalCandidateCount)} historical dates awaiting review · ${formatNumber(item.reportedEventCount)} published database reports · ${formatNumber(item.publishedEventCount)} reviewed events${item.fieldRecordingCount ? ` · ${formatNumber(item.fieldRecordingCount)} field recordings` : ""}` : "";
     addTitle(dot, item.groupPeriod ? `${item.title} · ${formatNumber(item.eventCount)} events${groupBreakdown}` : `${item.title} · ${timelineDateLabel(timelineDate(item), item.datePrecision)}`);
     dot.addEventListener("click", () => state.config.timelineRole === "event" ? item.groupPeriod ? inspectTimelineGroup(item) : item.historicalCandidateDocument ? inspectDocument(item.historicalCandidateDocument) : item.reportedDocument ? inspectDocument(item.reportedDocument) : inspectEvent(item) : item.entityRecord ? inspectEntity(item.entityRecord) : inspectDocument(item));
     dot.addEventListener("mouseenter", () => {
@@ -3632,6 +3660,7 @@ function renderTimeline() {
   drawTimelineHistoricalMarkerLabels(svg, historicalMarkers);
   drawTimelineGuideLabels(svg, relevanceCutoffBox, recencyGuide);
   drawIntensityLegend(relevanceLayout?.relevanceActive, Boolean(recencyGuide));
+  const fieldScope = rawEventCandidates.some(item => item.fieldRecording) ? ", including field recordings" : "";
   const eventScope = state.config.timelineHistoricalCandidates
     ? "reviewed events, published reports, and screened unreviewed historical dates"
     : "reviewed events and published reports";
@@ -3639,8 +3668,8 @@ function renderTimeline() {
     ? `top ${state.config.timelineRelevanceCutoff} above relevance guide`
     : "all shown ranks use full height";
   const eventSummary = state.config.timelineGrouping
-    ? `${data.length} time-balanced date groups of ${formatNumber(candidates.length)} · ${formatNumber(rawEventCandidates.length)} ${eventScope} · ${relevanceSummary} · recency guide ${state.config.timelineRecencyYear}`
-    : `${data.length} of ${formatNumber(rawEventCandidates.length)} events and reported sightings · ${relevanceSummary} · recency guide ${state.config.timelineRecencyYear}`;
+    ? `${data.length} time-balanced date groups of ${formatNumber(candidates.length)} · ${formatNumber(rawEventCandidates.length)} ${eventScope}${fieldScope} · ${relevanceSummary} · recency guide ${state.config.timelineRecencyYear}`
+    : `${data.length} of ${formatNumber(rawEventCandidates.length)} events and reported sightings${fieldScope} · ${relevanceSummary} · recency guide ${state.config.timelineRecencyYear}`;
   setSummary(state.config.timelineRole === "event" ? eventSummary : `${data.length} ${state.config.timelineRole === "entity" ? "entities" : "dated source documents"}`, "timeline");
 }
 
@@ -4717,7 +4746,17 @@ function inspectFieldRegion(id) {
 function inspectFieldRecordings(records,title,note='Recording start times are in UTC. A recording can contain multiple reviewed objects; it is not independent corroboration.') {
   showInspector('starpeople.ai Field Station',title,[[records.length,'recordings'],[new Set(records.flatMap(r=>[...r.observations])).size,'observations']],[],note);
   const target=$('#inspectorContent .evidence-list');target.replaceChildren();
-  for(const r of records){const button=document.createElement('button');button.type='button';button.className='field-recording';button.textContent=fieldTime(r);button.onclick=()=>inspectFieldRecording(r);target.append(button);}
+  appendFieldRecordingLinks(target, records);
+}
+function appendFieldRecordingLinks(target, records) {
+  for (const recording of records) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "field-recording";
+    button.textContent = fieldTime(recording);
+    button.onclick = () => inspectFieldRecording(recording);
+    target.append(button);
+  }
 }
 function inspectFieldRecording(r) {
   showInspector('starpeople.ai Field Station',r.recordingId,[[r.objects.size,'reviewed objects'],[r.observations.size,'observations']],[],`${fieldTime(r)} · ${r.regions.size?[...r.regions].map(fieldRegionName).join('; '):'Location unavailable'}. Recording coverage is not an exact sighting time. Human-reviewed anomalous does not establish a cause.`);
@@ -6701,6 +6740,7 @@ function inspectDocument(item) {
 }
 
 function inspectEvent(item) {
+  if (item.fieldRecording) return inspectFieldRecording(item.fieldRecording);
   showInspector(item.eventType, item.title, [[timelineDateLabel(item.startDate, item.datePrecision), "event date"], [item.mentionRank, "mention rank"], [item.mentionCount, "event mentions"], [item.independentSourceFamilyCount ?? item.documentIds.length, "independent source families"], [item.documentIds.length, "raw documents"], [`${Math.round(item.confidence * 100)}%`, "confidence"]], item.evidence, "Includes explicit incident dates and source-backed disclosure, hearing, program, and official-report milestones. FOIA processing and cataloging dates remain excluded.", "", dossierSelection("events", item), { documentIds: item.documentIds, warning: derivativeCoverageWarning({ ...item, documentCount: item.documentIds.length }) });
 }
 
@@ -6711,10 +6751,12 @@ function inspectTimelineGroup(item) {
     [item.historicalCandidateCount, "historical dates awaiting review"],
     [item.reportedEventCount, "published database reports"],
     [item.publishedEventCount, "reviewed events"],
+    ...(item.fieldRecordingCount ? [[item.fieldRecordingCount, "field recordings"]] : []),
     [item.documentCount, "source documents"],
     [item.independentSourceFamilyCount, "source families"],
     [item.sourceCount, "collections"]
   ], item.evidence, `A ${period} visual aggregate. Hollow historical database dates remain review candidates, while published database rows are counted as reported sightings rather than independently verified events. Open an evidence link to inspect an individual source record.`, "", null, { documentIds: item.documentIds });
+  if (item.fieldRecordingCount) appendFieldRecordingLinks($("#inspectorContent .evidence-list"), item.events.filter(event => event.fieldRecording).map(event => event.fieldRecording));
 }
 
 function inspectCase(item) {

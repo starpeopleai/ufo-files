@@ -2622,6 +2622,7 @@ test("timeline axes use vertical date guides and sourced historical markers", ()
 test("the production timeline publishes every accepted historical review and excludes rejected dates", () => {
   const context = vm.createContext({ location: { hash: "" }, URLSearchParams });
   const source = fs.readFileSync("app.js", "utf8").split("$$('.step-heading')")[0];
+  context.FieldEvidence = require("../assets/field-evidence.js");
   vm.runInContext(source, context);
   context.catalogFixture = loadCatalogFixture();
   const result = JSON.parse(vm.runInContext(`
@@ -2639,12 +2640,13 @@ test("the production timeline publishes every accepted historical review and exc
       return JSON.stringify({
         defaultHistorical: defaultEvents.filter(event => event.historicalCandidateDocument).length,
         defaultReports: defaultEvents.filter(event => event.reportedDocument).length,
-        defaultPublished: defaultEvents.length - defaultEvents.filter(event => event.reportedDocument).length,
+        defaultPublished: defaultEvents.filter(event => !event.reportedDocument && !event.fieldRecording).length,
+        fieldIds: defaultEvents.filter(event => event.fieldRecording).map(event => event.id),
         reports: reports.length,
         historical: historical.length,
         earliestHistorical: historical.map(event => event.startDate).sort()[0],
         earliestReport: reports.map(event => event.startDate).sort()[0],
-        published: expandedEvents.length - reports.length - historical.length,
+        published: expandedEvents.filter(event => !event.fieldRecording).length - reports.length - historical.length,
         groups: months.length,
         july2015: { events: july2015.eventCount, reports: july2015.reportedEventCount, documents: july2015.documentCount }
       });
@@ -2668,7 +2670,10 @@ test("the production timeline publishes every accepted historical review and exc
   );
   const reviewIds = Object.keys(JSON.parse(fs.readFileSync("data/reported_event_date_reviews.json", "utf8")).documents).sort();
   const timelineBucket = vm.runInContext("timelineBucket", context);
+  const recordings = context.FieldEvidence.index(context.catalogFixture.fieldObservations).recordings.filter(r => Number.isFinite(r.startedEpoch));
+  assert.deepEqual(result.fieldIds.sort(), recordings.map(r => r.id).sort());
   const expectedMonths = new Set([
+    ...recordings.map(r => [new Date(r.startedEpoch * 1000).toISOString().slice(0, 10), "day", "published"]),
     ...expectedReports.map(document => [document.documentDate, document.documentDatePrecision, "published"]),
     ...expectedHistorical.map(event => [event.startDate, event.datePrecision, "candidate"]),
     ...context.catalogFixture.events.map(event => [event.startDate, event.datePrecision, "published"])
