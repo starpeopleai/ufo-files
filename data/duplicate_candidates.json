@@ -5,7 +5,7 @@
     "transcriptsAreSourceOfTruth": true,
     "pairedLanguage": "en",
     "repository": "starpeopleai/machine-data",
-    "revision": "73369be207c481d4eab01186592183aab6633173"
+    "revision": "851c2dfc2dee54ce4db5313b6f7f68be9593cc73"
   },
   "count": 8360,
   "totalCount": 8360,
@@ -1055,8 +1055,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Paterson Air Force Base",
@@ -1071,8 +1071,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright Patterson Airforce Base",
@@ -1087,8 +1087,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wight-Patterson Air Force Base",
@@ -2031,8 +2031,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1692,
-        "documentCount": 1352
+        "mentions": 1693,
+        "documentCount": 1353
       },
       "right": {
         "name": "FOREIGHN TECHNOLOGY DIVISION",
@@ -5007,8 +5007,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Committee",
-        "mentions": 192,
-        "documentCount": 131
+        "mentions": 193,
+        "documentCount": 132
       },
       "right": {
         "name": "Intelligence Committees",
@@ -5615,8 +5615,8 @@
       "category": "location",
       "left": {
         "name": "Edwards Air Force Base",
-        "mentions": 2493,
-        "documentCount": 1125
+        "mentions": 2494,
+        "documentCount": 1126
       },
       "right": {
         "name": "Edwards Airforce Base",
@@ -5631,8 +5631,8 @@
       "category": "location",
       "left": {
         "name": "Edwards Air Force Base",
-        "mentions": 2493,
-        "documentCount": 1125
+        "mentions": 2494,
+        "documentCount": 1126
       },
       "right": {
         "name": "Edward Air Force Base",
@@ -6591,8 +6591,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of the Air",
-        "mentions": 1186,
-        "documentCount": 721
+        "mentions": 1188,
+        "documentCount": 722
       },
       "right": {
         "name": "DEPARTMENT OF THE AI",
@@ -6607,8 +6607,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of the Air",
-        "mentions": 1186,
-        "documentCount": 721
+        "mentions": 1188,
+        "documentCount": 722
       },
       "right": {
         "name": "Department of the Ar",
@@ -8623,8 +8623,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Center",
-        "mentions": 1295,
-        "documentCount": 952
+        "mentions": 1297,
+        "documentCount": 954
       },
       "right": {
         "name": "Intelligence CentE",
@@ -14207,8 +14207,8 @@
       "category": "government_agency",
       "left": {
         "name": "Federal Bureau of Investigation",
-        "mentions": 36609,
-        "documentCount": 9318
+        "mentions": 36639,
+        "documentCount": 9319
       },
       "right": {
         "name": "FEDERAL BUREAU GF INVESTIGATION",
@@ -14223,8 +14223,8 @@
       "category": "government_agency",
       "left": {
         "name": "Federal Bureau of Investigation",
-        "mentions": 36609,
-        "documentCount": 9318
+        "mentions": 36639,
+        "documentCount": 9319
       },
       "right": {
         "name": "Federal Bureau of Inveatigation",
@@ -14239,8 +14239,8 @@
       "category": "government_agency",
       "left": {
         "name": "Federal Bureau of Investigation",
-        "mentions": 36609,
-        "documentCount": 9318
+        "mentions": 36639,
+        "documentCount": 9319
       },
       "right": {
         "name": "FEDERAL BUREAU Of TINESTIGATION",
@@ -14255,8 +14255,8 @@
       "category": "government_agency",
       "left": {
         "name": "Federal Bureau of Investigation",
-        "mentions": 36609,
-        "documentCount": 9318
+        "mentions": 36639,
+        "documentCount": 9319
       },
       "right": {
         "name": "Federal Bureau of Investlgation",
@@ -14271,8 +14271,8 @@
       "category": "government_agency",
       "left": {
         "name": "Federal Bureau of Investigation",
-        "mentions": 36609,
-        "documentCount": 9318
+        "mentions": 36639,
+        "documentCount": 9319
       },
       "right": {
         "name": "FEDERAL BUREAU OF INVESTIGATIDN",
@@ -14287,8 +14287,8 @@
       "category": "government_agency",
       "left": {
         "name": "Federal Bureau of Investigation",
-        "mentions": 36609,
-        "documentCount": 9318
+        "mentions": 36639,
+        "documentCount": 9319
       },
       "right": {
         "name": "Federal Bureau of Investigetion",
@@ -14303,8 +14303,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Fatterson Air Force Base",
@@ -14319,8 +14319,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "WRICHT-PATTERSON AIR FORCE BASE",
@@ -14335,8 +14335,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Patterson Air Torce Base",
@@ -14351,8 +14351,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Patteraon Air Force Base",
@@ -14367,8 +14367,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Petterson Air Force Base",
@@ -14383,8 +14383,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "WRIGHT-PATTERSON AIR FORCS BASE",
@@ -14399,8 +14399,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Patterson Air Foroe Base",
@@ -14415,8 +14415,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Pattergon Air Force Base",
@@ -14431,8 +14431,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Weight-Patterson Air Force Base",
@@ -14447,8 +14447,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Pattercon Air Force Base",
@@ -14463,8 +14463,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wrighü-Patterson Air Force Base",
@@ -14479,8 +14479,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "WRIGHT-PATTERBON AIR FORCE BASE",
@@ -14495,8 +14495,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Pattereon Air Force Base",
@@ -14511,8 +14511,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright Patterson Aix Force Base",
@@ -14527,8 +14527,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "WRIGHT-PATTERSON AIR FOPCE BASE",
@@ -14543,8 +14543,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "WRIGHT PATTIRSON AIR FORCE BASE",
@@ -14559,8 +14559,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wrigat-Patterson Air Force Base",
@@ -14575,8 +14575,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Patterson Air Forco Base",
@@ -14591,8 +14591,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Patterson Atr Force Base",
@@ -14607,8 +14607,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Batterson Air Force Base",
@@ -14623,8 +14623,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "WRIGHT-PITTERSON AIR FORCE BASE",
@@ -14639,8 +14639,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "WRIGHT-PATTERSON AIR FOACE BASE",
@@ -14655,8 +14655,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "WRIGHT PATThRSON AIR FORCE BASE",
@@ -14671,8 +14671,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "WRIGHT-PATTERRON AIR FORCE BASE",
@@ -14687,8 +14687,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Patterson Air Jorce Base",
@@ -14703,8 +14703,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "WRIGHT-PATTERJON AIR FORCE BASE",
@@ -14719,8 +14719,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "WRIGHT-PATTERSON AIK FORCE BASE",
@@ -14735,8 +14735,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Patterson Air Forge Base",
@@ -14751,8 +14751,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-ratterson Air Force Base",
@@ -14767,8 +14767,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "WHIGHT-PATTERSON AIR FORCE BASE",
@@ -14783,8 +14783,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "WRISHT-PATTERSON AIR FORCE BASE",
@@ -15343,8 +15343,8 @@
       "category": "location",
       "left": {
         "name": "Marshall Islands",
-        "mentions": 146,
-        "documentCount": 92
+        "mentions": 147,
+        "documentCount": 93
       },
       "right": {
         "name": "Marshall Island",
@@ -19311,8 +19311,8 @@
       "category": "person",
       "left": {
         "name": "Bruce Maccabee",
-        "mentions": 7194,
-        "documentCount": 1016
+        "mentions": 7195,
+        "documentCount": 1017
       },
       "right": {
         "name": "Bruce Maccabbee",
@@ -19327,8 +19327,8 @@
       "category": "person",
       "left": {
         "name": "Bruce Maccabee",
-        "mentions": 7194,
-        "documentCount": 1016
+        "mentions": 7195,
+        "documentCount": 1017
       },
       "right": {
         "name": "Bruce Maccabees",
@@ -19343,8 +19343,8 @@
       "category": "person",
       "left": {
         "name": "Kenneth Arnold",
-        "mentions": 6008,
-        "documentCount": 2177
+        "mentions": 6009,
+        "documentCount": 2178
       },
       "right": {
         "name": "Kenneth Arnolds",
@@ -19375,8 +19375,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4153,
-        "documentCount": 1778
+        "mentions": 4155,
+        "documentCount": 1779
       },
       "right": {
         "name": "George Adamskis",
@@ -19391,8 +19391,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4153,
-        "documentCount": 1778
+        "mentions": 4155,
+        "documentCount": 1779
       },
       "right": {
         "name": "George Adamskiâ",
@@ -19503,8 +19503,8 @@
       "category": "program",
       "left": {
         "name": "Project Grudge",
-        "mentions": 873,
-        "documentCount": 450
+        "mentions": 875,
+        "documentCount": 451
       },
       "right": {
         "name": "Project Grundge",
@@ -20527,8 +20527,8 @@
       "category": "location",
       "left": {
         "name": "Johnston Island",
-        "mentions": 32,
-        "documentCount": 23
+        "mentions": 33,
+        "documentCount": 24
       },
       "right": {
         "name": "Johnson Island",
@@ -23359,8 +23359,8 @@
       "category": "government_agency",
       "left": {
         "name": "Central Intelligence Agency",
-        "mentions": 66991,
-        "documentCount": 16892
+        "mentions": 66996,
+        "documentCount": 16895
       },
       "right": {
         "name": "CENTRAL INTELLICENCE AGENCY",
@@ -23375,8 +23375,8 @@
       "category": "government_agency",
       "left": {
         "name": "Central Intelligence Agency",
-        "mentions": 66991,
-        "documentCount": 16892
+        "mentions": 66996,
+        "documentCount": 16895
       },
       "right": {
         "name": "The Central IAtelligence Agency",
@@ -23391,8 +23391,8 @@
       "category": "government_agency",
       "left": {
         "name": "Central Intelligence Agency",
-        "mentions": 66991,
-        "documentCount": 16892
+        "mentions": 66996,
+        "documentCount": 16895
       },
       "right": {
         "name": "CENTRAL INTELLIGZNCE AGENCY",
@@ -23407,8 +23407,8 @@
       "category": "government_agency",
       "left": {
         "name": "Central Intelligence Agency",
-        "mentions": 66991,
-        "documentCount": 16892
+        "mentions": 66996,
+        "documentCount": 16895
       },
       "right": {
         "name": "Contral Intelligence Agency",
@@ -23423,8 +23423,8 @@
       "category": "person",
       "left": {
         "name": "Bruce Maccabee",
-        "mentions": 7194,
-        "documentCount": 1016
+        "mentions": 7195,
+        "documentCount": 1017
       },
       "right": {
         "name": "Bruce Macabee",
@@ -23439,8 +23439,8 @@
       "category": "person",
       "left": {
         "name": "Bruce Maccabee",
-        "mentions": 7194,
-        "documentCount": 1016
+        "mentions": 7195,
+        "documentCount": 1017
       },
       "right": {
         "name": "Bruce Maccabe",
@@ -23455,8 +23455,8 @@
       "category": "person",
       "left": {
         "name": "Kenneth Arnold",
-        "mentions": 6008,
-        "documentCount": 2177
+        "mentions": 6009,
+        "documentCount": 2178
       },
       "right": {
         "name": "Kenneth Arnol",
@@ -23471,8 +23471,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4153,
-        "documentCount": 1778
+        "mentions": 4155,
+        "documentCount": 1779
       },
       "right": {
         "name": "George Adamsk",
@@ -23519,8 +23519,8 @@
       "category": "person",
       "left": {
         "name": "Edgar Mitchell",
-        "mentions": 3907,
-        "documentCount": 1631
+        "mentions": 3909,
+        "documentCount": 1633
       },
       "right": {
         "name": "Edgar Michell",
@@ -23535,8 +23535,8 @@
       "category": "person",
       "left": {
         "name": "Edgar Mitchell",
-        "mentions": 3907,
-        "documentCount": 1631
+        "mentions": 3909,
+        "documentCount": 1633
       },
       "right": {
         "name": "Edgar Mitchel",
@@ -23679,8 +23679,8 @@
       "category": "person",
       "left": {
         "name": "Gordon Cooper",
-        "mentions": 2031,
-        "documentCount": 770
+        "mentions": 2036,
+        "documentCount": 771
       },
       "right": {
         "name": "Gordon Coopers",
@@ -23727,8 +23727,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1692,
-        "documentCount": 1352
+        "mentions": 1693,
+        "documentCount": 1353
       },
       "right": {
         "name": "FOREIGH TECHNOLOGY DIVISION",
@@ -23743,8 +23743,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1692,
-        "documentCount": 1352
+        "mentions": 1693,
+        "documentCount": 1353
       },
       "right": {
         "name": "FOREIGN TECHMOLOGY DIVISION",
@@ -23759,8 +23759,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1692,
-        "documentCount": 1352
+        "mentions": 1693,
+        "documentCount": 1353
       },
       "right": {
         "name": "FOREION TECHNOLOGY DIVISION",
@@ -23775,8 +23775,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1692,
-        "documentCount": 1352
+        "mentions": 1693,
+        "documentCount": 1353
       },
       "right": {
         "name": "Foriegn Technology Division",
@@ -23791,8 +23791,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1692,
-        "documentCount": 1352
+        "mentions": 1693,
+        "documentCount": 1353
       },
       "right": {
         "name": "Foreiga Technology Division",
@@ -23807,8 +23807,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1692,
-        "documentCount": 1352
+        "mentions": 1693,
+        "documentCount": 1353
       },
       "right": {
         "name": "Fereign Technology Division",
@@ -23823,8 +23823,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1692,
-        "documentCount": 1352
+        "mentions": 1693,
+        "documentCount": 1353
       },
       "right": {
         "name": "FOREIGN TECHROLOGY DIVISION",
@@ -23839,8 +23839,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1692,
-        "documentCount": 1352
+        "mentions": 1693,
+        "documentCount": 1353
       },
       "right": {
         "name": "FOREIGK TECHNOLOGY DIVISION",
@@ -23967,8 +23967,8 @@
       "category": "program",
       "left": {
         "name": "Project Grudge",
-        "mentions": 873,
-        "documentCount": 450
+        "mentions": 875,
+        "documentCount": 451
       },
       "right": {
         "name": "Project GRUDG",
@@ -30383,8 +30383,8 @@
       "category": "person",
       "left": {
         "name": "Gordon Cooper",
-        "mentions": 2031,
-        "documentCount": 770
+        "mentions": 2036,
+        "documentCount": 771
       },
       "right": {
         "name": "Gordon Coope",
@@ -30543,8 +30543,8 @@
       "category": "location",
       "left": {
         "name": "Mount Rainier",
-        "mentions": 1312,
-        "documentCount": 785
+        "mentions": 1313,
+        "documentCount": 786
       },
       "right": {
         "name": "Mount Rainie",
@@ -30623,8 +30623,8 @@
       "category": "program",
       "left": {
         "name": "Project Mogul",
-        "mentions": 1006,
-        "documentCount": 405
+        "mentions": 1007,
+        "documentCount": 406
       },
       "right": {
         "name": "Project Mogu",
@@ -30751,8 +30751,8 @@
       "category": "person",
       "left": {
         "name": "Philip Corso",
-        "mentions": 732,
-        "documentCount": 352
+        "mentions": 734,
+        "documentCount": 353
       },
       "right": {
         "name": "Colonel Phillip Corso",
@@ -30767,8 +30767,8 @@
       "category": "person",
       "left": {
         "name": "Philip Corso",
-        "mentions": 732,
-        "documentCount": 352
+        "mentions": 734,
+        "documentCount": 353
       },
       "right": {
         "name": "Philip Corsos",
@@ -32094,6 +32094,22 @@
     {
       "category": "person",
       "left": {
+        "name": "Frank Borman",
+        "mentions": 83,
+        "documentCount": 61
+      },
+      "right": {
+        "name": "Frank Bormann",
+        "mentions": 4,
+        "documentCount": 3
+      },
+      "similarity": 0.96,
+      "reason": "similar name",
+      "aliasFile": "data/entity_aliases.json"
+    },
+    {
+      "category": "person",
+      "left": {
         "name": "Pierre Delval",
         "mentions": 78,
         "documentCount": 55
@@ -32118,22 +32134,6 @@
         "name": "Edgar Fouche",
         "mentions": 77,
         "documentCount": 38
-      },
-      "similarity": 0.96,
-      "reason": "similar name",
-      "aliasFile": "data/entity_aliases.json"
-    },
-    {
-      "category": "person",
-      "left": {
-        "name": "Frank Borman",
-        "mentions": 81,
-        "documentCount": 59
-      },
-      "right": {
-        "name": "Frank Bormann",
-        "mentions": 4,
-        "documentCount": 3
       },
       "similarity": 0.96,
       "reason": "similar name",
@@ -36639,8 +36639,8 @@
       "category": "organization",
       "left": {
         "name": "University of New Mexico",
-        "mentions": 592,
-        "documentCount": 437
+        "mentions": 593,
+        "documentCount": 438
       },
       "right": {
         "name": "University of New Nexico",
@@ -36655,8 +36655,8 @@
       "category": "organization",
       "left": {
         "name": "University of New Mexico",
-        "mentions": 592,
-        "documentCount": 437
+        "mentions": 593,
+        "documentCount": 438
       },
       "right": {
         "name": "THE UNIVERSITY OF NEN MEXICO",
@@ -36671,8 +36671,8 @@
       "category": "organization",
       "left": {
         "name": "University of New Mexico",
-        "mentions": 592,
-        "documentCount": 437
+        "mentions": 593,
+        "documentCount": 438
       },
       "right": {
         "name": "University of New Hexico",
@@ -38463,8 +38463,8 @@
       "category": "program",
       "left": {
         "name": "Project Sign",
-        "mentions": 1025,
-        "documentCount": 447
+        "mentions": 1028,
+        "documentCount": 448
       },
       "right": {
         "name": "Project Sig",
@@ -38687,8 +38687,8 @@
       "category": "organization",
       "left": {
         "name": "University of New Mexico",
-        "mentions": 592,
-        "documentCount": 437
+        "mentions": 593,
+        "documentCount": 438
       },
       "right": {
         "name": "University of New Mexi",
@@ -45439,8 +45439,8 @@
       "category": "location",
       "left": {
         "name": "Edwards Air Force Base",
-        "mentions": 2493,
-        "documentCount": 1125
+        "mentions": 2494,
+        "documentCount": 1126
       },
       "right": {
         "name": "Edgards Air Force Base",
@@ -49887,8 +49887,8 @@
       "category": "government_agency",
       "left": {
         "name": "Federal Bureau of Investigation",
-        "mentions": 36609,
-        "documentCount": 9318
+        "mentions": 36639,
+        "documentCount": 9319
       },
       "right": {
         "name": "FEDERAL BUREAU OF INVESTIGAnON",
@@ -49903,8 +49903,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Write-Patterson Air Force Base",
@@ -49919,8 +49919,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Patterson Mr Force Base",
@@ -49935,8 +49935,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright Faterson Air Force Base",
@@ -52799,8 +52799,8 @@
       "category": "organization",
       "left": {
         "name": "Defense Intelligence",
-        "mentions": 1076,
-        "documentCount": 544
+        "mentions": 1079,
+        "documentCount": 545
       },
       "right": {
         "name": "Defonse Intelligence",
@@ -55103,8 +55103,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Center",
-        "mentions": 1295,
-        "documentCount": 952
+        "mentions": 1297,
+        "documentCount": 954
       },
       "right": {
         "name": "Intelligence Conter",
@@ -55119,8 +55119,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Center",
-        "mentions": 1295,
-        "documentCount": 952
+        "mentions": 1297,
+        "documentCount": 954
       },
       "right": {
         "name": "Intelligence Genter",
@@ -57247,8 +57247,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1692,
-        "documentCount": 1352
+        "mentions": 1693,
+        "documentCount": 1353
       },
       "right": {
         "name": "FOREIGN TECHtjOLOGY DiVISION",
@@ -58047,8 +58047,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Center",
-        "mentions": 1295,
-        "documentCount": 952
+        "mentions": 1297,
+        "documentCount": 954
       },
       "right": {
         "name": "Intelligence Cent",
@@ -61535,8 +61535,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of War",
-        "mentions": 58,
-        "documentCount": 33
+        "mentions": 59,
+        "documentCount": 34
       },
       "right": {
         "name": "Department of Air",
@@ -62127,8 +62127,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of War",
-        "mentions": 58,
-        "documentCount": 33
+        "mentions": 59,
+        "documentCount": 34
       },
       "right": {
         "name": "Department of Arc",
@@ -74559,8 +74559,8 @@
       "category": "government_agency",
       "left": {
         "name": "Federal Bureau of Investigation",
-        "mentions": 36609,
-        "documentCount": 9318
+        "mentions": 36639,
+        "documentCount": 9319
       },
       "right": {
         "name": "FEDERAL BUREAU OF IRVESTIGATIOR",
@@ -74575,8 +74575,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Fattorson Air Force Base",
@@ -74591,8 +74591,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Patterson Air Foros Base",
@@ -74607,8 +74607,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Pattercon Air Porce Base",
@@ -74623,8 +74623,8 @@
       "category": "location",
       "left": {
         "name": "Wright-Patterson Air Force Base",
-        "mentions": 4669,
-        "documentCount": 3607
+        "mentions": 4670,
+        "documentCount": 3608
       },
       "right": {
         "name": "Wright-Patterson Air Porco Base",
@@ -83695,8 +83695,8 @@
       "category": "government_agency",
       "left": {
         "name": "Federal Bureau of Investigation",
-        "mentions": 36609,
-        "documentCount": 9318
+        "mentions": 36639,
+        "documentCount": 9319
       },
       "right": {
         "name": "FEDERAL BUREAU OF INVESTIGATE",
@@ -83743,8 +83743,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4153,
-        "documentCount": 1778
+        "mentions": 4155,
+        "documentCount": 1779
       },
       "right": {
         "name": "George Adamskiin",
@@ -84159,8 +84159,8 @@
       "category": "organization",
       "left": {
         "name": "University of New Mexico",
-        "mentions": 592,
-        "documentCount": 437
+        "mentions": 593,
+        "documentCount": 438
       },
       "right": {
         "name": "University of New Mex",
@@ -84511,8 +84511,8 @@
       "category": "program",
       "left": {
         "name": "Project Twinkle",
-        "mentions": 231,
-        "documentCount": 118
+        "mentions": 232,
+        "documentCount": 119
       },
       "right": {
         "name": "PROJECT TWlNKLE",
@@ -93055,8 +93055,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of the Air",
-        "mentions": 1186,
-        "documentCount": 721
+        "mentions": 1188,
+        "documentCount": 722
       },
       "right": {
         "name": "Department of the Army",
@@ -93071,8 +93071,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of the Air",
-        "mentions": 1186,
-        "documentCount": 721
+        "mentions": 1188,
+        "documentCount": 722
       },
       "right": {
         "name": "The Department of the Armr",
@@ -93087,8 +93087,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of the Air",
-        "mentions": 1186,
-        "documentCount": 721
+        "mentions": 1188,
+        "documentCount": 722
       },
       "right": {
         "name": "Department of the Aray",
@@ -95279,8 +95279,8 @@
       "category": "person",
       "left": {
         "name": "Bruce Maccabee",
-        "mentions": 7194,
-        "documentCount": 1016
+        "mentions": 7195,
+        "documentCount": 1017
       },
       "right": {
         "name": "Bruce Macabbee",
@@ -95295,8 +95295,8 @@
       "category": "person",
       "left": {
         "name": "Bruce Maccabee",
-        "mentions": 7194,
-        "documentCount": 1016
+        "mentions": 7195,
+        "documentCount": 1017
       },
       "right": {
         "name": "Dr. Bruce Maccabbe",
@@ -95311,8 +95311,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4153,
-        "documentCount": 1778
+        "mentions": 4155,
+        "documentCount": 1779
       },
       "right": {
         "name": "George Adamsky",
@@ -95327,8 +95327,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4153,
-        "documentCount": 1778
+        "mentions": 4155,
+        "documentCount": 1779
       },
       "right": {
         "name": "George Adamskl",
@@ -95343,8 +95343,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4153,
-        "documentCount": 1778
+        "mentions": 4155,
+        "documentCount": 1779
       },
       "right": {
         "name": "George Adamaki",
@@ -95359,8 +95359,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4153,
-        "documentCount": 1778
+        "mentions": 4155,
+        "documentCount": 1779
       },
       "right": {
         "name": "George Adomski",
@@ -95375,8 +95375,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4153,
-        "documentCount": 1778
+        "mentions": 4155,
+        "documentCount": 1779
       },
       "right": {
         "name": "George Adnmski",
@@ -95391,8 +95391,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4153,
-        "documentCount": 1778
+        "mentions": 4155,
+        "documentCount": 1779
       },
       "right": {
         "name": "George Adamskj",
@@ -95615,8 +95615,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1692,
-        "documentCount": 1352
+        "mentions": 1693,
+        "documentCount": 1353
       },
       "right": {
         "name": "Foreign Technologies Division",
@@ -95711,8 +95711,8 @@
       "category": "program",
       "left": {
         "name": "Project Grudge",
-        "mentions": 873,
-        "documentCount": 450
+        "mentions": 875,
+        "documentCount": 451
       },
       "right": {
         "name": "Project Grunge",
@@ -95727,8 +95727,8 @@
       "category": "program",
       "left": {
         "name": "Project Grudge",
-        "mentions": 873,
-        "documentCount": 450
+        "mentions": 875,
+        "documentCount": 451
       },
       "right": {
         "name": "Project Crudge",
@@ -95743,8 +95743,8 @@
       "category": "program",
       "left": {
         "name": "Project Grudge",
-        "mentions": 873,
-        "documentCount": 450
+        "mentions": 875,
+        "documentCount": 451
       },
       "right": {
         "name": "Project Grudre",
@@ -96543,8 +96543,8 @@
       "category": "person",
       "left": {
         "name": "James McDivitt",
-        "mentions": 103,
-        "documentCount": 91
+        "mentions": 104,
+        "documentCount": 92
       },
       "right": {
         "name": "James McDevitt",
@@ -103567,8 +103567,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of the Air",
-        "mentions": 1186,
-        "documentCount": 721
+        "mentions": 1188,
+        "documentCount": 722
       },
       "right": {
         "name": "DEPARTMENT OF THE AL",
@@ -103583,8 +103583,8 @@
       "category": "government_agency",
       "left": {
         "name": "Department of the Air",
-        "mentions": 1186,
-        "documentCount": 721
+        "mentions": 1188,
+        "documentCount": 722
       },
       "right": {
         "name": "Department of the In",
@@ -103599,8 +103599,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Community",
-        "mentions": 1185,
-        "documentCount": 329
+        "mentions": 1187,
+        "documentCount": 330
       },
       "right": {
         "name": "Intelligence Commun",
@@ -105343,8 +105343,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1692,
-        "documentCount": 1352
+        "mentions": 1693,
+        "documentCount": 1353
       },
       "right": {
         "name": "FOREIGH TECHHOLOGY DIVISION",
@@ -105359,8 +105359,8 @@
       "category": "organization",
       "left": {
         "name": "Foreign Technology Division",
-        "mentions": 1692,
-        "documentCount": 1352
+        "mentions": 1693,
+        "documentCount": 1353
       },
       "right": {
         "name": "FORLIGH TECHNOLOGY DIVISION",
@@ -108751,8 +108751,8 @@
       "category": "person",
       "left": {
         "name": "Kenneth Arnold",
-        "mentions": 6008,
-        "documentCount": 2177
+        "mentions": 6009,
+        "documentCount": 2178
       },
       "right": {
         "name": "Kenneth Arno",
@@ -108767,8 +108767,8 @@
       "category": "person",
       "left": {
         "name": "George Adamski",
-        "mentions": 4153,
-        "documentCount": 1778
+        "mentions": 4155,
+        "documentCount": 1779
       },
       "right": {
         "name": "George Adams",
@@ -109007,8 +109007,8 @@
       "category": "location",
       "left": {
         "name": "Mount Rainier",
-        "mentions": 1312,
-        "documentCount": 785
+        "mentions": 1313,
+        "documentCount": 786
       },
       "right": {
         "name": "Mount Raini e",
@@ -109023,8 +109023,8 @@
       "category": "organization",
       "left": {
         "name": "Intelligence Center",
-        "mentions": 1295,
-        "documentCount": 952
+        "mentions": 1297,
+        "documentCount": 954
       },
       "right": {
         "name": "Intelligence Cf'nter",
@@ -109119,8 +109119,8 @@
       "category": "program",
       "left": {
         "name": "Project Sign",
-        "mentions": 1025,
-        "documentCount": 447
+        "mentions": 1028,
+        "documentCount": 448
       },
       "right": {
         "name": "Project Signed",
@@ -109135,8 +109135,8 @@
       "category": "program",
       "left": {
         "name": "Project Mogul",
-        "mentions": 1006,
-        "documentCount": 405
+        "mentions": 1007,
+        "documentCount": 406
       },
       "right": {
         "name": "Project Mogui",
@@ -109231,8 +109231,8 @@
       "category": "program",
       "left": {
         "name": "Project Grudge",
-        "mentions": 873,
-        "documentCount": 450
+        "mentions": 875,
+        "documentCount": 451
       },
       "right": {
         "name": "Project Grud",
@@ -109375,8 +109375,8 @@
       "category": "location",
       "left": {
         "name": "Mojave Desert",
-        "mentions": 560,
-        "documentCount": 410
+        "mentions": 561,
+        "documentCount": 411
       },
       "right": {
         "name": "Mohave Desert",
@@ -109391,8 +109391,8 @@
       "category": "organization",
       "left": {
         "name": "Armed Services Committee",
-        "mentions": 574,
-        "documentCount": 243
+        "mentions": 575,
+        "documentCount": 244
       },
       "right": {
         "name": "Armed Services Committee--was",
@@ -123471,8 +123471,8 @@
       "category": "person",
       "left": {
         "name": "Eugene Cernan",
-        "mentions": 53,
-        "documentCount": 37
+        "mentions": 54,
+        "documentCount": 38
       },
       "right": {
         "name": "Captain Gene Cernan",
@@ -123967,8 +123967,8 @@
       "category": "person",
       "left": {
         "name": "Philip Corso",
-        "mentions": 732,
-        "documentCount": 352
+        "mentions": 734,
+        "documentCount": 353
       },
       "right": {
         "name": "Colonel Phil Corso",
@@ -125919,8 +125919,8 @@
       "category": "person",
       "left": {
         "name": "Edgar Mitchell",
-        "mentions": 3907,
-        "documentCount": 1631
+        "mentions": 3909,
+        "documentCount": 1633
       },
       "right": {
         "name": "Edward Mitchell",
@@ -126894,14 +126894,14 @@
     {
       "category": "person",
       "left": {
-        "name": "Stephen Basset",
-        "mentions": 37,
-        "documentCount": 24
+        "name": "Tom Stafford",
+        "mentions": 24,
+        "documentCount": 19
       },
       "right": {
-        "name": "Steven Basset",
-        "mentions": 3,
-        "documentCount": 3
+        "name": "Thomas Stafford",
+        "mentions": 16,
+        "documentCount": 14
       },
       "similarity": 0.889,
       "reason": "similar person name",
@@ -126910,14 +126910,14 @@
     {
       "category": "person",
       "left": {
-        "name": "Tom Stafford",
-        "mentions": 23,
-        "documentCount": 18
+        "name": "Stephen Basset",
+        "mentions": 37,
+        "documentCount": 24
       },
       "right": {
-        "name": "Thomas Stafford",
-        "mentions": 16,
-        "documentCount": 14
+        "name": "Steven Basset",
+        "mentions": 3,
+        "documentCount": 3
       },
       "similarity": 0.889,
       "reason": "similar person name",
@@ -130575,8 +130575,8 @@
       "category": "person",
       "left": {
         "name": "Ryan Graves",
-        "mentions": 813,
-        "documentCount": 331
+        "mentions": 814,
+        "documentCount": 332
       },
       "right": {
         "name": "Brian Graves",
@@ -132895,8 +132895,8 @@
       "category": "person",
       "left": {
         "name": "Tim Gallaudet",
-        "mentions": 148,
-        "documentCount": 29
+        "mentions": 149,
+        "documentCount": 30
       },
       "right": {
         "name": "Timothy Gallaudet",
@@ -133679,8 +133679,8 @@
       "category": "government_agency",
       "left": {
         "name": "NASA",
-        "mentions": 245616,
-        "documentCount": 31778
+        "mentions": 245662,
+        "documentCount": 31781
       },
       "right": {
         "name": "North American Space Agency",
@@ -133695,8 +133695,8 @@
       "category": "government_agency",
       "left": {
         "name": "NASA",
-        "mentions": 245616,
-        "documentCount": 31778
+        "mentions": 245662,
+        "documentCount": 31781
       },
       "right": {
         "name": "National Aeronautics & Space Agency",
@@ -133743,8 +133743,8 @@
       "category": "government_agency",
       "left": {
         "name": "NASA",
-        "mentions": 245616,
-        "documentCount": 31778
+        "mentions": 245662,
+        "documentCount": 31781
       },
       "right": {
         "name": "National Aeronautics and Space Agency",
